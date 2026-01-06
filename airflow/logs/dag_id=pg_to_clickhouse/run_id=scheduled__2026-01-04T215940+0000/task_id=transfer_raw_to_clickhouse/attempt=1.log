@@ -1,0 +1,20 @@
+[2026-01-04T21:59:50.910+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2026-01-04T21:59:50.952+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: pg_to_clickhouse.transfer_raw_to_clickhouse scheduled__2026-01-04T21:59:40+00:00 [queued]>
+[2026-01-04T21:59:50.961+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: pg_to_clickhouse.transfer_raw_to_clickhouse scheduled__2026-01-04T21:59:40+00:00 [queued]>
+[2026-01-04T21:59:50.962+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 2
+[2026-01-04T21:59:50.980+0000] {taskinstance.py:2330} INFO - Executing <Task(PythonOperator): transfer_raw_to_clickhouse> on 2026-01-04 21:59:40+00:00
+[2026-01-04T21:59:50.991+0000] {logging_mixin.py:188} WARNING - /home/airflow/.local/lib/python3.12/site-packages/airflow/task/task_runner/standard_task_runner.py:61 DeprecationWarning: This process (pid=569) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2026-01-04T21:59:50.993+0000] {standard_task_runner.py:63} INFO - Started process 570 to run task
+[2026-01-04T21:59:50.991+0000] {standard_task_runner.py:90} INFO - Running: ['airflow', 'tasks', 'run', 'pg_to_clickhouse', 'transfer_raw_to_clickhouse', 'scheduled__2026-01-04T21:59:40+00:00', '--job-id', '43', '--raw', '--subdir', 'DAGS_FOLDER/etl_postgres_to_clickhouse.py', '--cfg-path', '/tmp/tmp_bwmgqjv']
+[2026-01-04T21:59:50.994+0000] {standard_task_runner.py:91} INFO - Job 43: Subtask transfer_raw_to_clickhouse
+[2026-01-04T21:59:51.079+0000] {task_command.py:426} INFO - Running <TaskInstance: pg_to_clickhouse.transfer_raw_to_clickhouse scheduled__2026-01-04T21:59:40+00:00 [running]> on host 86f269ad28e5
+[2026-01-04T21:59:51.211+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='pg_to_clickhouse' AIRFLOW_CTX_TASK_ID='transfer_raw_to_clickhouse' AIRFLOW_CTX_EXECUTION_DATE='2026-01-04T21:59:40+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2026-01-04T21:59:40+00:00'
+[2026-01-04T21:59:51.212+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2026-01-04T21:59:51.236+0000] {logging_mixin.py:188} INFO - Last created_at in ClickHouse: 2026-01-04 21:52:40
+[2026-01-04T22:00:07.258+0000] {logging_mixin.py:188} INFO - Transferred 304951 new events to ClickHouse
+[2026-01-04T22:00:07.621+0000] {python.py:237} INFO - Done. Returned value was: None
+[2026-01-04T22:00:07.622+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2026-01-04T22:00:07.643+0000] {taskinstance.py:1206} INFO - Marking task as SUCCESS. dag_id=pg_to_clickhouse, task_id=transfer_raw_to_clickhouse, run_id=scheduled__2026-01-04T21:59:40+00:00, execution_date=20260104T215940, start_date=20260104T215950, end_date=20260104T220007
+[2026-01-04T22:00:07.776+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 0
+[2026-01-04T22:00:07.808+0000] {taskinstance.py:3498} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2026-01-04T22:00:07.816+0000] {local_task_job_runner.py:222} INFO - ::endgroup::

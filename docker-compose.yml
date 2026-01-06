@@ -1,0 +1,229 @@
+version: "3.9"
+
+services:
+  # ======================
+  # PostgreSQL
+  # ======================
+  postgres:
+    image: postgres:15
+    container_name: clickstream-postgres
+    environment:
+      POSTGRES_DB: clickstream
+      POSTGRES_USER: clickstream
+      POSTGRES_PASSWORD: clickstream
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U clickstream"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  # ======================
+  # RabbitMQ
+  # ======================
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: clickstream-rabbitmq
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    healthcheck:
+      test: ["CMD", "rabbitmq-diagnostics", "ping"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  # ======================
+  # API
+  # ======================
+  api:
+    build: ./api
+    container_name: clickstream-api
+    env_file:
+      - .env
+    ports:
+      - "8000:8000"
+    depends_on:
+      postgres:
+        condition: service_healthy
+      rabbitmq:
+        condition: service_healthy
+
+  # ======================
+  # RabbitMQ consumer
+  # ======================
+  consumer:
+    build: ./consumer
+    container_name: clickstream-consumer
+    env_file:
+      - .env
+    depends_on:
+      postgres:
+        condition: service_healthy
+      rabbitmq:
+        condition: service_healthy
+
+  # ======================
+  # RabbitMQ producer
+  # ======================
+  producer:
+    build: ./producer
+    container_name: clickstream-producer
+    env_file:
+      - .env
+    depends_on:
+      postgres:
+        condition: service_healthy
+      rabbitmq:
+        condition: service_healthy
+
+  # ======================
+  # Event Generator
+  # ======================
+  event-generator:
+    build: ./event-generator
+    container_name: clickstream-generator
+    env_file:
+      - .env
+    volumes:
+      - ./data:/data
+    depends_on:
+      api:
+        condition: service_started
+      rabbitmq:
+        condition: service_healthy
+      consumer:
+        condition: service_started
+
+  # ======================
+  # Tracker
+  # ======================
+  tracker:
+    build: ./tracker
+    container_name: clickstream-tracker
+    ports:
+      - "8081:8081"
+    environment:
+      - DB_HOST=postgres
+      - DB_USER=clickstream
+      - DB_PASSWORD=clickstream
+      - DB_NAME=clickstream
+    depends_on:
+      - postgres
+
+  # ======================
+  # ClickHouse
+  # ======================
+  clickhouse:
+    image: clickhouse/clickhouse-server:23.9
+    container_name: clickstream-clickhouse
+    ports:
+      - "18123:8123"  # HTTP (снаружи 18123)
+      - "19000:9000"  # Native (снаружи 19000)
+      - "9363:9363"
+    volumes:
+      - clickhouse_data:/var/lib/clickhouse
+      - ./clickhouse-init:/docker-entrypoint-initdb.d  # SQL для инициализации
+      - ./clickhouse-config/prometheus.xml:/etc/clickhouse-server/config.d/prometheus.xml
+    environment:
+      CLICKHOUSE_DB: clickstream
+      CLICKHOUSE_USER: default
+      CLICKHOUSE_PASSWORD: ""
+    ulimits:
+      nofile:
+        soft: 262144
+        hard: 262144
+
+
+
+
+
+  # ======================
+  # Airflow
+  # ======================
+  airflow:
+    build: ./airflow
+    container_name: clickstream-airflow
+    restart: always
+
+    environment:
+      AIRFLOW__CORE__EXECUTOR: LocalExecutor
+      AIRFLOW__CORE__FERNET_KEY: "${AIRFLOW_FERNET_KEY:-$(python3 -c 'from cryptography.fernet import Fernet; print(Fernet.generate_key().decode())')}"
+      AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: postgresql+psycopg2://clickstream:clickstream@postgres:5432/clickstream
+      AIRFLOW__CORE__LOAD_EXAMPLES: "false"
+      AIRFLOW__WEBSERVER__EXPOSE_CONFIG: "true"
+
+    volumes:
+      - ./airflow/dags:/opt/airflow/dags
+      - ./airflow/logs:/opt/airflow/logs
+      - ./airflow/plugins:/opt/airflow/plugins
+      - ./airflow/etl:/opt/airflow/etl
+      - ./airflow/scripts:/opt/airflow/scripts
+
+    ports:
+      - "8082:8080"
+
+    command: >
+      bash -c "
+        airflow db migrate &&
+        airflow users create --username admin --password admin --firstname Admin --lastname Admin --role Admin --email admin@example.com || true
+        airflow webserver & airflow scheduler
+      "
+
+
+
+
+    healthcheck:
+      test: ["CMD-SHELL", "airflow db check"]
+      interval: 10s
+      retries: 5
+
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+
+  # ======================
+  # Prometheus
+  # ======================
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: clickstream-prometheus
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./prometheus:/etc/prometheus
+    command:
+      - "--config.file=/etc/prometheus/prometheus.yml"
+    depends_on:
+      - clickhouse
+
+  # ======================
+  # Grafana
+  # ======================
+  grafana:
+    image: grafana/grafana:latest
+    container_name: clickstream-grafana
+    ports:
+      - "3000:3000"
+    environment:
+      - GF_SECURITY_ADMIN_USER=admin
+      - GF_SECURITY_ADMIN_PASSWORD=admin
+      - GF_USERS_ALLOW_SIGN_UP=false
+      - GF_DEFAULT_APP_MODE=development
+      - GF_INSTALL_PLUGINS=vertamedia-clickhouse-datasource
+    volumes:
+      - grafana_data:/var/lib/grafana
+      - ./grafana/provisioning:/etc/grafana/provisioning
+    depends_on:
+      - prometheus
+
+
+
+volumes:
+  postgres_data:
+  clickhouse_data:
+  grafana_data:

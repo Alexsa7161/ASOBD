@@ -1,0 +1,29 @@
+docker compose down -v --remove-orphans
+docker compose build --no-cache
+docker compose up -d
+
+postgres
+docker exec -it clickstream-postgres psql -U clickstream -d clickstream
+select source, count(*) from raw_events group by source;
+
+rabbitMq
+http://localhost:15672/#/queues/%2F/events
+
+tracker
+http://localhost:8081/
+
+clickhouse
+docker exec -it clickstream-clickhouse clickhouse-client
+DESCRIBE TABLE clickstream.events_cleansed;
+select count(*) from clickstream.events_cleansed FINAL;
+
+airflow
+http://localhost:8082/home
+admin/admin
+
+Prometheus
+http://localhost:9090/targets
+
+Grafana
+http://localhost:3000/dashboards
+admin/admin

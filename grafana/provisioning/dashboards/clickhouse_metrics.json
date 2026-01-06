@@ -1,0 +1,54 @@
+{
+  "uid": "clickhouse-system",
+  "title": "ClickHouse System Metrics",
+  "schemaVersion": 38,
+  "version": 1,
+  "refresh": "10s",
+  "timezone": "browser",
+  "panels": [
+    {
+      "type": "stat",
+      "title": "ClickHouse Alive",
+      "targets": [{ "expr": "up{job='clickhouse'}", "refId": "A" }],
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "center",
+        "textMode": "value",
+        "colorValue": [
+          { "unit": "1", "color": "#4caf50", "value": 1 },
+          { "unit": "0", "color": "#f44336", "value": 0 }
+        ]
+      },
+      "gridPos": { "x": 0, "y": 0, "w": 6, "h": 3 }
+    },
+    {
+      "type": "timeseries",
+      "title": "Active Queries",
+      "targets": [
+        { "expr": "ClickHouseProfileEvents_Query", "refId": "A", "legendFormat": "Total Queries" },
+        { "expr": "ClickHouseProfileEvents_SelectQuery", "refId": "B", "legendFormat": "SELECT" },
+        { "expr": "ClickHouseProfileEvents_InsertQuery", "refId": "C", "legendFormat": "INSERT" }
+      ],
+      "gridPos": { "x": 0, "y": 11, "w": 12, "h": 4 }
+    },
+    {
+      "type": "timeseries",
+      "title": "Disk Usage",
+      "targets": [
+        { "expr": "ClickHouseAsyncMetrics_DiskUsed_default / 1024 / 1024 / 1024", "refId": "A", "legendFormat": "Used GB" },
+        { "expr": "ClickHouseAsyncMetrics_DiskAvailable_default / 1024 / 1024 / 1024", "refId": "B", "legendFormat": "Available GB" }
+      ],
+      "gridPos": { "x": 0, "y": 15, "w": 12, "h": 4 }
+    },
+    {
+      "type": "timeseries",
+      "title": "MergeTree Parts / Rows (System DB)",
+      "targets": [
+        { "expr": "ClickHouseAsyncMetrics_TotalPartsOfMergeTreeTablesSystem", "refId": "A", "legendFormat": "Parts" },
+        { "expr": "ClickHouseAsyncMetrics_TotalRowsOfMergeTreeTablesSystem", "refId": "B", "legendFormat": "Rows" }
+      ],
+      "gridPos": { "x": 0, "y": 19, "w": 12, "h": 4 }
+    }
+  ]
+}

@@ -1,0 +1,6 @@
+[2026-01-04T22:00:41.381+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2026-01-04T22:00:41.434+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: pg_to_clickhouse.transfer_raw_to_clickhouse scheduled__2026-01-04T22:00:30+00:00 [queued]>
+[2026-01-04T22:00:41.448+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: pg_to_clickhouse.transfer_raw_to_clickhouse scheduled__2026-01-04T22:00:30+00:00 [queued]>
+[2026-01-04T22:00:41.449+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 2
+[2026-01-04T22:00:41.464+0000] {local_task_job_runner.py:124} ERROR - Received SIGTERM. Terminating subprocesses
+[2026-01-04T22:00:41.465+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 143

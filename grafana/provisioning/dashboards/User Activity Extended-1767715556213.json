@@ -1,0 +1,573 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": {
+          "type": "grafana",
+          "uid": "-- Grafana --"
+        },
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 0,
+  "id": 5,
+  "links": [],
+  "panels": [
+    {
+      "datasource": {
+        "type": "vertamedia-clickhouse-datasource"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "barWidthFactor": 0.6,
+            "drawStyle": "points",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "showValues": false,
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 0
+      },
+      "id": 1,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "hideZeros": false,
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "12.3.1",
+      "targets": [
+        {
+          "adHocFilters": [],
+          "adHocValuesQuery": "",
+          "add_metadata": true,
+          "contextWindowSize": "10",
+          "datasource": {
+            "type": "clickhouse",
+            "uid": "ClickHouse"
+          },
+          "editorMode": "builder",
+          "extrapolate": false,
+          "format": "time_series",
+          "formattedQuery": "/* grafana dashboard='User Activity Extended', user=1 */\nSELECT toStartOfDay(created_at) AS t, count(DISTINCT user_id) AS value FROM clickstream.events_cleansed WHERE created_at >= now() - INTERVAL 30 DAY AND created_at <= now() GROUP BY t ORDER BY t",
+          "interval": "",
+          "intervalFactor": 1,
+          "nullifySparse": false,
+          "query": "SELECT toStartOfDay(created_at) AS t, count(DISTINCT user_id) AS value FROM clickstream.events_cleansed WHERE created_at >= now() - INTERVAL 30 DAY AND created_at <= now() GROUP BY t ORDER BY t",
+          "queryType": "SQL",
+          "rawSql": "SELECT toStartOfDay(created_at) AS t, count(DISTINCT user_id) AS value FROM clickstream.events_cleansed WHERE created_at >= now() - INTERVAL 30 DAY AND created_at <= now() GROUP BY t ORDER BY t",
+          "refId": "A",
+          "round": "0s",
+          "skip_comments": true,
+          "useWindowFuncForMacros": true
+        }
+      ],
+      "title": "DAU (Daily Active Users)",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "vertamedia-clickhouse-datasource",
+        "uid": "clickhouse"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "barWidthFactor": 0.6,
+            "drawStyle": "points",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "showValues": false,
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 0
+      },
+      "id": 2,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "hideZeros": false,
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "12.3.1",
+      "targets": [
+        {
+          "adHocFilters": [],
+          "adHocValuesQuery": "",
+          "add_metadata": true,
+          "contextWindowSize": "10",
+          "datasource": {
+            "type": "clickhouse",
+            "uid": "ClickHouse"
+          },
+          "editorMode": "builder",
+          "extrapolate": false,
+          "format": "time_series",
+          "formattedQuery": "/* grafana dashboard='User Activity Extended', user=1 */\nSELECT toStartOfDay(created_at) AS t, count(*) AS value FROM clickstream.events_cleansed WHERE created_at >= now() - INTERVAL 30 DAY AND created_at <= now() GROUP BY t ORDER BY t",
+          "interval": "",
+          "intervalFactor": 1,
+          "nullifySparse": false,
+          "query": "SELECT toStartOfDay(created_at) AS t, count(*) AS value FROM clickstream.events_cleansed WHERE created_at >= now() - INTERVAL 30 DAY AND created_at <= now() GROUP BY t ORDER BY t",
+          "queryType": "SQL",
+          "rawSql": "SELECT toStartOfDay(created_at) AS t, count(*) AS value FROM clickstream.events_cleansed WHERE created_at >= now() - INTERVAL 30 DAY AND created_at <= now() GROUP BY t ORDER BY t",
+          "refId": "B",
+          "round": "0s",
+          "skip_comments": true,
+          "useWindowFuncForMacros": true
+        }
+      ],
+      "title": "Total Events per Day",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "vertamedia-clickhouse-datasource",
+        "uid": "clickhouse"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            }
+          },
+          "mappings": []
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 8
+      },
+      "id": 3,
+      "options": {
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "pieType": "pie",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "sort": "desc",
+        "tooltip": {
+          "hideZeros": false,
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "12.3.1",
+      "targets": [
+        {
+          "adHocFilters": [],
+          "adHocValuesQuery": "",
+          "add_metadata": true,
+          "contextWindowSize": "10",
+          "datasource": {
+            "type": "clickhouse",
+            "uid": "ClickHouse"
+          },
+          "editorMode": "builder",
+          "extrapolate": false,
+          "format": "table",
+          "formattedQuery": "/* grafana dashboard='User Activity Extended', user=1 */\nSELECT type AS metric, count(*) AS value FROM clickstream.events_cleansed WHERE created_at >= now() - INTERVAL 30 DAY AND created_at <= now() GROUP BY type",
+          "interval": "",
+          "intervalFactor": 1,
+          "nullifySparse": false,
+          "query": "SELECT type AS metric, count(*) AS value FROM clickstream.events_cleansed WHERE created_at >= now() - INTERVAL 30 DAY AND created_at <= now() GROUP BY type",
+          "queryType": "SQL",
+          "rawSql": "SELECT type AS metric, count(*) AS value FROM clickstream.events_cleansed WHERE created_at >= now() - INTERVAL 30 DAY AND created_at <= now() GROUP BY type",
+          "refId": "C",
+          "round": "0s",
+          "skip_comments": true,
+          "useWindowFuncForMacros": true
+        }
+      ],
+      "title": "Events by Type",
+      "type": "piechart"
+    },
+    {
+      "datasource": {
+        "type": "vertamedia-clickhouse-datasource",
+        "uid": "clickhouse"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            }
+          },
+          "mappings": []
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 8
+      },
+      "id": 4,
+      "options": {
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "pieType": "pie",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "sort": "desc",
+        "tooltip": {
+          "hideZeros": false,
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "12.3.1",
+      "targets": [
+        {
+          "adHocFilters": [],
+          "adHocValuesQuery": "",
+          "add_metadata": true,
+          "contextWindowSize": "10",
+          "datasource": {
+            "type": "clickhouse",
+            "uid": "ClickHouse"
+          },
+          "editorMode": "builder",
+          "extrapolate": false,
+          "format": "table",
+          "formattedQuery": "/* grafana dashboard='User Activity Extended', user=1 */\nSELECT device_type AS metric, count(*) AS value FROM clickstream.events_cleansed WHERE created_at >= now() - INTERVAL 30 DAY AND created_at <= now() GROUP BY device_type",
+          "interval": "",
+          "intervalFactor": 1,
+          "nullifySparse": false,
+          "query": "SELECT device_type AS metric, count(*) AS value FROM clickstream.events_cleansed WHERE created_at >= now() - INTERVAL 30 DAY AND created_at <= now() GROUP BY device_type",
+          "queryType": "SQL",
+          "rawSql": "SELECT device_type AS metric, count(*) AS value FROM clickstream.events_cleansed WHERE created_at >= now() - INTERVAL 30 DAY AND created_at <= now() GROUP BY device_type",
+          "refId": "D",
+          "round": "0s",
+          "skip_comments": true,
+          "useWindowFuncForMacros": true
+        }
+      ],
+      "title": "Device Distribution",
+      "type": "piechart"
+    },
+    {
+      "datasource": {
+        "type": "vertamedia-clickhouse-datasource",
+        "uid": "clickhouse"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "align": "auto",
+            "cellOptions": {
+              "type": "auto"
+            },
+            "footer": {
+              "reducers": []
+            },
+            "inspect": false
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 16
+      },
+      "id": 5,
+      "options": {
+        "cellHeight": "sm",
+        "showHeader": true
+      },
+      "pluginVersion": "12.3.1",
+      "targets": [
+        {
+          "adHocFilters": [],
+          "adHocValuesQuery": "",
+          "add_metadata": true,
+          "contextWindowSize": "10",
+          "datasource": {
+            "type": "clickhouse",
+            "uid": "ClickHouse"
+          },
+          "editorMode": "builder",
+          "extrapolate": false,
+          "format": "table",
+          "formattedQuery": "/* grafana dashboard='User Activity Extended', user=1 */\nSELECT url, count(*) AS views FROM clickstream.events_cleansed WHERE event_title='page_view' AND created_at >= now() - INTERVAL 30 DAY AND created_at <= now() GROUP BY url ORDER BY views DESC LIMIT 10",
+          "interval": "",
+          "intervalFactor": 1,
+          "nullifySparse": false,
+          "query": "SELECT url, count(*) AS views FROM clickstream.events_cleansed WHERE event_title='page_view' AND created_at >= now() - INTERVAL 30 DAY AND created_at <= now() GROUP BY url ORDER BY views DESC LIMIT 10",
+          "queryType": "SQL",
+          "rawSql": "SELECT url, count(*) AS views FROM clickstream.events_cleansed WHERE event_title='page_view' AND created_at >= now() - INTERVAL 30 DAY AND created_at <= now() GROUP BY url ORDER BY views DESC LIMIT 10",
+          "refId": "E",
+          "round": "0s",
+          "skip_comments": true,
+          "useWindowFuncForMacros": true
+        }
+      ],
+      "title": "Top 10 Pages",
+      "type": "table"
+    },
+    {
+      "datasource": {
+        "type": "vertamedia-clickhouse-datasource",
+        "uid": "clickhouse"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "align": "auto",
+            "cellOptions": {
+              "type": "auto"
+            },
+            "footer": {
+              "reducers": []
+            },
+            "inspect": false
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 16
+      },
+      "id": 6,
+      "options": {
+        "cellHeight": "sm",
+        "showHeader": true
+      },
+      "pluginVersion": "12.3.1",
+      "targets": [
+        {
+          "adHocFilters": [],
+          "adHocValuesQuery": "",
+          "add_metadata": true,
+          "contextWindowSize": "10",
+          "datasource": {
+            "type": "clickhouse",
+            "uid": "ClickHouse"
+          },
+          "editorMode": "builder",
+          "extrapolate": false,
+          "format": "table",
+          "formattedQuery": "/* grafana dashboard='User Activity Extended', user=1 */\nSELECT element_id, count(*) AS clicks FROM clickstream.events_cleansed WHERE  created_at >= now() - INTERVAL 30 DAY AND created_at <= now() GROUP BY element_id ORDER BY clicks DESC LIMIT 10",
+          "interval": "",
+          "intervalFactor": 1,
+          "nullifySparse": false,
+          "query": "SELECT element_id, count(*) AS clicks FROM clickstream.events_cleansed WHERE  created_at >= now() - INTERVAL 30 DAY AND created_at <= now() GROUP BY element_id ORDER BY clicks DESC LIMIT 10",
+          "queryType": "SQL",
+          "rawSql": "SELECT element_id, count(*) AS clicks FROM clickstream.events_cleansed WHERE event_title='button_click' AND created_at >= now() - INTERVAL 30 DAY AND created_at <= now() GROUP BY element_id ORDER BY clicks DESC LIMIT 10",
+          "refId": "F",
+          "round": "0s",
+          "skip_comments": true,
+          "useWindowFuncForMacros": true
+        }
+      ],
+      "title": "Button Clicks by Element",
+      "type": "table"
+    }
+  ],
+  "preload": false,
+  "refresh": "",
+  "schemaVersion": 42,
+  "tags": [
+    "analytics",
+    "users"
+  ],
+  "templating": {
+    "list": []
+  },
+  "time": {
+    "from": "now-6h",
+    "to": "now"
+  },
+  "timepicker": {},
+  "timezone": "browser",
+  "title": "User Activity Extended",
+  "uid": "user_activity_extended",
+  "version": 1
+}

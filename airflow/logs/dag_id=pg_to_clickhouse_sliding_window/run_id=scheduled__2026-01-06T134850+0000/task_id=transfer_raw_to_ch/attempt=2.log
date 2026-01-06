@@ -1,0 +1,66 @@
+[2026-01-06T13:49:17.701+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2026-01-06T13:49:17.756+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: pg_to_clickhouse_sliding_window.transfer_raw_to_ch scheduled__2026-01-06T13:48:50+00:00 [queued]>
+[2026-01-06T13:49:17.768+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: pg_to_clickhouse_sliding_window.transfer_raw_to_ch scheduled__2026-01-06T13:48:50+00:00 [queued]>
+[2026-01-06T13:49:17.769+0000] {taskinstance.py:2306} INFO - Starting attempt 2 of 2
+[2026-01-06T13:49:17.789+0000] {taskinstance.py:2330} INFO - Executing <Task(PythonOperator): transfer_raw_to_ch> on 2026-01-06 13:48:50+00:00
+[2026-01-06T13:49:17.800+0000] {logging_mixin.py:188} WARNING - /home/airflow/.local/lib/python3.12/site-packages/airflow/task/task_runner/standard_task_runner.py:61 DeprecationWarning: This process (pid=401) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2026-01-06T13:49:17.802+0000] {standard_task_runner.py:63} INFO - Started process 409 to run task
+[2026-01-06T13:49:17.801+0000] {standard_task_runner.py:90} INFO - Running: ['airflow', 'tasks', 'run', 'pg_to_clickhouse_sliding_window', 'transfer_raw_to_ch', 'scheduled__2026-01-06T13:48:50+00:00', '--job-id', '38', '--raw', '--subdir', 'DAGS_FOLDER/etl_postgres_to_clickhouse.py', '--cfg-path', '/tmp/tmp1v30t5yx']
+[2026-01-06T13:49:17.805+0000] {standard_task_runner.py:91} INFO - Job 38: Subtask transfer_raw_to_ch
+[2026-01-06T13:49:17.883+0000] {task_command.py:426} INFO - Running <TaskInstance: pg_to_clickhouse_sliding_window.transfer_raw_to_ch scheduled__2026-01-06T13:48:50+00:00 [running]> on host 752eed9386e3
+[2026-01-06T13:49:18.016+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='pg_to_clickhouse_sliding_window' AIRFLOW_CTX_TASK_ID='transfer_raw_to_ch' AIRFLOW_CTX_EXECUTION_DATE='2026-01-06T13:48:50+00:00' AIRFLOW_CTX_TRY_NUMBER='2' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2026-01-06T13:48:50+00:00'
+[2026-01-06T13:49:18.018+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2026-01-06T13:49:28.384+0000] {connection.py:440} WARNING - Failed to connect to clickhouse:9000
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/clickhouse_driver/connection.py", line 428, in connect
+    return self._init_connection(host, port)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/clickhouse_driver/connection.py", line 358, in _init_connection
+    self.socket = self._create_socket(host, port)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/clickhouse_driver/connection.py", line 305, in _create_socket
+    for res in socket.getaddrinfo(host, port, 0, socket.SOCK_STREAM):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/socket.py", line 963, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+socket.gaierror: [Errno -5] No address associated with hostname
+[2026-01-06T13:49:28.386+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2026-01-06T13:49:28.387+0000] {taskinstance.py:2905} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 465, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 432, in _execute_callable
+    return execute_callable(context=context, **execute_callable_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 400, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 235, in execute
+    return_value = self.execute_callable()
+                   ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 252, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/airflow/dags/etl_postgres_to_clickhouse.py", line 85, in transfer_to_clickhouse
+    client.execute("""
+  File "/home/airflow/.local/lib/python3.12/site-packages/clickhouse_driver/client.py", line 370, in execute
+    with self.disconnect_on_error(query, settings):
+  File "/usr/local/lib/python3.12/contextlib.py", line 137, in __enter__
+    return next(self.gen)
+           ^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/clickhouse_driver/client.py", line 313, in disconnect_on_error
+    self.establish_connection(settings)
+  File "/home/airflow/.local/lib/python3.12/site-packages/clickhouse_driver/client.py", line 300, in establish_connection
+    self.connection.force_connect()
+  File "/home/airflow/.local/lib/python3.12/site-packages/clickhouse_driver/connection.py", line 278, in force_connect
+    self.connect()
+  File "/home/airflow/.local/lib/python3.12/site-packages/clickhouse_driver/connection.py", line 449, in connect
+    raise err
+clickhouse_driver.errors.NetworkError: Code: 210. No address associated with hostname (clickhouse:9000)
+[2026-01-06T13:49:28.412+0000] {taskinstance.py:1206} INFO - Marking task as FAILED. dag_id=pg_to_clickhouse_sliding_window, task_id=transfer_raw_to_ch, run_id=scheduled__2026-01-06T13:48:50+00:00, execution_date=20260106T134850, start_date=20260106T134917, end_date=20260106T134928
+[2026-01-06T13:49:28.434+0000] {standard_task_runner.py:110} ERROR - Failed to execute job 38 for task transfer_raw_to_ch (Code: 210. No address associated with hostname (clickhouse:9000); 409)
+[2026-01-06T13:49:28.526+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 1
+[2026-01-06T13:49:28.549+0000] {taskinstance.py:3498} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2026-01-06T13:49:28.552+0000] {local_task_job_runner.py:222} INFO - ::endgroup::

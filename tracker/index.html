@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Click Tracker</title>
+    <style>
+        body { font-family: sans-serif; padding: 20px; }
+        button { margin: 10px; padding: 10px 20px; font-size: 16px; }
+        #log { margin-top: 20px; max-height: 200px; overflow-y: auto; border: 1px solid #ccc; padding: 10px; }
+    </style>
+</head>
+<body>
+    <h1>Simple Click Tracker</h1>
+    <button id="btn1">Button 1</button>
+    <button id="btn2">Button 2</button>
+    <button id="btn3">Button 3</button>
+
+    <div id="log"></div>
+
+    <script>
+        const logEl = document.getElementById("log");
+        const API_URL = "http://localhost:8000/events"; // сюда отправляются события
+
+        function sendEvent(eventTitle, elementId) {
+            const evt = {
+                event_id: crypto.randomUUID(),
+                type: "click",
+                created_at: new Date().toISOString(),
+                received_at: new Date().toISOString(),
+                session_id: "browser-session",
+                user_id: Math.floor(Math.random() * 10000),
+                ip: "0.0.0.0",
+                url: window.location.pathname,
+                referrer: document.referrer || "/",
+                device_type: "desktop",
+                user_agent: navigator.userAgent,
+                event_title: eventTitle,
+                element_id: elementId,
+                x: 0,
+                y: 0,
+                payload: {},
+                source: "tracker"
+            };
+
+            fetch(API_URL, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify([evt])
+            }).then(res => {
+                logEl.innerHTML += `<div>Sent event: ${eventTitle} / ${elementId}</div>`;
+                logEl.scrollTop = logEl.scrollHeight;
+            }).catch(err => {
+                logEl.innerHTML += `<div style="color:red">Error sending event: ${err}</div>`;
+            });
+        }
+
+        document.getElementById("btn1").addEventListener("click", () => sendEvent("button_click", "btn1"));
+        document.getElementById("btn2").addEventListener("click", () => sendEvent("button_click", "btn2"));
+        document.getElementById("btn3").addEventListener("click", () => sendEvent("button_click", "btn3"));
+    </script>
+</body>
+</html>
