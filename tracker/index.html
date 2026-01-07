@@ -22,6 +22,17 @@
         const API_URL = "http://localhost:8000/events"; // сюда отправляются события
 
         function sendEvent(eventTitle, elementId) {
+            const x = Math.floor(Math.random() * window.innerWidth); // пример координат
+            const y = Math.floor(Math.random() * window.innerHeight);
+
+            // формируем составной payload
+            const payload = {
+                event_title: eventTitle,
+                element_id: elementId,
+                x: x,
+                y: y
+            };
+
             const evt = {
                 event_id: crypto.randomUUID(),
                 type: "click",
@@ -34,11 +45,7 @@
                 referrer: document.referrer || "/",
                 device_type: "desktop",
                 user_agent: navigator.userAgent,
-                event_title: eventTitle,
-                element_id: elementId,
-                x: 0,
-                y: 0,
-                payload: {},
+                payload: payload,
                 source: "tracker"
             };
 

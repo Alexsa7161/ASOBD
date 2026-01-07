@@ -1,0 +1,5 @@
+[2026-01-06T21:17:22.314+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2026-01-06T21:17:22.620+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: pg_to_clickhouse_sliding_window.transfer_raw_to_ch scheduled__2026-01-06T21:10:20+00:00 [queued]>
+[2026-01-06T21:17:22.679+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: pg_to_clickhouse_sliding_window.transfer_raw_to_ch scheduled__2026-01-06T21:10:20+00:00 [queued]>
+[2026-01-06T21:17:22.682+0000] {taskinstance.py:2306} INFO - Starting attempt 2 of 2
+[2026-01-06T21:17:22.889+0000] {local_task_job_runner.py:124} ERROR - Received SIGTERM. Terminating subprocesses

@@ -1,0 +1,47 @@
+[2026-01-07T12:07:27.519+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2026-01-07T12:07:27.559+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: pg_to_clickhouse_sliding_window.transfer_raw_to_ch scheduled__2026-01-07T12:07:10+00:00 [queued]>
+[2026-01-07T12:07:27.569+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: pg_to_clickhouse_sliding_window.transfer_raw_to_ch scheduled__2026-01-07T12:07:10+00:00 [queued]>
+[2026-01-07T12:07:27.570+0000] {taskinstance.py:2306} INFO - Starting attempt 2 of 2
+[2026-01-07T12:07:27.589+0000] {taskinstance.py:2330} INFO - Executing <Task(PythonOperator): transfer_raw_to_ch> on 2026-01-07 12:07:10+00:00
+[2026-01-07T12:07:27.597+0000] {standard_task_runner.py:90} INFO - Running: ['airflow', 'tasks', 'run', 'pg_to_clickhouse_sliding_window', 'transfer_raw_to_ch', 'scheduled__2026-01-07T12:07:10+00:00', '--job-id', '11', '--raw', '--subdir', 'DAGS_FOLDER/etl_postgres_to_clickhouse.py', '--cfg-path', '/tmp/tmpmlrof_88']
+[2026-01-07T12:07:27.601+0000] {standard_task_runner.py:91} INFO - Job 11: Subtask transfer_raw_to_ch
+[2026-01-07T12:07:27.601+0000] {logging_mixin.py:188} WARNING - /home/airflow/.local/lib/python3.12/site-packages/airflow/task/task_runner/standard_task_runner.py:61 DeprecationWarning: This process (pid=265) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2026-01-07T12:07:27.602+0000] {standard_task_runner.py:63} INFO - Started process 266 to run task
+[2026-01-07T12:07:27.674+0000] {task_command.py:426} INFO - Running <TaskInstance: pg_to_clickhouse_sliding_window.transfer_raw_to_ch scheduled__2026-01-07T12:07:10+00:00 [running]> on host ee103334632f
+[2026-01-07T12:07:27.796+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='pg_to_clickhouse_sliding_window' AIRFLOW_CTX_TASK_ID='transfer_raw_to_ch' AIRFLOW_CTX_EXECUTION_DATE='2026-01-07T12:07:10+00:00' AIRFLOW_CTX_TRY_NUMBER='2' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2026-01-07T12:07:10+00:00'
+[2026-01-07T12:07:27.797+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2026-01-07T12:07:27.820+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2026-01-07T12:07:27.822+0000] {taskinstance.py:2905} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 465, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 432, in _execute_callable
+    return execute_callable(context=context, **execute_callable_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 400, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 235, in execute
+    return_value = self.execute_callable()
+                   ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 252, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/airflow/dags/etl_postgres_to_clickhouse.py", line 75, in transfer_to_clickhouse
+    events = fetch_raw_events()
+             ^^^^^^^^^^^^^^^^^^
+  File "/opt/airflow/dags/etl_postgres_to_clickhouse.py", line 38, in fetch_raw_events
+    cur.execute(f"""
+psycopg2.errors.UndefinedTable: relation "raw_events" does not exist
+LINE 5:         FROM raw_events
+                     ^
+
+[2026-01-07T12:07:27.842+0000] {taskinstance.py:1206} INFO - Marking task as FAILED. dag_id=pg_to_clickhouse_sliding_window, task_id=transfer_raw_to_ch, run_id=scheduled__2026-01-07T12:07:10+00:00, execution_date=20260107T120710, start_date=20260107T120727, end_date=20260107T120727
+[2026-01-07T12:07:27.853+0000] {standard_task_runner.py:110} ERROR - Failed to execute job 11 for task transfer_raw_to_ch (relation "raw_events" does not exist
+LINE 5:         FROM raw_events
+                     ^
+; 266)
+[2026-01-07T12:07:27.904+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 1
+[2026-01-07T12:07:27.925+0000] {taskinstance.py:3498} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2026-01-07T12:07:27.929+0000] {local_task_job_runner.py:222} INFO - ::endgroup::

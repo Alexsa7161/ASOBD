@@ -24,52 +24,66 @@ CLICKHOUSE_CONFIG = {
     "database": "clickstream"
 }
 
-BATCH_SIZE = 1000000  # можно увеличить для больших объёмов
-LOOKBACK_DAYS = 30    # окно для late events
+BATCH_SIZE = 100_000
+LOOKBACK_DAYS = 30
 
 # ======================
 # FUNCTIONS
 # ======================
-def fetch_raw_events(**kwargs):
+def fetch_raw_events(batch_size=BATCH_SIZE):
+    """Берем сырые события из Postgres"""
     conn = psycopg2.connect(**POSTGRES_CONFIG)
     cur = conn.cursor()
     
-    # берем события только за последние LOOKBACK_DAYS
     cur.execute(f"""
         SELECT event_id, type, created_at, received_at, session_id, user_id,
                ip, url, referrer, device_type, user_agent,
-               event_title, element_id, x, y, payload, source
+               payload, source
         FROM raw_events
         WHERE created_at >= NOW() - INTERVAL '{LOOKBACK_DAYS} DAYS'
         ORDER BY created_at ASC
-        LIMIT {BATCH_SIZE}
+        LIMIT {batch_size}
     """)
     rows = cur.fetchall()
     columns = [desc[0] for desc in cur.description]
     conn.close()
-    events = [dict(zip(columns, r)) for r in rows]
-    return events
+    
+    return [dict(zip(columns, r)) for r in rows]
 
-def clean_event(event):
-    event_clean = {}
-    event_clean["event_id"] = str(event.get("event_id") or "")
-    event_clean["type"] = event.get("type") or "unknown"
-    event_clean["created_at"] = event.get("created_at") or datetime.utcnow()
-    event_clean["received_at"] = event.get("received_at") or datetime.utcnow()
-    event_clean["session_id"] = event.get("session_id") or ""
-    event_clean["user_id"] = int(event.get("user_id") or 0)
-    event_clean["ip"] = event.get("ip") or ""
-    event_clean["url"] = event.get("url") or ""
-    event_clean["referrer"] = event.get("referrer") or ""
-    event_clean["device_type"] = event.get("device_type") or ""
-    event_clean["user_agent"] = event.get("user_agent") or ""
-    event_clean["event_title"] = event.get("event_title") or ""
-    event_clean["element_id"] = event.get("element_id") or ""
-    event_clean["x"] = int(event.get("x") or 0)
-    event_clean["y"] = int(event.get("y") or 0)
-    event_clean["payload"] = json.dumps(event.get("payload") or {})
-    event_clean["source"] = event.get("source") or "unknown"
-    return event_clean
+def clean_and_parse_event(event):
+    """Очистка и разбор payload"""
+    payload = event.get("payload") or {}
+    if isinstance(payload, str):
+        try:
+            payload = json.loads(payload)
+        except json.JSONDecodeError:
+            payload = {}
+
+    # Валидируем поля и вытаскиваем из payload
+    event_title = payload.get("event_title") or ""
+    element_id = payload.get("element_id") or ""
+    x = int(payload.get("x") or 0)
+    y = int(payload.get("y") or 0)
+
+    return {
+        "event_id": str(event.get("event_id") or ""),
+        "type": event.get("type") or "unknown",
+        "created_at": event.get("created_at") or datetime.utcnow(),
+        "received_at": event.get("received_at") or datetime.utcnow(),
+        "session_id": event.get("session_id") or "",
+        "user_id": int(event.get("user_id") or 0),
+        "ip": event.get("ip") or "",
+        "url": event.get("url") or "",
+        "referrer": event.get("referrer") or "",
+        "device_type": event.get("device_type") or "",
+        "user_agent": event.get("user_agent") or "",
+        "event_title": event_title,
+        "element_id": element_id,
+        "x": x,
+        "y": y,
+        "payload": json.dumps(payload),  # оставляем составной payload как есть
+        "source": event.get("source") or "unknown"
+    }
 
 def transfer_to_clickhouse(**kwargs):
     events = fetch_raw_events()
@@ -77,18 +91,29 @@ def transfer_to_clickhouse(**kwargs):
         print("No new events to transfer")
         return
     
-    clean_events = [clean_event(e) for e in events]
+    clean_events = [clean_and_parse_event(e) for e in events]
     
     client = Client(**CLICKHOUSE_CONFIG)
     
-    # вставка с ReplacingMergeTree
+    # Вставляем данные по колонкам
+    data = [
+        (
+            e["event_id"], e["type"], e["created_at"], e["received_at"], e["session_id"],
+            e["user_id"], e["ip"], e["url"], e["referrer"], e["device_type"],
+            e["user_agent"], e["event_title"], e["element_id"], e["x"], e["y"],
+            e["payload"], e["source"]
+        )
+        for e in clean_events
+    ]
+    
     client.execute("""
         INSERT INTO events_cleansed (
-            event_id, type, created_at, received_at, session_id, user_id,
-            ip, url, referrer, device_type, user_agent,
-            event_title, element_id, x, y, payload, source
+            event_id, type, created_at, received_at, session_id,
+            user_id, ip, url, referrer, device_type,
+            user_agent, event_title, element_id, x, y,
+            payload, source
         ) VALUES
-    """, clean_events)
+    """, data)
     
     print(f"Transferred {len(clean_events)} events to ClickHouse")
 
@@ -104,9 +129,9 @@ default_args = {
 }
 
 with DAG(
-    dag_id='pg_to_clickhouse_sliding_window',
+    dag_id='pg_to_clickhouse_payload_parsing',
     default_args=default_args,
-    schedule_interval=timedelta(seconds=10),  # можно чаще, чем раньше
+    schedule_interval=timedelta(seconds=10),
     catchup=False,
     is_paused_upon_creation=False
 ) as dag:

@@ -45,10 +45,6 @@ def create_table_if_not_exists():
                 referrer TEXT,
                 device_type TEXT,
                 user_agent TEXT,
-                event_title TEXT,
-                element_id TEXT,
-                x INT,
-                y INT,
                 payload JSONB,
                 source TEXT
             )
@@ -59,8 +55,14 @@ def create_table_if_not_exists():
 # SAVE EVENT
 # ======================
 def save_event(event):
-    if "payload" in event and isinstance(event["payload"], dict):
-        event["payload"] = json.dumps(event["payload"])
+    # создаём составной payload
+    event["payload"] = json.dumps({
+        "event_title": event.get("event_title"),
+        "element_id": event.get("element_id"),
+        "x": event.get("x"),
+        "y": event.get("y")
+    })
+    
     # Если source не передан, ставим http (API)
     if "source" not in event:
         event["source"] = "http"
@@ -72,13 +74,11 @@ def save_event(event):
                 INSERT INTO raw_events (
                     event_id, type, created_at, received_at,
                     session_id, user_id, ip, url, referrer,
-                    device_type, user_agent, event_title, element_id,
-                    x, y, payload, source
+                    device_type, user_agent, payload, source
                 ) VALUES (
                     %(event_id)s, %(type)s, %(created_at)s, %(received_at)s,
                     %(session_id)s, %(user_id)s, %(ip)s, %(url)s, %(referrer)s,
-                    %(device_type)s, %(user_agent)s, %(event_title)s, %(element_id)s,
-                    %(x)s, %(y)s, %(payload)s, %(source)s
+                    %(device_type)s, %(user_agent)s, %(payload)s, %(source)s
                 ) ON CONFLICT (event_id) DO NOTHING
             """, event)
     conn.close()

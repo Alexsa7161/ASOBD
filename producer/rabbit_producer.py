@@ -16,6 +16,19 @@ EVENT_TITLES = ["page_view", "add_to_cart", "checkout"]
 
 def generate_event():
     now = datetime.utcnow()
+    event_title = random.choice(EVENT_TITLES)
+    element_id = random.choice(["#btn", "#link", "#submit"])
+    x = random.randint(0, 1920)
+    y = random.randint(0, 1080)
+
+    # Составной payload
+    payload = {
+        "event_title": event_title,
+        "element_id": element_id,
+        "x": x,
+        "y": y
+    }
+
     return {
         "event_id": str(uuid.uuid4()),
         "type": random.choices(["view", "click"], weights=[0.7, 0.3])[0],
@@ -28,11 +41,11 @@ def generate_event():
         "referrer": "/",
         "device_type": random.choice(DEVICES),
         "user_agent": "Mozilla/5.0",
-        "event_title": random.choice(EVENT_TITLES),
-        "element_id": random.choice(["#btn", "#link", "#submit"]),
-        "x": random.randint(0, 1920),
-        "y": random.randint(0, 1080),
-        "payload": {},
+        "event_title": event_title,
+        "element_id": element_id,
+        "x": x,
+        "y": y,
+        "payload": payload,
         "source": "rabbitmq"
     }
 

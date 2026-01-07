@@ -29,12 +29,16 @@ services:
     container_name: clickstream-rabbitmq
     ports:
       - "5672:5672"
-      - "15672:15672"
+    environment:
+      RABBITMQ_URL: "http://rabbitmq:15672"  # Management URL
+    volumes:
+      - rabbitmq_data:/var/lib/rabbitmq
     healthcheck:
       test: ["CMD", "rabbitmq-diagnostics", "ping"]
       interval: 5s
       timeout: 5s
       retries: 5
+
 
   # ======================
   # API
@@ -227,3 +231,4 @@ volumes:
   postgres_data:
   clickhouse_data:
   grafana_data:
+  rabbitmq_data:

@@ -1,0 +1,1035 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": {
+          "type": "grafana",
+          "uid": "-- Grafana --"
+        },
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 0,
+  "id": 7,
+  "links": [],
+  "panels": [
+    {
+      "datasource": {
+        "type": "vertamedia-clickhouse-datasource",
+        "uid": "clickhouse"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "barWidthFactor": 0.6,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "showValues": false,
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 0
+      },
+      "id": 1,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "hideZeros": false,
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "12.3.1",
+      "targets": [
+        {
+          "adHocFilters": [],
+          "adHocValuesQuery": "",
+          "add_metadata": true,
+          "contextWindowSize": "10",
+          "datasource": {
+            "type": "vertamedia-clickhouse-datasource",
+            "uid": "clickhouse"
+          },
+          "editorMode": "builder",
+          "extrapolate": true,
+          "format": "time_series",
+          "formattedQuery": "/* grafana dashboard='Pages Devices1', user=1 */\nWITH\r\n    (\r\n        SELECT countDistinct(user_id) AS dau\r\n        FROM clickstream.events_cleansed\r\n        WHERE created_at >= today()\r\n    ) AS v\r\nSELECT\r\n    now() - INTERVAL number*5 SECOND AS time,\r\n    v AS value\r\nFROM numbers(60)  \nORDER BY time",
+          "interval": "",
+          "intervalFactor": 1,
+          "nullifySparse": false,
+          "query": "WITH\r\n    (\r\n        SELECT countDistinct(user_id) AS dau\r\n        FROM clickstream.events_cleansed\r\n        WHERE created_at >= today()\r\n    ) AS v\r\nSELECT\r\n    now() - INTERVAL number*5 SECOND AS time,\r\n    v AS value\r\nFROM numbers(60)  -- 60 точек по 5 секунд = 5 минут\r\nORDER BY time\r\n",
+          "refId": "A",
+          "round": "0s",
+          "skip_comments": true,
+          "useWindowFuncForMacros": true
+        }
+      ],
+      "title": "DAU",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "vertamedia-clickhouse-datasource",
+        "uid": "clickhouse"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "barWidthFactor": 0.6,
+            "drawStyle": "line",
+            "fillOpacity": 15,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineStyle": {
+              "fill": "solid"
+            },
+            "lineWidth": 3,
+            "pointSize": 6,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "always",
+            "showValues": false,
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 0
+      },
+      "id": 3,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "hideZeros": false,
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "12.3.1",
+      "targets": [
+        {
+          "adHocFilters": [],
+          "adHocValuesQuery": "",
+          "add_metadata": true,
+          "contextWindowSize": "10",
+          "datasource": {
+            "type": "vertamedia-clickhouse-datasource",
+            "uid": "clickhouse"
+          },
+          "editorMode": "builder",
+          "extrapolate": true,
+          "format": "time_series",
+          "formattedQuery": "/* grafana dashboard='Pages Devices1', user=1 */\nWITH\r\n    (\r\n        SELECT countDistinct(user_id) AS mau\r\n        FROM clickstream.events_cleansed\r\n        WHERE created_at >= now() - INTERVAL 30 DAY\r\n    ) AS v\r\nSELECT\r\n    now() - INTERVAL number*5 SECOND AS time,\r\n    v AS value\r\nFROM numbers(60)  \nORDER BY time",
+          "interval": "",
+          "intervalFactor": 1,
+          "nullifySparse": false,
+          "query": "WITH\r\n    (\r\n        SELECT countDistinct(user_id) AS mau\r\n        FROM clickstream.events_cleansed\r\n        WHERE created_at >= now() - INTERVAL 30 DAY\r\n    ) AS v\r\nSELECT\r\n    now() - INTERVAL number*5 SECOND AS time,\r\n    v AS value\r\nFROM numbers(60)  -- 60 точек по 5 секунд = 5 минут графика\r\nORDER BY time\r\n",
+          "refId": "A",
+          "round": "0s",
+          "skip_comments": true,
+          "useWindowFuncForMacros": true
+        }
+      ],
+      "title": "MAU",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "vertamedia-clickhouse-datasource",
+        "uid": "clickhouse"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "barWidthFactor": 0.6,
+            "drawStyle": "line",
+            "fillOpacity": 15,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineStyle": {
+              "fill": "solid"
+            },
+            "lineWidth": 3,
+            "pointSize": 6,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "always",
+            "showValues": false,
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 8
+      },
+      "id": 2,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "hideZeros": false,
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "12.3.1",
+      "targets": [
+        {
+          "adHocFilters": [],
+          "adHocValuesQuery": "",
+          "add_metadata": true,
+          "contextWindowSize": "10",
+          "datasource": {
+            "type": "vertamedia-clickhouse-datasource",
+            "uid": "clickhouse"
+          },
+          "editorMode": "builder",
+          "extrapolate": true,
+          "format": "time_series",
+          "formattedQuery": "/* grafana dashboard='Pages Devices1', user=1 */\nWITH\r\n    (\r\n        SELECT countDistinct(user_id) AS wau\r\n        FROM clickstream.events_cleansed\r\n        WHERE created_at >= now() - INTERVAL 7 DAY\r\n    ) AS v\r\nSELECT\r\n    now() - INTERVAL number*5 SECOND AS time,\r\n    v AS value\r\nFROM numbers(60)  \nORDER BY time",
+          "interval": "",
+          "intervalFactor": 1,
+          "nullifySparse": false,
+          "query": "WITH\r\n    (\r\n        SELECT countDistinct(user_id) AS wau\r\n        FROM clickstream.events_cleansed\r\n        WHERE created_at >= now() - INTERVAL 7 DAY\r\n    ) AS v\r\nSELECT\r\n    now() - INTERVAL number*5 SECOND AS time,\r\n    v AS value\r\nFROM numbers(60)  -- 60 точек по 5 секунд\r\nORDER BY time\r\n",
+          "refId": "A",
+          "round": "0s",
+          "skip_comments": true,
+          "useWindowFuncForMacros": true
+        }
+      ],
+      "title": "WAU",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "vertamedia-clickhouse-datasource",
+        "uid": "clickhouse"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "barWidthFactor": 0.6,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "showValues": false,
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "fieldMinMax": false,
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 8
+      },
+      "hideTimeOverride": false,
+      "id": 4,
+      "interval": "5s",
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "hideZeros": false,
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "12.3.1",
+      "targets": [
+        {
+          "adHocFilters": [],
+          "adHocValuesQuery": "",
+          "add_metadata": true,
+          "contextWindowSize": "10",
+          "dateTimeType": "DATETIME",
+          "editorMode": "builder",
+          "extrapolate": true,
+          "format": "time_series",
+          "formattedQuery": "/* grafana dashboard='Pages Devices1', user=1 */\nSELECT\r\n    toStartOfInterval(created_at, INTERVAL 10 SECOND) AS time,\r\n    countIf(type = 'click' and element_id = '#btn') AS btn_clicks\r\nFROM clickstream.events_cleansed\r\nWHERE created_at >= now() - INTERVAL 24 hours \r\nGROUP BY time\r\nORDER BY time",
+          "interval": "",
+          "intervalFactor": 1,
+          "nullifySparse": false,
+          "query": "SELECT\r\n    toStartOfInterval(created_at, INTERVAL 10 SECOND) AS time,\r\n    countIf(type = 'click' and element_id = '#btn') AS btn_clicks\r\nFROM clickstream.events_cleansed\r\nWHERE created_at >= now() - INTERVAL 24 hours \r\nGROUP BY time\r\nORDER BY time\r\n",
+          "refId": "A",
+          "round": "0s",
+          "skip_comments": true,
+          "useWindowFuncForMacros": true
+        },
+        {
+          "adHocFilters": [],
+          "adHocValuesQuery": "",
+          "add_metadata": true,
+          "contextWindowSize": "10",
+          "datasource": {
+            "type": "vertamedia-clickhouse-datasource",
+            "uid": "clickhouse"
+          },
+          "editorMode": "builder",
+          "extrapolate": true,
+          "format": "time_series",
+          "formattedQuery": "/* grafana dashboard='Pages Devices1', user=1 */\nSELECT\r\n    toStartOfInterval(created_at, INTERVAL 10 SECOND) AS time,\r\n    countIf(type = 'view') AS views\r\nFROM clickstream.events_cleansed\r\nWHERE created_at >= now() - INTERVAL 24 hours \r\nGROUP BY time\r\nORDER BY time",
+          "hide": false,
+          "interval": "",
+          "intervalFactor": 1,
+          "nullifySparse": false,
+          "query": "SELECT\r\n    toStartOfInterval(created_at, INTERVAL 10 SECOND) AS time,\r\n    countIf(type = 'view') AS views\r\nFROM clickstream.events_cleansed\r\nWHERE created_at >= now() - INTERVAL 24 hours \r\nGROUP BY time\r\nORDER BY time\r\n",
+          "refId": "B",
+          "round": "0s",
+          "skip_comments": true,
+          "useWindowFuncForMacros": true
+        },
+        {
+          "adHocFilters": [],
+          "adHocValuesQuery": "",
+          "add_metadata": true,
+          "contextWindowSize": "10",
+          "datasource": {
+            "type": "vertamedia-clickhouse-datasource",
+            "uid": "clickhouse"
+          },
+          "editorMode": "builder",
+          "extrapolate": true,
+          "format": "time_series",
+          "formattedQuery": "/* grafana dashboard='Pages Devices1', user=1 */\nSELECT\r\n    toStartOfInterval(created_at, INTERVAL 10 SECOND) AS time,\r\n    countIf(type = 'click' and element_id = '#link') AS link_clicks\r\nFROM clickstream.events_cleansed\r\nWHERE created_at >= now() - INTERVAL 24 hours \r\nGROUP BY time\r\nORDER BY time",
+          "hide": false,
+          "interval": "",
+          "intervalFactor": 1,
+          "nullifySparse": false,
+          "query": "SELECT\r\n    toStartOfInterval(created_at, INTERVAL 10 SECOND) AS time,\r\n    countIf(type = 'click' and element_id = '#link') AS link_clicks\r\nFROM clickstream.events_cleansed\r\nWHERE created_at >= now() - INTERVAL 24 hours \r\nGROUP BY time\r\nORDER BY time\r\n",
+          "refId": "C",
+          "round": "0s",
+          "skip_comments": true,
+          "useWindowFuncForMacros": true
+        },
+        {
+          "adHocFilters": [],
+          "adHocValuesQuery": "",
+          "add_metadata": true,
+          "contextWindowSize": "10",
+          "datasource": {
+            "type": "vertamedia-clickhouse-datasource",
+            "uid": "clickhouse"
+          },
+          "editorMode": "builder",
+          "extrapolate": true,
+          "format": "time_series",
+          "formattedQuery": "/* grafana dashboard='Pages Devices1', user=1 */\nSELECT\r\n    toStartOfInterval(created_at, INTERVAL 10 SECOND) AS time,\r\n    countIf(type = 'click' and element_id = '#submit') AS submit_clicks\r\nFROM clickstream.events_cleansed\r\nWHERE created_at >= now() - INTERVAL 24 hours \r\nGROUP BY time\r\nORDER BY time",
+          "hide": false,
+          "interval": "",
+          "intervalFactor": 1,
+          "nullifySparse": false,
+          "query": "SELECT\r\n    toStartOfInterval(created_at, INTERVAL 10 SECOND) AS time,\r\n    countIf(type = 'click' and element_id = '#submit') AS submit_clicks\r\nFROM clickstream.events_cleansed\r\nWHERE created_at >= now() - INTERVAL 24 hours \r\nGROUP BY time\r\nORDER BY time\r\n",
+          "refId": "D",
+          "round": "0s",
+          "skip_comments": true,
+          "useWindowFuncForMacros": true
+        },
+        {
+          "adHocFilters": [],
+          "adHocValuesQuery": "",
+          "add_metadata": true,
+          "contextWindowSize": "10",
+          "datasource": {
+            "type": "vertamedia-clickhouse-datasource",
+            "uid": "clickhouse"
+          },
+          "editorMode": "builder",
+          "extrapolate": true,
+          "format": "time_series",
+          "formattedQuery": "/* grafana dashboard='Pages Devices1', user=1 */\nSELECT\r\n    toStartOfInterval(created_at, INTERVAL 10 SECOND) AS time,\r\n    countIf(type = 'click' ) AS sum_clicks\r\nFROM clickstream.events_cleansed\r\nWHERE created_at >= now() - INTERVAL 24 hours \r\nGROUP BY time\r\nORDER BY time",
+          "hide": false,
+          "interval": "",
+          "intervalFactor": 1,
+          "nullifySparse": false,
+          "query": "SELECT\r\n    toStartOfInterval(created_at, INTERVAL 10 SECOND) AS time,\r\n    countIf(type = 'click' ) AS sum_clicks\r\nFROM clickstream.events_cleansed\r\nWHERE created_at >= now() - INTERVAL 24 hours \r\nGROUP BY time\r\nORDER BY time\r\n",
+          "refId": "E",
+          "round": "0s",
+          "skip_comments": true,
+          "useWindowFuncForMacros": true
+        }
+      ],
+      "timeFrom": "1h",
+      "timeShift": "1d1h",
+      "title": "clicks/views",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "vertamedia-clickhouse-datasource",
+        "uid": "clickhouse"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "fillOpacity": 80,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineWidth": 1,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 16
+      },
+      "id": 5,
+      "options": {
+        "barRadius": 0,
+        "barWidth": 0.97,
+        "fullHighlight": false,
+        "groupWidth": 0.7,
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "orientation": "auto",
+        "showValue": "auto",
+        "stacking": "none",
+        "tooltip": {
+          "hideZeros": false,
+          "mode": "single",
+          "sort": "none"
+        },
+        "xTickLabelRotation": 0,
+        "xTickLabelSpacing": 0
+      },
+      "pluginVersion": "12.3.1",
+      "targets": [
+        {
+          "adHocFilters": [],
+          "adHocValuesQuery": "",
+          "add_metadata": true,
+          "contextWindowSize": "10",
+          "editorMode": "builder",
+          "extrapolate": true,
+          "format": "time_series",
+          "formattedQuery": "/* grafana dashboard='Pages Devices1', user=1 */\nSELECT\r\n    toStartOfInterval(created_at, INTERVAL 10 SECOND) AS time,\r\n    (countIf(event_title = 'button_click') + countIf(event_title = 'button'))/\r\n    countIf(event_title = 'page_view') * 100 AS percent\r\nFROM clickstream.events_cleansed\r\nWHERE created_at >= now() - INTERVAL 24 hours \r\nGROUP BY time\r\nORDER BY time",
+          "interval": "",
+          "intervalFactor": 1,
+          "nullifySparse": false,
+          "query": "SELECT\r\n    toStartOfInterval(created_at, INTERVAL 10 SECOND) AS time,\r\n    (countIf(event_title = 'button_click') + countIf(event_title = 'button'))/\r\n    countIf(event_title = 'page_view') * 100 AS percent\r\nFROM clickstream.events_cleansed\r\nWHERE created_at >= now() - INTERVAL 24 hours \r\nGROUP BY time\r\nORDER BY time\r\n",
+          "refId": "A",
+          "round": "0s",
+          "skip_comments": true,
+          "useWindowFuncForMacros": true
+        }
+      ],
+      "title": "clicks/views%",
+      "type": "barchart"
+    },
+    {
+      "datasource": {
+        "type": "vertamedia-clickhouse-datasource",
+        "uid": "clickhouse"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "align": "auto",
+            "cellOptions": {
+              "type": "auto"
+            },
+            "footer": {
+              "reducers": []
+            },
+            "inspect": false
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 16
+      },
+      "id": 8,
+      "options": {
+        "cellHeight": "sm",
+        "showHeader": true
+      },
+      "pluginVersion": "12.3.1",
+      "targets": [
+        {
+          "adHocFilters": [],
+          "adHocValuesQuery": "",
+          "add_metadata": true,
+          "contextWindowSize": "10",
+          "datasource": {
+            "type": "clickhouse",
+            "uid": "ClickHouse"
+          },
+          "editorMode": "builder",
+          "extrapolate": false,
+          "format": "table",
+          "formattedQuery": "/* grafana dashboard='User Activity Extended', user=1 */\nSELECT element_id, count(*) AS clicks FROM clickstream.events_cleansed WHERE  created_at >= now() - INTERVAL 30 DAY AND created_at <= now() GROUP BY element_id ORDER BY clicks DESC LIMIT 10",
+          "interval": "",
+          "intervalFactor": 1,
+          "nullifySparse": false,
+          "query": "SELECT element_id, count(*) AS clicks FROM clickstream.events_cleansed WHERE  created_at >= now() - INTERVAL 30 DAY AND created_at <= now() GROUP BY element_id ORDER BY clicks DESC LIMIT 10",
+          "queryType": "SQL",
+          "rawSql": "SELECT element_id, count(*) AS clicks FROM clickstream.events_cleansed WHERE event_title='button_click' AND created_at >= now() - INTERVAL 30 DAY AND created_at <= now() GROUP BY element_id ORDER BY clicks DESC LIMIT 10",
+          "refId": "F",
+          "round": "0s",
+          "skip_comments": true,
+          "useWindowFuncForMacros": true
+        }
+      ],
+      "title": "Button Clicks by Element",
+      "type": "table"
+    },
+    {
+      "datasource": {
+        "type": "vertamedia-clickhouse-datasource",
+        "uid": "clickhouse"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "barWidthFactor": 0.6,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "showValues": false,
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 24
+      },
+      "id": 6,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "hideZeros": false,
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "12.3.1",
+      "targets": [
+        {
+          "adHocFilters": [],
+          "adHocValuesQuery": "",
+          "add_metadata": true,
+          "contextWindowSize": "10",
+          "editorMode": "builder",
+          "extrapolate": true,
+          "format": "time_series",
+          "formattedQuery": "/* grafana dashboard='Pages Devices1', user=1 */\nSELECT\r\n    toStartOfInterval(session_start, INTERVAL 10 SECOND) AS time,\r\n    avg(session_duration) AS avg_session_duration_seconds\r\nFROM\r\n(\r\n    SELECT\r\n        session_id,\r\n        min(created_at) AS session_start,\r\n        max(created_at) AS session_end,\r\n        dateDiff('second', min(created_at), max(created_at)) AS session_duration\r\n    FROM clickstream.events_cleansed\r\n    WHERE created_at >= now() - INTERVAL 24 hour\r\n    GROUP BY session_id\r\n)\r\nGROUP BY time\r\nORDER BY time",
+          "interval": "",
+          "intervalFactor": 1,
+          "nullifySparse": false,
+          "query": "SELECT\r\n    toStartOfInterval(session_start, INTERVAL 10 SECOND) AS time,\r\n    avg(session_duration) AS avg_session_duration_seconds\r\nFROM\r\n(\r\n    SELECT\r\n        session_id,\r\n        min(created_at) AS session_start,\r\n        max(created_at) AS session_end,\r\n        dateDiff('second', min(created_at), max(created_at)) AS session_duration\r\n    FROM clickstream.events_cleansed\r\n    WHERE created_at >= now() - INTERVAL 24 hour\r\n    GROUP BY session_id\r\n)\r\nGROUP BY time\r\nORDER BY time\r\n",
+          "refId": "A",
+          "round": "0s",
+          "skip_comments": true,
+          "useWindowFuncForMacros": true
+        }
+      ],
+      "title": "Avg session duration",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "vertamedia-clickhouse-datasource",
+        "uid": "clickhouse"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "fillOpacity": 80,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineWidth": 1,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 24
+      },
+      "id": 7,
+      "options": {
+        "barRadius": 0,
+        "barWidth": 0.97,
+        "fullHighlight": false,
+        "groupWidth": 0.7,
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "orientation": "auto",
+        "showValue": "auto",
+        "stacking": "none",
+        "tooltip": {
+          "hideZeros": false,
+          "mode": "single",
+          "sort": "none"
+        },
+        "xTickLabelRotation": 0,
+        "xTickLabelSpacing": 0
+      },
+      "pluginVersion": "12.3.1",
+      "targets": [
+        {
+          "adHocFilters": [],
+          "adHocValuesQuery": "",
+          "add_metadata": true,
+          "contextWindowSize": "10",
+          "editorMode": "builder",
+          "extrapolate": true,
+          "format": "time_series",
+          "formattedQuery": "/* grafana dashboard='Pages Devices1', user=1 */\nSELECT toStartOfInterval(created_at, INTERVAL 10 SECOND) AS time, device_type, count() AS events_count FROM clickstream.events_cleansed WHERE created_at >= now() - INTERVAL 24 hour GROUP BY time, device_type ORDER BY time, device_type",
+          "interval": "",
+          "intervalFactor": 1,
+          "nullifySparse": false,
+          "query": "SELECT toStartOfInterval(created_at, INTERVAL 10 SECOND) AS time, device_type, count() AS events_count FROM clickstream.events_cleansed WHERE created_at >= now() - INTERVAL 24 hour GROUP BY time, device_type ORDER BY time, device_type",
+          "refId": "A",
+          "round": "0s",
+          "skip_comments": true,
+          "useWindowFuncForMacros": true
+        }
+      ],
+      "title": "device types",
+      "type": "barchart"
+    },
+    {
+      "datasource": {
+        "type": "vertamedia-clickhouse-datasource",
+        "uid": "clickhouse"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "align": "auto",
+            "cellOptions": {
+              "type": "auto"
+            },
+            "footer": {
+              "reducers": []
+            },
+            "inspect": false
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 6,
+        "y": 32
+      },
+      "id": 9,
+      "options": {
+        "cellHeight": "sm",
+        "showHeader": true
+      },
+      "pluginVersion": "12.3.1",
+      "targets": [
+        {
+          "adHocFilters": [],
+          "adHocValuesQuery": "",
+          "add_metadata": true,
+          "contextWindowSize": "10",
+          "datasource": {
+            "type": "clickhouse",
+            "uid": "ClickHouse"
+          },
+          "editorMode": "builder",
+          "extrapolate": false,
+          "format": "table",
+          "formattedQuery": "/* grafana dashboard='Pages Devices1', user=1 */\nSELECT url, count(*) AS views FROM clickstream.events_cleansed WHERE event_title='page_view' AND created_at >= now() - INTERVAL 30 DAY AND created_at <= now() GROUP BY url ORDER BY views DESC LIMIT 10",
+          "interval": "",
+          "intervalFactor": 1,
+          "nullifySparse": false,
+          "query": "SELECT url, count(*) AS views FROM clickstream.events_cleansed WHERE event_title='page_view' AND created_at >= now() - INTERVAL 30 DAY AND created_at <= now() GROUP BY url ORDER BY views DESC LIMIT 10",
+          "queryType": "SQL",
+          "rawSql": "SELECT url, count(*) AS views FROM clickstream.events_cleansed WHERE event_title='page_view' AND created_at >= now() - INTERVAL 30 DAY AND created_at <= now() GROUP BY url ORDER BY views DESC LIMIT 10",
+          "refId": "E",
+          "round": "0s",
+          "skip_comments": true,
+          "useWindowFuncForMacros": true
+        }
+      ],
+      "title": "Top 10 Pages",
+      "type": "table"
+    }
+  ],
+  "preload": false,
+  "schemaVersion": 42,
+  "tags": [],
+  "templating": {
+    "list": []
+  },
+  "time": {
+    "from": "2026-01-07T08:12:09.000Z",
+    "to": "2026-01-07T08:17:04.000Z"
+  },
+  "timepicker": {
+    "refresh_intervals": []
+  },
+  "timezone": "browser",
+  "title": "analytical dashboard",
+  "uid": "analytical_dashboard",
+  "version": 1
+}

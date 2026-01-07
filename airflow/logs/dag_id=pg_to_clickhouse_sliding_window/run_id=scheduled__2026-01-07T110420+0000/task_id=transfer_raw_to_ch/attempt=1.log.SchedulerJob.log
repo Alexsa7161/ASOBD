@@ -1,0 +1,1 @@
+[2026-01-07T11:08:09.712+0000] {task_context_logger.py:104} ERROR - Executor reports task instance <TaskInstance: pg_to_clickhouse_sliding_window.transfer_raw_to_ch scheduled__2026-01-07T11:04:20+00:00 [queued]> finished (failed) although the task says it's queued. (Info: None) Was the task killed externally?

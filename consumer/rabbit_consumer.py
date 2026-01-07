@@ -40,10 +40,6 @@ def create_table():
                     referrer TEXT,
                     device_type TEXT,
                     user_agent TEXT,
-                    event_title TEXT,
-                    element_id TEXT,
-                    x INT,
-                    y INT,
                     payload JSONB,
                     source TEXT
                 )
@@ -55,8 +51,13 @@ def save_events_batch(events):
         return
 
     for e in events:
-        if "payload" in e and isinstance(e["payload"], dict):
-            e["payload"] = json.dumps(e["payload"])
+        # формируем составной payload
+        e["payload"] = json.dumps({
+            "event_title": e.get("event_title"),
+            "element_id": e.get("element_id"),
+            "x": e.get("x"),
+            "y": e.get("y")
+        })
 
     conn = get_connection()
     with conn:
@@ -67,8 +68,7 @@ def save_events_batch(events):
                 INSERT INTO raw_events (
                     event_id, type, created_at, received_at,
                     session_id, user_id, ip, url, referrer,
-                    device_type, user_agent, event_title, element_id,
-                    x, y, payload, source
+                    device_type, user_agent, payload, source
                 ) VALUES %s
                 ON CONFLICT (event_id) DO NOTHING
                 """,
@@ -85,10 +85,6 @@ def save_events_batch(events):
                         e["referrer"],
                         e["device_type"],
                         e["user_agent"],
-                        e["event_title"],
-                        e["element_id"],
-                        e["x"],
-                        e["y"],
                         e["payload"],
                         e.get("source", "rabbitmq")
                     )

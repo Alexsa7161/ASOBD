@@ -1,0 +1,9 @@
+[2026-01-06T22:34:31.959+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2026-01-06T22:34:32.007+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: pg_to_clickhouse_sliding_window.transfer_raw_to_ch scheduled__2026-01-06T22:34:20+00:00 [queued]>
+[2026-01-06T22:34:32.022+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: pg_to_clickhouse_sliding_window.transfer_raw_to_ch scheduled__2026-01-06T22:34:20+00:00 [queued]>
+[2026-01-06T22:34:32.023+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 2
+[2026-01-06T22:34:32.042+0000] {taskinstance.py:2330} INFO - Executing <Task(PythonOperator): transfer_raw_to_ch> on 2026-01-06 22:34:20+00:00
+[2026-01-06T22:34:32.055+0000] {logging_mixin.py:188} WARNING - /home/airflow/.local/lib/python3.12/site-packages/airflow/task/task_runner/standard_task_runner.py:61 DeprecationWarning: This process (pid=2301) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2026-01-06T22:34:32.057+0000] {standard_task_runner.py:63} INFO - Started process 2302 to run task
+[2026-01-06T22:34:32.055+0000] {standard_task_runner.py:90} INFO - Running: ['airflow', 'tasks', 'run', 'pg_to_clickhouse_sliding_window', 'transfer_raw_to_ch', 'scheduled__2026-01-06T22:34:20+00:00', '--job-id', '249', '--raw', '--subdir', 'DAGS_FOLDER/etl_postgres_to_clickhouse.py', '--cfg-path', '/tmp/tmpdz4dp17k']
+[2026-01-06T22:34:32.058+0000] {standard_task_runner.py:91} INFO - Job 249: Subtask transfer_raw_to_ch

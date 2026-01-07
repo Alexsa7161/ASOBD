@@ -1,0 +1,5 @@
+[2026-01-06T21:17:22.394+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2026-01-06T21:17:22.851+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: pg_to_clickhouse_sliding_window.transfer_raw_to_ch scheduled__2026-01-06T21:10:40+00:00 [queued]>
+[2026-01-06T21:17:22.865+0000] {local_task_job_runner.py:124} ERROR - Received SIGTERM. Terminating subprocesses
+[2026-01-06T21:17:22.868+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 143
+[2026-01-06T21:17:22.900+0000] {local_task_job_runner.py:124} ERROR - Received SIGTERM. Terminating subprocesses

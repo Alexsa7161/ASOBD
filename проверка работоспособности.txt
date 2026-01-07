@@ -8,6 +8,8 @@ select source, count(*) from raw_events group by source;
 
 rabbitMq
 http://localhost:15672/#/queues/%2F/events
+user/password
+
 
 tracker
 http://localhost:8081/

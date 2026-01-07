@@ -8,6 +8,7 @@ import threading
 import queue
 import requests
 import psycopg2
+import pandas as pd
 from datetime import datetime, timedelta
 from psycopg2.extras import execute_values
 
@@ -36,17 +37,17 @@ DB_PASSWORD = "clickstream"
 # ======================
 URLS = ["/", "/catalog", "/product/1", "/checkout"]
 DEVICES = ["desktop", "mobile", "tablet"]
-EVENT_TITLES = ["page_view", "add_to_cart", "checkout"]
+EVENT_TITLES = ["page_view", "button", "checkout"]
 
 def generate_event():
     now = datetime.utcnow()
-    return {
+    e = {
         "event_id": str(uuid.uuid4()),
         "type": random.choices(["view", "click"], weights=[0.7, 0.3])[0],
-        "created_at": now,
-        "received_at": now + timedelta(milliseconds=random.randint(50, 300)),
+        "created_at": now.isoformat(),
+        "received_at": (now + timedelta(milliseconds=random.randint(50, 300))).isoformat(),
         "session_id": f"session-{random.randint(1, 50000)}",
-        "user_id": random.randint(1, 10000),
+        "user_id": random.randint(1, 100000),
         "ip": f"192.168.{random.randint(0,255)}.{random.randint(0,255)}",
         "url": random.choice(URLS),
         "referrer": "/",
@@ -56,8 +57,16 @@ def generate_event():
         "element_id": random.choice(["#btn", "#link", "#submit"]),
         "x": random.randint(0, 1920),
         "y": random.randint(0, 1080),
-        "payload": {}
+        "payload": {}  # будет заполнен перед вставкой
     }
+    # составной payload
+    e["payload"] = json.dumps({
+        "event_title": e["event_title"],
+        "element_id": e["element_id"],
+        "x": e["x"],
+        "y": e["y"]
+    })
+    return e
 
 # ======================
 # DB
@@ -88,10 +97,6 @@ def create_table_if_not_exists():
                     referrer TEXT,
                     device_type TEXT,
                     user_agent TEXT,
-                    event_title TEXT,
-                    element_id TEXT,
-                    x INT,
-                    y INT,
                     payload JSONB,
                     source TEXT
                 )
@@ -102,9 +107,6 @@ def save_events_batch(events):
     if not events:
         return
 
-    for e in events:
-        e["payload"] = json.dumps(e["payload"])
-
     conn = get_connection()
     with conn:
         with conn.cursor() as cur:
@@ -114,8 +116,7 @@ def save_events_batch(events):
                 INSERT INTO raw_events (
                     event_id, type, created_at, received_at,
                     session_id, user_id, ip, url, referrer,
-                    device_type, user_agent, event_title, element_id,
-                    x, y, payload, source
+                    device_type, user_agent, payload, source
                 ) VALUES %s
                 ON CONFLICT (event_id) DO NOTHING
                 """,
@@ -123,8 +124,7 @@ def save_events_batch(events):
                     (
                         e["event_id"], e["type"], e["created_at"], e["received_at"],
                         e["session_id"], e["user_id"], e["ip"], e["url"], e["referrer"],
-                        e["device_type"], e["user_agent"], e["event_title"], e["element_id"],
-                        e["x"], e["y"], e["payload"], e["source"]
+                        e["device_type"], e["user_agent"], e["payload"], e["source"]
                     )
                     for e in events
                 ]
@@ -138,16 +138,47 @@ def csv_worker():
     print("[CSV] started")
     os.makedirs(os.path.dirname(CSV_PATH), exist_ok=True)
 
-    events = []
-    for _ in range(EVENT_COUNT):
-        e = generate_event()
-        e["source"] = "csv"
-        events.append(e)
-
-    with open(CSV_PATH, "w", newline="", encoding="utf-8") as f:
-        writer = csv.DictWriter(f, fieldnames=events[0].keys())
-        writer.writeheader()
-        writer.writerows(events)
+    # Если CSV существует, читаем, иначе генерируем
+    if os.path.exists(CSV_PATH):
+        df = pd.read_csv(CSV_PATH)
+        events = []
+        for _, row in df.iterrows():
+            event = {
+                "event_id": row["event_id"],
+                "type": row["type"],
+                "created_at": pd.to_datetime(row["created_at"]).isoformat(),
+                "received_at": pd.to_datetime(row["received_at"]).isoformat(),
+                "session_id": row["session_id"],
+                "user_id": int(row["user_id"]),
+                "ip": row["ip"],
+                "url": row["url"],
+                "referrer": row["referrer"],
+                "device_type": row["device_type"],
+                "user_agent": row["user_agent"],
+                "event_title": row["event_title"],
+                "element_id": row["element_id"],
+                "x": int(row["x"]),
+                "y": int(row["y"]),
+                "payload": json.dumps({
+                    "event_title": row["event_title"],
+                    "element_id": row["element_id"],
+                    "x": int(row["x"]),
+                    "y": int(row["y"])
+                }),
+                "source": "csv"
+            }
+            events.append(event)
+    else:
+        events = []
+        for _ in range(EVENT_COUNT):
+            e = generate_event()
+            e["source"] = "csv"
+            events.append(e)
+        # сохраняем CSV
+        with open(CSV_PATH, "w", newline="", encoding="utf-8") as f:
+            writer = csv.DictWriter(f, fieldnames=events[0].keys())
+            writer.writeheader()
+            writer.writerows(events)
 
     save_events_batch(events)
     print(f"[CSV] inserted {len(events)} events")
@@ -156,6 +187,14 @@ def csv_worker():
 # HTTP WORKER
 # ======================
 http_queue = queue.Queue()
+
+def serialize_event_for_http(event):
+    """Конвертируем все datetime поля в строки ISO"""
+    e = event.copy()
+    for key in ["created_at", "received_at"]:
+        if isinstance(e.get(key), (datetime, pd.Timestamp)):
+            e[key] = e[key].isoformat()
+    return e
 
 def http_worker():
     print("[HTTP] started")
@@ -171,8 +210,9 @@ def http_worker():
                 break
 
         if batch:
+            batch_serialized = [serialize_event_for_http(e) for e in batch]
             try:
-                requests.post(HTTP_ENDPOINT, json=batch, timeout=5)
+                requests.post(HTTP_ENDPOINT, json=batch_serialized, timeout=5)
             except Exception as e:
                 print(f"[HTTP] error: {e}")
 
