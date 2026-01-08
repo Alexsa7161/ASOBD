@@ -1,0 +1,16 @@
+[run]
+branch = True
+source =
+    api
+    consumer
+    producer
+	event_generator
+	tracker
+
+omit =
+    */tests/*
+    */venv/*
+    */.venv/*
+    */airflow/*
+    run_tests.py
+    *__init__.py

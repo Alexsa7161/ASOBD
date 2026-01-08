@@ -15,33 +15,60 @@ services:
       - "5432:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
+      - ./postgres/postgresql.conf:/etc/postgresql/postgresql.conf:ro
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U clickstream"]
+      test: ["CMD-SHELL", "pg_isready -U clickstream -d clickstream"]
       interval: 5s
       timeout: 5s
       retries: 5
+
+
+
+
 
   # ======================
   # RabbitMQ
-  # ======================
+  # =====================
   rabbitmq:
-    image: rabbitmq:3-management
+    image: rabbitmq:3.13-management
     container_name: clickstream-rabbitmq
+    restart: always
     ports:
       - "5672:5672"
+      - "15672:15672"
+      - "15692:15692"
     environment:
-      RABBITMQ_URL: "http://rabbitmq:15672"  # Management URL
+      RABBITMQ_DEFAULT_USER: guest
+      RABBITMQ_DEFAULT_PASS: guest
     volumes:
       - rabbitmq_data:/var/lib/rabbitmq
-    healthcheck:
-      test: ["CMD", "rabbitmq-diagnostics", "ping"]
-      interval: 5s
-      timeout: 5s
-      retries: 5
+      - ./rabbitmq/docker-entrypoint.sh:/docker-entrypoint.sh:ro
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
   # ======================
-  # API
+  # API / Consumer / Producer / Tracker / Event Generator
   # ======================
   api:
     build: ./api
@@ -53,12 +80,8 @@ services:
     depends_on:
       postgres:
         condition: service_healthy
-      rabbitmq:
-        condition: service_healthy
 
-  # ======================
-  # RabbitMQ consumer
-  # ======================
+
   consumer:
     build: ./consumer
     container_name: clickstream-consumer
@@ -67,28 +90,16 @@ services:
     depends_on:
       postgres:
         condition: service_healthy
-      rabbitmq:
-        condition: service_healthy
 
-  # ======================
-  # RabbitMQ producer
-  # ======================
+
   producer:
     build: ./producer
     container_name: clickstream-producer
     env_file:
       - .env
-    depends_on:
-      postgres:
-        condition: service_healthy
-      rabbitmq:
-        condition: service_healthy
 
-  # ======================
-  # Event Generator
-  # ======================
   event-generator:
-    build: ./event-generator
+    build: ./event_generator
     container_name: clickstream-generator
     env_file:
       - .env
@@ -97,14 +108,11 @@ services:
     depends_on:
       api:
         condition: service_started
-      rabbitmq:
-        condition: service_healthy
       consumer:
         condition: service_started
+      postgres:
+        condition: service_healthy
 
-  # ======================
-  # Tracker
-  # ======================
   tracker:
     build: ./tracker
     container_name: clickstream-tracker
@@ -141,10 +149,9 @@ services:
         soft: 262144
         hard: 262144
 
-
-
-
-
+  # ======================
+  # Airflow
+  # ======================
   # ======================
   # Airflow
   # ======================
@@ -152,23 +159,25 @@ services:
     build: ./airflow
     container_name: clickstream-airflow
     restart: always
-
     environment:
       AIRFLOW__CORE__EXECUTOR: LocalExecutor
       AIRFLOW__CORE__FERNET_KEY: "${AIRFLOW_FERNET_KEY:-$(python3 -c 'from cryptography.fernet import Fernet; print(Fernet.generate_key().decode())')}"
       AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: postgresql+psycopg2://clickstream:clickstream@postgres:5432/clickstream
       AIRFLOW__CORE__LOAD_EXAMPLES: "false"
       AIRFLOW__WEBSERVER__EXPOSE_CONFIG: "true"
-
+      AIRFLOW__METRICS__STATS_D_ON: "true"
+      AIRFLOW__METRICS__PROMETHEUS: "true"
     volumes:
       - ./airflow/dags:/opt/airflow/dags
       - ./airflow/logs:/opt/airflow/logs
       - ./airflow/plugins:/opt/airflow/plugins
       - ./airflow/etl:/opt/airflow/etl
       - ./airflow/scripts:/opt/airflow/scripts
-
+      - ./airflow/airflow.cfg:/opt/airflow/airflow.cfg:ro
+      - ./airflow/docker-entrypoint.sh:/entrypoint.sh:ro
     ports:
       - "8082:8080"
+      - "9191:9191"
 
     command: >
       bash -c "
@@ -188,6 +197,8 @@ services:
     depends_on:
       postgres:
         condition: service_healthy
+
+
 
 
   # ======================
@@ -225,6 +236,21 @@ services:
     depends_on:
       - prometheus
 
+  tests:
+    build: .
+    profiles: ["tests"]
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      POSTGRES_HOST: postgres
+      POSTGRES_USER: clickstream
+      POSTGRES_PASSWORD: clickstream
+      POSTGRES_DB: clickstream
+    volumes:
+      - .:/app
+    command: ["python", "run_tests.py"]
+    
 
 
 volumes:

@@ -8,6 +8,17 @@ datasources:
     editable: true
     isDefault: false
 
+  - name: Prometheus-RabbitMQ
+    type: prometheus
+    uid: prometheus-rabbitmq
+    access: proxy
+    url: http://prometheus:9090
+    editable: true
+    isDefault: false
+    jsonData:
+      exemplarTraceIdDestinations:
+        - tag
+
   - name: ClickHouse
     type: "vertamedia-clickhouse-datasource"
     uid: clickhouse
@@ -19,3 +30,17 @@ datasources:
     isDefault: true
     jsonData:
       timeInterval: "1s"
+      
+  - name: Postgres
+    type: postgres
+    uid: postgres
+    access: proxy
+    orgId: 1
+    url: postgres:5432
+    user: clickstream
+    database: clickstream
+    secureJsonData:
+      password: clickstream
+    jsonData:
+      database: clickstream
+      sslmode: disable

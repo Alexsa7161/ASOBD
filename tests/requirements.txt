@@ -1,0 +1,15 @@
+fastapi
+uvicorn[standard]
+psycopg2-binary
+pydantic
+
+pytest
+pytest-asyncio
+pytest-cov
+httpx
+anyio
+coverage
+pika
+pandas
+psycopg2-binary
+pytest-html>=3.2.0

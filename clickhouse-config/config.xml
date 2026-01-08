@@ -1,0 +1,22 @@
+<yandex>
+  <zookeeper>
+    <node>
+      <host>zoo1</host>
+      <port>2181</port>
+    </node>
+  </zookeeper>
+  <remote_servers>
+    <clickstream_cluster>
+      <shard>
+        <replica>
+          <host>clickhouse1</host>
+          <port>9000</port>
+        </replica>
+        <replica>
+          <host>clickhouse2</host>
+          <port>9000</port>
+        </replica>
+      </shard>
+    </clickstream_cluster>
+  </remote_servers>
+</yandex>
