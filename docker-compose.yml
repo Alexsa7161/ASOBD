@@ -1,6 +1,9 @@
 version: "3.9"
 
 services:
+# ======================
+# Postgres кластер
+# =====================
   postgres-master:
     image: postgres:15
     container_name: clickstream-postgres-master
@@ -49,58 +52,69 @@ services:
         condition: service_healthy
       postgres-replica:
         condition: service_healthy
-    healthcheck:
-      disable: true
 
-
-
-
-
-
-
-
-
-
-  # ======================
-  # RabbitMQ
-  # =====================
-  rabbitmq:
+# ======================
+# RabbitMQ кластер
+# =====================
+  rabbitmq1:
     image: rabbitmq:3.13-management
+    container_name: clickstream-rabbitmq1
+    hostname: rabbitmq1
+    environment:
+      RABBITMQ_ERLANG_COOKIE: 'secretcookie'
+      RABBITMQ_DEFAULT_USER: guest
+      RABBITMQ_DEFAULT_PASS: guest
+    volumes:
+      - rabbitmq1_data:/var/lib/rabbitmq
+      - ./rabbitmq/docker-entrypoint.sh:/docker-entrypoint.sh:ro
+
+  rabbitmq2:
+    image: rabbitmq:3.13-management
+    container_name: clickstream-rabbitmq2
+    hostname: rabbitmq2
+    ports:
+      - "5673:5672"
+      - "15673:15672"
+    environment:
+      RABBITMQ_ERLANG_COOKIE: 'secretcookie'
+      RABBITMQ_DEFAULT_USER: guest
+      RABBITMQ_DEFAULT_PASS: guest
+    volumes:
+      - rabbitmq2_data:/var/lib/rabbitmq
+      - ./rabbitmq/docker-entrypoint.sh:/docker-entrypoint.sh:ro
+    depends_on:
+      - rabbitmq1
+
+  rabbitmq3:
+    image: rabbitmq:3.13-management
+    container_name: clickstream-rabbitmq3
+    hostname: rabbitmq3
+    ports:
+      - "5674:5672"
+      - "15674:15672"
+    environment:
+      RABBITMQ_ERLANG_COOKIE: 'secretcookie'
+      RABBITMQ_DEFAULT_USER: guest
+      RABBITMQ_DEFAULT_PASS: guest
+    volumes:
+      - rabbitmq3_data:/var/lib/rabbitmq
+      - ./rabbitmq/docker-entrypoint.sh:/docker-entrypoint.sh:ro
+    depends_on:
+      - rabbitmq1
+
+  rabbitmq-haproxy:
+    image: haproxy:2.9
     container_name: clickstream-rabbitmq
-    restart: always
     ports:
       - "5672:5672"
       - "15672:15672"
       - "15692:15692"
-    environment:
-      RABBITMQ_DEFAULT_USER: guest
-      RABBITMQ_DEFAULT_PASS: guest
     volumes:
-      - rabbitmq_data:/var/lib/rabbitmq
-      - ./rabbitmq/docker-entrypoint.sh:/docker-entrypoint.sh:ro
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+      - ./haproxy/rabbitmq.cfg:/usr/local/etc/haproxy/haproxy.cfg:ro
+    depends_on:
+      - rabbitmq1
+      - rabbitmq2
+      - rabbitmq3
 
   # ======================
   # API / Consumer / Producer / Tracker / Event Generator
@@ -125,14 +139,20 @@ services:
     depends_on:
       postgres:
         condition: service_started
-
+      rabbitmq-haproxy:
+        condition: service_started
+    restart: always 
 
   producer:
     build: ./producer
     container_name: clickstream-producer
     env_file:
       - .env
-
+    depends_on:
+      rabbitmq-haproxy:
+        condition: service_started
+    restart: always 
+    
   event-generator:
     build: ./event_generator
     container_name: clickstream-generator
@@ -168,8 +188,8 @@ services:
     image: clickhouse/clickhouse-server:23.9
     container_name: clickstream-clickhouse
     ports:
-      - "18123:8123"  # HTTP (снаружи 18123)
-      - "19000:9000"  # Native (снаружи 19000)
+      - "18123:8123"
+      - "19000:9000"
       - "9363:9363"
     volumes:
       - clickhouse_data:/var/lib/clickhouse
@@ -187,9 +207,6 @@ services:
   # ======================
   # Airflow
   # ======================
-  # ======================
-  # Airflow
-  # ======================
   airflow:
     build: ./airflow
     container_name: clickstream-airflow
@@ -197,7 +214,7 @@ services:
     environment:
       AIRFLOW__CORE__EXECUTOR: LocalExecutor
       AIRFLOW__CORE__FERNET_KEY: "${AIRFLOW_FERNET_KEY:-$(python3 -c 'from cryptography.fernet import Fernet; print(Fernet.generate_key().decode())')}"
-      AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: postgresql+psycopg2://clickstream:clickstream@postgres:5432/clickstream
+      AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: postgresql+psycopg2://clickstream:clickstream@postgres:5432/clickstream_write
       AIRFLOW__CORE__LOAD_EXAMPLES: "false"
       AIRFLOW__WEBSERVER__EXPOSE_CONFIG: "true"
       AIRFLOW__METRICS__STATS_D_ON: "true"
@@ -274,23 +291,21 @@ services:
   tests:
     build: .
     profiles: ["tests"]
-    depends_on:
-      postgres:
-        condition: service_healthy
     environment:
       POSTGRES_HOST: postgres
       POSTGRES_USER: clickstream
       POSTGRES_PASSWORD: clickstream
-      POSTGRES_DB: clickstream
+      POSTGRES_DB: clickstream_write
     volumes:
       - .:/app
     command: ["python", "run_tests.py"]
-    
-
+   
 
 volumes:
   postgres_master_data:
   postgres_replica_data:
   clickhouse_data:
   grafana_data:
-  rabbitmq_data:
+  rabbitmq1_data:
+  rabbitmq2_data:
+  rabbitmq3_data:

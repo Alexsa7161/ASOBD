@@ -2,9 +2,6 @@ import os
 import subprocess
 import sys
 
-# ===============================  
-# Настройки
-# ===============================
 PROJECT_DIR = os.path.dirname(os.path.abspath(__file__))
 RESULT_DIR = os.path.join(PROJECT_DIR, "result")
 os.makedirs(RESULT_DIR, exist_ok=True)
@@ -13,16 +10,10 @@ REQUIREMENTS_FILE = os.path.join(PROJECT_DIR, "requirements.txt")
 COVERAGE_HTML = os.path.join(RESULT_DIR, "html")
 COVERAGE_XML = os.path.join(RESULT_DIR, "coverage.xml")
 
-# ===============================
-# Установка зависимостей
-# ===============================
 print("Устанавливаем зависимости из requirements.txt...")
 subprocess.run([sys.executable, "-m", "pip", "install", "--upgrade", "pip"], check=True)
 subprocess.run([sys.executable, "-m", "pip", "install", "-r", REQUIREMENTS_FILE], check=True)
 
-# ===============================
-# Собираем список тестов
-# ===============================
 test_files = []
 exclude_dirs = {"airflow", "__pycache__", "venv", ".venv"}
 for root, dirs, files in os.walk(PROJECT_DIR):
@@ -33,9 +24,6 @@ for root, dirs, files in os.walk(PROJECT_DIR):
 
 print(f"Найдено тестов: {len(test_files)}")
 
-# ===============================
-# Запуск ЮНИТ-тестов с coverage
-# ===============================
 pytest_cmd = [
     sys.executable, "-m", "pytest",
     "--cov",

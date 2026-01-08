@@ -1,0 +1,48 @@
+[2026-01-08T15:30:47.150+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2026-01-08T15:30:47.220+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: pg_to_clickhouse_payload_parsing.transfer_raw_to_ch scheduled__2026-01-08T15:29:40+00:00 [queued]>
+[2026-01-08T15:30:47.238+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: pg_to_clickhouse_payload_parsing.transfer_raw_to_ch scheduled__2026-01-08T15:29:40+00:00 [queued]>
+[2026-01-08T15:30:47.239+0000] {taskinstance.py:2306} INFO - Starting attempt 2 of 2
+[2026-01-08T15:30:47.269+0000] {taskinstance.py:2330} INFO - Executing <Task(PythonOperator): transfer_raw_to_ch> on 2026-01-08 15:29:40+00:00
+[2026-01-08T15:30:47.287+0000] {logging_mixin.py:188} WARNING - /home/airflow/.local/lib/python3.12/site-packages/airflow/task/task_runner/standard_task_runner.py:61 DeprecationWarning: This process (pid=190) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2026-01-08T15:30:47.287+0000] {standard_task_runner.py:90} INFO - Running: ['airflow', 'tasks', 'run', 'pg_to_clickhouse_payload_parsing', 'transfer_raw_to_ch', 'scheduled__2026-01-08T15:29:40+00:00', '--job-id', '18', '--raw', '--subdir', 'DAGS_FOLDER/etl_postgres_to_clickhouse.py', '--cfg-path', '/tmp/tmpwobqthhy']
+[2026-01-08T15:30:47.289+0000] {standard_task_runner.py:63} INFO - Started process 194 to run task
+[2026-01-08T15:30:47.291+0000] {standard_task_runner.py:91} INFO - Job 18: Subtask transfer_raw_to_ch
+[2026-01-08T15:30:47.375+0000] {task_command.py:426} INFO - Running <TaskInstance: pg_to_clickhouse_payload_parsing.transfer_raw_to_ch scheduled__2026-01-08T15:29:40+00:00 [running]> on host 260e1830ae1a
+[2026-01-08T15:30:47.549+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='pg_to_clickhouse_payload_parsing' AIRFLOW_CTX_TASK_ID='transfer_raw_to_ch' AIRFLOW_CTX_EXECUTION_DATE='2026-01-08T15:29:40+00:00' AIRFLOW_CTX_TRY_NUMBER='2' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2026-01-08T15:29:40+00:00'
+[2026-01-08T15:30:47.551+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2026-01-08T15:30:52.588+0000] {local_task_job_runner.py:222} INFO - ::endgroup::
+[2026-01-08T15:30:52.605+0000] {process_utils.py:132} INFO - Sending 15 to group 194. PIDs of all processes in the group: [194]
+[2026-01-08T15:30:52.609+0000] {process_utils.py:87} INFO - Sending the signal 15 to group 194
+[2026-01-08T15:30:52.610+0000] {taskinstance.py:2611} ERROR - Received SIGTERM. Terminating subprocesses.
+[2026-01-08T15:30:52.664+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2026-01-08T15:30:52.685+0000] {taskinstance.py:2905} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 465, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 432, in _execute_callable
+    return execute_callable(context=context, **execute_callable_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 400, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 235, in execute
+    return_value = self.execute_callable()
+                   ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 252, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/airflow/dags/etl_postgres_to_clickhouse.py", line 94, in transfer_to_clickhouse
+    clean_events = [clean_and_parse_event(e) for e in events]
+                    ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/airflow/dags/etl_postgres_to_clickhouse.py", line 84, in clean_and_parse_event
+    "payload": json.dumps(payload),  # оставляем составной payload как есть
+               ^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/json/__init__.py", line 183, in dumps
+    def dumps(obj, *, skipkeys=False, ensure_ascii=True, check_circular=True,
+    
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 2613, in signal_handler
+    raise AirflowTaskTerminated("Task received SIGTERM signal")
+airflow.exceptions.AirflowTaskTerminated: Task received SIGTERM signal
+[2026-01-08T15:30:52.716+0000] {taskinstance.py:1206} INFO - Marking task as FAILED. dag_id=pg_to_clickhouse_payload_parsing, task_id=transfer_raw_to_ch, run_id=scheduled__2026-01-08T15:29:40+00:00, execution_date=20260108T152940, start_date=20260108T153047, end_date=20260108T153052
+[2026-01-08T15:30:52.868+0000] {process_utils.py:80} INFO - Process psutil.Process(pid=194, status='terminated', exitcode=2, started='15:30:46') (194) terminated with exit code 2

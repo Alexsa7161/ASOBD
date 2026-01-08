@@ -4,18 +4,12 @@ from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
 import psycopg2
 
-# ======================
-# CONFIG
-# ======================
 DB_HOST = os.getenv("DB_HOST", "postgres")
 DB_PORT = int(os.getenv("DB_PORT", 5432))
 DB_NAME = os.getenv("DB_NAME", "clickstream_write")
 DB_USER = os.getenv("DB_USER", "clickstream")
 DB_PASSWORD = os.getenv("DB_PASSWORD", "clickstream")
 
-# ======================
-# DB CONNECTION
-# ======================
 def get_connection():
     return psycopg2.connect(
         host=DB_HOST,
@@ -25,9 +19,6 @@ def get_connection():
         password=DB_PASSWORD
     )
 
-# ======================
-# CREATE TABLE IF NOT EXISTS
-# ======================
 def create_table_if_not_exists():
     conn = get_connection()
     with conn:
@@ -51,11 +42,7 @@ def create_table_if_not_exists():
             """)
     conn.close()
 
-# ======================
-# SAVE EVENT
-# ======================
 def save_event(event):
-    # создаём составной payload
     event["payload"] = json.dumps({
         "event_title": event.get("event_title"),
         "element_id": event.get("element_id"),
@@ -63,7 +50,6 @@ def save_event(event):
         "y": event.get("y")
     })
     
-    # Если source не передан, ставим http (API)
     if "source" not in event:
         event["source"] = "http"
 
@@ -83,23 +69,19 @@ def save_event(event):
             """, event)
     conn.close()
 
-# ======================
-# FASTAPI
-# ======================
+
+
 app = FastAPI()
 
-# ======================
-# CORS (разрешаем трекер)
-# ======================
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # для теста, можно указать адрес трекера, например "http://tracker:8081"
+    allow_origins=["*"],  
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
-# создаём таблицу при старте API
 create_table_if_not_exists()
 
 @app.post("/events")

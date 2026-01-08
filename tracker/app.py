@@ -5,7 +5,6 @@ import os
 
 app = FastAPI()
 
-# Путь к HTML файлу
 HTML_FILE = os.path.join(os.path.dirname(__file__), "index.html")
 
 @app.get("/")

@@ -12,9 +12,6 @@ import pandas as pd
 from datetime import datetime, timedelta
 from psycopg2.extras import execute_values
 
-# ======================
-# CONFIG
-# ======================
 EVENT_COUNT = int(os.getenv("EVENT_COUNT", 200_000))
 
 CSV_ENABLED = True
@@ -22,9 +19,9 @@ CSV_PATH = "/data/events.csv"
 
 HTTP_ENABLED = True
 HTTP_ENDPOINT = "http://api:8000/events"
-HTTP_RATE = 200  # events/sec
+HTTP_RATE = 200
 HTTP_BATCH_SIZE = 50
-HTTP_SLEEP = HTTP_BATCH_SIZE / HTTP_RATE   # 0.25 sec
+HTTP_SLEEP = HTTP_BATCH_SIZE / HTTP_RATE
 
 DB_HOST = "postgres"
 DB_PORT = 5432
@@ -32,9 +29,6 @@ DB_NAME = "clickstream_write"
 DB_USER = "clickstream"
 DB_PASSWORD = "clickstream"
 
-# ======================
-# EVENT GENERATION
-# ======================
 URLS = ["/", "/catalog", "/product/1", "/checkout"]
 DEVICES = ["desktop", "mobile", "tablet"]
 EVENT_TITLES = ["page_view", "button", "checkout"]
@@ -57,9 +51,8 @@ def generate_event():
         "element_id": random.choice(["#btn", "#link", "#submit"]),
         "x": random.randint(0, 1920),
         "y": random.randint(0, 1080),
-        "payload": {}  # будет заполнен перед вставкой
+        "payload": {}
     }
-    # составной payload
     e["payload"] = json.dumps({
         "event_title": e["event_title"],
         "element_id": e["element_id"],
@@ -68,9 +61,6 @@ def generate_event():
     })
     return e
 
-# ======================
-# DB
-# ======================
 def get_connection():
     return psycopg2.connect(
         host=DB_HOST,
@@ -131,14 +121,10 @@ def save_events_batch(events):
             )
     conn.close()
 
-# ======================
-# CSV WORKER
-# ======================
 def csv_worker():
     print("[CSV] started")
     os.makedirs(os.path.dirname(CSV_PATH), exist_ok=True)
 
-    # Если CSV существует, читаем, иначе генерируем
     if os.path.exists(CSV_PATH):
         df = pd.read_csv(CSV_PATH)
         events = []
@@ -174,7 +160,6 @@ def csv_worker():
             e = generate_event()
             e["source"] = "csv"
             events.append(e)
-        # сохраняем CSV
         with open(CSV_PATH, "w", newline="", encoding="utf-8") as f:
             writer = csv.DictWriter(f, fieldnames=events[0].keys())
             writer.writeheader()
@@ -183,9 +168,6 @@ def csv_worker():
     save_events_batch(events)
     print(f"[CSV] inserted {len(events)} events")
 
-# ======================
-# HTTP WORKER
-# ======================
 http_queue = queue.Queue()
 
 def serialize_event_for_http(event):
@@ -220,9 +202,6 @@ def http_worker():
 
         time.sleep(HTTP_SLEEP)
 
-# ======================
-# MAIN
-# ======================
 
 def main():
     create_table_if_not_exists()
@@ -239,7 +218,6 @@ def main():
         t.start()
         threads.append(t)
 
-    # генерация событий для HTTP
     for _ in range(EVENT_COUNT):
         e = generate_event()
         if HTTP_ENABLED:

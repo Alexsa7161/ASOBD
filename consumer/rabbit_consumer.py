@@ -5,9 +5,8 @@ import psycopg2
 import os
 from psycopg2.extras import execute_values
 
-RABBITMQ_HOST = os.getenv("RABBITMQ_HOST", "rabbitmq")
+RABBITMQ_HOST = os.getenv("RABBITMQ_HOST", "clickstream-rabbitmq")
 RABBITMQ_QUEUE = os.getenv("RABBITMQ_QUEUE", "events")
-
 DB_HOST = os.getenv("DB_HOST", "postgres")
 DB_PORT = int(os.getenv("DB_PORT", 5432))
 DB_NAME = os.getenv("DB_NAME", "clickstream_write")
@@ -51,7 +50,6 @@ def save_events_batch(events):
         return
 
     for e in events:
-        # формируем составной payload
         e["payload"] = json.dumps({
             "event_title": e.get("event_title"),
             "element_id": e.get("element_id"),

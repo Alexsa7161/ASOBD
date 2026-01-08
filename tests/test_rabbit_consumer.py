@@ -1,22 +1,16 @@
-# tests/test_rabbit_consumer.py
+
 import os
 import uuid
 import pytest
 import psycopg2
 from consumer import rabbit_consumer as rc
 
-# --------------------------
-# Настройки БД
-# --------------------------
 DB_HOST = os.getenv("DB_HOST", "postgres")
 DB_PORT = int(os.getenv("DB_PORT", 5432))
 DB_USER = os.getenv("DB_USER", "clickstream")
 DB_PASSWORD = os.getenv("DB_PASSWORD", "clickstream")
-DB_NAME = os.getenv("DB_NAME", "clickstream")
+DB_NAME = os.getenv("DB_NAME", "clickstream_write")
 
-# --------------------------
-# Фикстура для курсора к БД
-# --------------------------
 @pytest.fixture
 def db_cursor():
     conn = psycopg2.connect(
@@ -31,16 +25,10 @@ def db_cursor():
     cursor.close()
     conn.close()
 
-# --------------------------
-# Подготовка таблицы перед тестами
-# --------------------------
 @pytest.fixture(scope="module", autouse=True)
 def setup_table():
     rc.create_table()
 
-# =========================
-# Тест сохранения одиночного события
-# =========================
 def test_save_single_event(db_cursor):
     event = {
         "event_id": str(uuid.uuid4()),
@@ -62,17 +50,14 @@ def test_save_single_event(db_cursor):
 
     rc.save_events_batch([event])
 
-    # Проверяем, что событие добавилось в БД
+
     db_cursor.execute("SELECT * FROM raw_events WHERE event_id = %s", (event["event_id"],))
     result = db_cursor.fetchone()
     assert result is not None
-    # Проверяем id и type
+
     assert str(result[0]) == event["event_id"]
     assert result[1] == event["type"]
 
-# =========================
-# Тест сохранения события с дефолтами
-# =========================
 def test_save_event_defaults(db_cursor):
     event = {
         "event_id": str(uuid.uuid4()),
@@ -96,10 +81,9 @@ def test_save_event_defaults(db_cursor):
     )
     payload, source = db_cursor.fetchone()
 
-    # payload уже dict, не нужно json.loads
     assert isinstance(payload, dict)
-    assert source == "rabbitmq"  # default source
-    # Проверяем, что поля payload есть даже если None
+    assert source == "rabbitmq" 
+
     assert "event_title" in payload
     assert "element_id" in payload
     assert "x" in payload

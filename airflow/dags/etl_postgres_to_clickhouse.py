@@ -5,9 +5,6 @@ import psycopg2
 from clickhouse_driver import Client
 import json
 
-# ======================
-# CONFIG
-# ======================
 POSTGRES_CONFIG = {
     "host": "postgres",
     "port": 5432,
@@ -27,9 +24,6 @@ CLICKHOUSE_CONFIG = {
 BATCH_SIZE = 100_000
 LOOKBACK_DAYS = 30
 
-# ======================
-# FUNCTIONS
-# ======================
 def fetch_raw_events(batch_size=BATCH_SIZE):
     """Берем сырые события из Postgres"""
     conn = psycopg2.connect(**POSTGRES_CONFIG)
@@ -59,7 +53,6 @@ def clean_and_parse_event(event):
         except json.JSONDecodeError:
             payload = {}
 
-    # Валидируем поля и вытаскиваем из payload
     event_title = payload.get("event_title") or ""
     element_id = payload.get("element_id") or ""
     x = int(payload.get("x") or 0)
@@ -81,7 +74,7 @@ def clean_and_parse_event(event):
         "element_id": element_id,
         "x": x,
         "y": y,
-        "payload": json.dumps(payload),  # оставляем составной payload как есть
+        "payload": json.dumps(payload),
         "source": event.get("source") or "unknown"
     }
 
@@ -95,7 +88,6 @@ def transfer_to_clickhouse(**kwargs):
     
     client = Client(**CLICKHOUSE_CONFIG)
     
-    # Вставляем данные по колонкам
     data = [
         (
             e["event_id"], e["type"], e["created_at"], e["received_at"], e["session_id"],
@@ -117,9 +109,6 @@ def transfer_to_clickhouse(**kwargs):
     
     print(f"Transferred {len(clean_events)} events to ClickHouse")
 
-# ======================
-# DAG DEFINITION
-# ======================
 default_args = {
     'owner': 'clickstream',
     'depends_on_past': False,

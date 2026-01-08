@@ -1,0 +1,13 @@
+[2026-01-08T15:12:18.525+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2026-01-08T15:12:17.827+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: pg_to_clickhouse_payload_parsing.transfer_raw_to_ch scheduled__2026-01-08T15:11:50+00:00 [queued]>
+[2026-01-08T15:12:17.842+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: pg_to_clickhouse_payload_parsing.transfer_raw_to_ch scheduled__2026-01-08T15:11:50+00:00 [queued]>
+[2026-01-08T15:12:17.843+0000] {taskinstance.py:2306} INFO - Starting attempt 2 of 2
+[2026-01-08T15:12:17.869+0000] {taskinstance.py:2330} INFO - Executing <Task(PythonOperator): transfer_raw_to_ch> on 2026-01-08 15:11:50+00:00
+[2026-01-08T15:12:17.883+0000] {logging_mixin.py:188} WARNING - /home/airflow/.local/lib/python3.12/site-packages/airflow/task/task_runner/standard_task_runner.py:61 DeprecationWarning: This process (pid=177) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2026-01-08T15:12:17.885+0000] {standard_task_runner.py:63} INFO - Started process 184 to run task
+[2026-01-08T15:12:17.883+0000] {standard_task_runner.py:90} INFO - Running: ['airflow', 'tasks', 'run', 'pg_to_clickhouse_payload_parsing', 'transfer_raw_to_ch', 'scheduled__2026-01-08T15:11:50+00:00', '--job-id', '24', '--raw', '--subdir', 'DAGS_FOLDER/etl_postgres_to_clickhouse.py', '--cfg-path', '/tmp/tmp60hof2wl']
+[2026-01-08T15:12:17.887+0000] {standard_task_runner.py:91} INFO - Job 24: Subtask transfer_raw_to_ch
+[2026-01-08T15:12:17.943+0000] {task_command.py:426} INFO - Running <TaskInstance: pg_to_clickhouse_payload_parsing.transfer_raw_to_ch scheduled__2026-01-08T15:11:50+00:00 [running]> on host f0c67bb60569
+[2026-01-08T15:12:18.046+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='pg_to_clickhouse_payload_parsing' AIRFLOW_CTX_TASK_ID='transfer_raw_to_ch' AIRFLOW_CTX_EXECUTION_DATE='2026-01-08T15:11:50+00:00' AIRFLOW_CTX_TRY_NUMBER='2' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2026-01-08T15:11:50+00:00'
+[2026-01-08T15:12:18.047+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2026-01-08T15:12:21.294+0000] {local_task_job_runner.py:124} ERROR - Received SIGTERM. Terminating subprocesses

@@ -1,4 +1,4 @@
-# tests/test_integration_all_systems.py
+
 
 import os
 import socket
@@ -83,19 +83,19 @@ def test_clickstream_full_stack():
     HOSTS = detect_hosts()
     print(f"hosts: {HOSTS}")
     
-    # Postgres
+
     assert wait_for_tcp(HOSTS["postgres"], 5432), f"postgres {HOSTS['postgres']}:5432 unavailable"
     
-    # Airflow (порт 8080 снаружи)
+
     assert wait_for_http(f"http://{HOSTS['airflow']}:8080"), f"airflow {HOSTS['airflow']}:8080 unavailable"
     
-    # ClickHouse (HTTP порт 8123 снаружи)
+
     assert wait_for_http(f"http://{HOSTS['clickhouse']}:8123/ping"), f"clickhouse {HOSTS['clickhouse']}:18123 unavailable"
     
-    # Prometheus (порт 9090)
+
     assert wait_for_http(f"http://{HOSTS['prometheus']}:9090/-/ready"), f"prometheus unavailable"
     
-    # Grafana (порт 3000)
+
     assert wait_for_http(f"http://{HOSTS['grafana']}:3000/api/health"), f"grafana unavailable"
     
     print("integration test passed")

@@ -1,0 +1,22 @@
+[2026-01-08T15:41:08.352+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2026-01-08T15:41:08.434+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: pg_to_clickhouse_payload_parsing.transfer_raw_to_ch scheduled__2026-01-08T15:40:50+00:00 [queued]>
+[2026-01-08T15:41:08.461+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: pg_to_clickhouse_payload_parsing.transfer_raw_to_ch scheduled__2026-01-08T15:40:50+00:00 [queued]>
+[2026-01-08T15:41:08.462+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 2
+[2026-01-08T15:41:08.517+0000] {taskinstance.py:2330} INFO - Executing <Task(PythonOperator): transfer_raw_to_ch> on 2026-01-08 15:40:50+00:00
+[2026-01-08T15:41:08.539+0000] {logging_mixin.py:188} WARNING - /home/airflow/.local/lib/python3.12/site-packages/airflow/task/task_runner/standard_task_runner.py:61 DeprecationWarning: This process (pid=178) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2026-01-08T15:41:08.534+0000] {standard_task_runner.py:90} INFO - Running: ['airflow', 'tasks', 'run', 'pg_to_clickhouse_payload_parsing', 'transfer_raw_to_ch', 'scheduled__2026-01-08T15:40:50+00:00', '--job-id', '4', '--raw', '--subdir', 'DAGS_FOLDER/etl_postgres_to_clickhouse.py', '--cfg-path', '/tmp/tmpy1_z8cf2']
+[2026-01-08T15:41:08.541+0000] {standard_task_runner.py:63} INFO - Started process 182 to run task
+[2026-01-08T15:41:08.541+0000] {standard_task_runner.py:91} INFO - Job 4: Subtask transfer_raw_to_ch
+[2026-01-08T15:41:08.557+0000] {cli_action_loggers.py:139} WARNING - Failed to log action (psycopg2.errors.ReadOnlySqlTransaction) cannot execute INSERT in a read-only transaction
+
+[SQL: INSERT INTO log (dttm, dag_id, task_id, event, owner, extra) VALUES (%(dttm)s, %(dag_id)s, %(task_id)s, %(event)s, %(owner)s, %(extra)s) RETURNING log.id]
+[parameters: {'dttm': datetime.datetime(2026, 1, 8, 15, 41, 8, 544536, tzinfo=Timezone('UTC')), 'dag_id': 'pg_to_clickhouse_payload_parsing', 'task_id': 'transfer_raw_to_ch', 'event': 'cli_task_run', 'owner': 'airflow', 'extra': '{"host_name": "799843acdb7e", "full_command": "[\'/home/airflow/.local/bin/airflow\', \'scheduler\']"}'}]
+(Background on this error at: https://sqlalche.me/e/14/2j85)
+[2026-01-08T15:41:08.628+0000] {task_command.py:426} INFO - Running <TaskInstance: pg_to_clickhouse_payload_parsing.transfer_raw_to_ch scheduled__2026-01-08T15:40:50+00:00 [running]> on host 799843acdb7e
+[2026-01-08T15:41:08.684+0000] {standard_task_runner.py:110} ERROR - Failed to execute job 4 for task transfer_raw_to_ch ((psycopg2.errors.ReadOnlySqlTransaction) cannot execute UPDATE in a read-only transaction
+
+[SQL: UPDATE dag_run SET last_scheduling_decision=%(last_scheduling_decision)s, updated_at=%(updated_at)s WHERE dag_run.id = %(dag_run_id)s]
+[parameters: {'last_scheduling_decision': datetime.datetime(2026, 1, 8, 15, 41, 7, 472597, tzinfo=Timezone('UTC')), 'updated_at': datetime.datetime(2026, 1, 8, 15, 41, 7, 487555, tzinfo=Timezone('UTC')), 'dag_run_id': 2}]
+(Background on this error at: https://sqlalche.me/e/14/2j85); 182)
+[2026-01-08T15:41:08.719+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 1
+[2026-01-08T15:41:08.731+0000] {local_task_job_runner.py:222} INFO - ::endgroup::

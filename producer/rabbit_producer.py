@@ -5,10 +5,10 @@ import random
 import pika
 from datetime import datetime, timedelta
 
-RABBITMQ_HOST = "rabbitmq"
+RABBITMQ_HOST = "clickstream-rabbitmq"
 RABBITMQ_QUEUE = "events"
 EVENT_COUNT = 200_000
-RATE = 200  # сообщений в секунду
+RATE = 200
 
 URLS = ["/", "/catalog", "/product/1", "/checkout"]
 DEVICES = ["desktop", "mobile", "tablet"]
@@ -50,7 +50,6 @@ def generate_event():
     }
 
 def main():
-    # Подключаемся к RabbitMQ
     while True:
         try:
             connection = pika.BlockingConnection(
@@ -64,7 +63,6 @@ def main():
             print("[Producer] connection failed, retry in 2s:", e)
             time.sleep(2)
 
-    # Отправляем события пакетами
     for i in range(0, EVENT_COUNT, RATE):
         batch = [generate_event() for _ in range(RATE)]
         for event in batch:

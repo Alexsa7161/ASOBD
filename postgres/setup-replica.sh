@@ -3,7 +3,7 @@ set -e
 
 echo "Waiting for postgres-master..."
 
-# Ждём master под обычным пользователем
+
 until pg_isready -h postgres-master -p 5432 -U clickstream; do
   echo "Master not ready, waiting..."
   sleep 5

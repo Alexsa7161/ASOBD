@@ -5,14 +5,12 @@ import psycopg2
 from fastapi.testclient import TestClient
 from api.app import app, save_event
 
-# --------------------------
-# Подключение к PostgreSQL из контейнера
-# --------------------------
+
 POSTGRES_HOST = os.getenv("POSTGRES_HOST", "postgres")
 POSTGRES_PORT = int(os.getenv("POSTGRES_PORT", 5432))
 POSTGRES_USER = os.getenv("POSTGRES_USER", "clickstream")
 POSTGRES_PASSWORD = os.getenv("POSTGRES_PASSWORD", "clickstream")
-POSTGRES_DB = os.getenv("POSTGRES_DB", "clickstream")
+POSTGRES_DB = os.getenv("POSTGRES_DB", "clickstream_write")
 
 def get_db_cursor():
     conn = psycopg2.connect(
@@ -29,17 +27,13 @@ def get_db_cursor():
 
 client = TestClient(app)
 
-# =========================
-# Тест GET /
-# =========================
+
 def test_root():
     response = client.get("/")
     assert response.status_code == 200
     assert response.json() == {"status": "ok", "message": "API is running"}
 
-# =========================
-# Тест POST /events - одиночное событие
-# =========================
+
 def test_post_single_event():
     event_data = [
         {
@@ -65,12 +59,10 @@ def test_post_single_event():
     assert response.status_code == 200
     assert response.json() == {"status": "ok", "count": 1}
 
-# =========================
-# Тест POST /events - проверка default source и payload
-# =========================
+
 def test_save_event_defaults():
     event = {
-        "event_id": str(uuid.uuid4()),  # корректный uuid
+        "event_id": str(uuid.uuid4()),
         "type": "view",
         "created_at": "2026-01-07T12:10:00",
         "received_at": "2026-01-07T12:11:00",

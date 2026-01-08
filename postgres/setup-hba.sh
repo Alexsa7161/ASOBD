@@ -1,8 +1,8 @@
 #!/bin/bash
-# Файл: postgres/setup-hba.sh
+
 set -e
 
-# Подменяем pg_hba.conf в volume на "trust" для всех подключений
+
 cat > /var/lib/postgresql/data/pg_hba.conf <<EOF
 # LOCAL
 local   all             all                                     trust
