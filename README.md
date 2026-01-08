@@ -128,7 +128,7 @@ docker compose up --build tests
 
 docker exec -it clickstream-postgres-master psql -U clickstream -d clickstream
 
-select source, count(*) from raw\_events group by source;
+select source, count(*) from raw_events group by source;
 
 ```
 
@@ -158,9 +158,9 @@ http://localhost:15672/#/queues/%2F/events
 
 docker exec -it clickstream-clickhouse clickhouse-client
 
-DESCRIBE TABLE clickstream.events\_cleansed;
+DESCRIBE TABLE clickstream.events_cleansed;
 
-select count(*) from clickstream.events\_cleansed FINAL;
+select count(*) from clickstream.events_cleansed FINAL;
 
 ```
 
@@ -354,7 +354,7 @@ RAM: 31.7% от 11.41GB = 3.62GB
 
 - Airflow (108% CPU) — добавить worker'ы
 
-- pgbouncer (28% CPU) — увеличить pool\_size
+- pgbouncer (28% CPU) — увеличить pool_size
 
 
 
@@ -428,7 +428,7 @@ sequenceDiagram
 
 &nbsp;   participant PG as pgbouncer 5432
 
-&nbsp;   participant Postgres as PostgreSQL raw\_events
+&nbsp;   participant Postgres as PostgreSQL raw_events
 
 &nbsp;   participant Airflow as Airflow DAG 8082
 
@@ -440,7 +440,7 @@ sequenceDiagram
 
 &nbsp;   User ->> Tracker: POST /clicks
 
-&nbsp;   Tracker ->> PG: INSERT raw\_events
+&nbsp;   Tracker ->> PG: INSERT raw_events
 
 &nbsp;   PG ->> Postgres: source = "http"
 
@@ -454,9 +454,9 @@ sequenceDiagram
 
 &nbsp;   Airflow ->> Airflow: validate + dedupe
 
-&nbsp;   Airflow ->> ClickHouse: INSERT events\_cleansed
+&nbsp;   Airflow ->> ClickHouse: INSERT events_cleansed
 
-&nbsp;   ClickHouse ->> Grafana: GROUP BY session\_id
+&nbsp;   ClickHouse ->> Grafana: GROUP BY session_id
 
 ```
 
@@ -478,7 +478,7 @@ flowchart TD
 
 &nbsp;   
 
-&nbsp;   C --> F\[PostgreSQL raw\_events INSERT]
+&nbsp;   C --> F\[PostgreSQL raw_events INSERT]
 
 &nbsp;   D --> F
 
@@ -496,7 +496,7 @@ flowchart TD
 
 &nbsp;   I --> J{VALID?}
 
-&nbsp;   J -->|Нет 20%| K\[invalid\_events для анализа]
+&nbsp;   J -->|Нет 20%| K\[invalid_events для анализа]
 
 &nbsp;   J -->|Да 80%| L\[Deduplicate sessionId+timestamp]
 
@@ -504,7 +504,7 @@ flowchart TD
 
 &nbsp;   L --> M\[Transform → cleansed format]
 
-&nbsp;   M --> N\[ClickHouse events\_cleansed INSERT FINAL]
+&nbsp;   M --> N\[ClickHouse events_cleansed INSERT FINAL]
 
 &nbsp;   
 
@@ -528,21 +528,21 @@ flowchart TD
 
 
 
-**1. PostgreSQL (raw\_events):
+**1. PostgreSQL (raw_events):
 
 ```mermaid
 
 erDiagram
 
-&nbsp;   RAW\_EVENTS {
+&nbsp;   RAW_EVENTS {
 
 &nbsp;       serial id PK
 
 &nbsp;       varchar source "http,rabbitmq,csv"
 
-&nbsp;       varchar session\_id
+&nbsp;       varchar session_id
 
-&nbsp;       int user\_id
+&nbsp;       int user_id
 
 &nbsp;       timestamptz timestamp
 
@@ -550,25 +550,25 @@ erDiagram
 
 &nbsp;       boolean processed "default: false"
 
-&nbsp;       timestamptz created\_at "default: now()"
+&nbsp;       timestamptz created_at "default: now()"
 
 &nbsp;   }
 
 &nbsp;   
 
-&nbsp;   INVALID\_EVENTS {
+&nbsp;   INVALID_EVENTS {
 
 &nbsp;       serial id PK
 
-&nbsp;       int raw\_event\_id FK
+&nbsp;       int raw_event_id FK
 
-&nbsp;       text error\_message
+&nbsp;       text error_message
 
 &nbsp;   }
 
 &nbsp;   
 
-&nbsp;   RAW\_EVENTS ||--o{ INVALID\_EVENTS : generates
+&nbsp;   RAW_EVENTS ||--o{ INVALID_EVENTS : generates
 
 &nbsp;   
 
@@ -578,25 +578,25 @@ erDiagram
 
 ```
 
-**2. ClickHouse (events\_cleansed):
+**2. ClickHouse (events_cleansed):
 
 ```mermaid
 
 erDiagram
 
-&nbsp;   EVENTS\_CLEANSED {
+&nbsp;   EVENTS_CLEANSED {
 
-&nbsp;       String session\_id
+&nbsp;       String session_id
 
-&nbsp;       UInt32 user\_id
+&nbsp;       UInt32 user_id
 
-&nbsp;       DateTime64 event\_time
+&nbsp;       DateTime64 event_time
 
-&nbsp;       String event\_type
+&nbsp;       String event_type
 
 &nbsp;       String url
 
-&nbsp;       String element\_id
+&nbsp;       String element_id
 
 &nbsp;       UInt16 x
 
@@ -624,17 +624,17 @@ erDiagram
 
 |------|-----|--------------|----------|---------|
 
-| `event\_id` | `UUID` | ✅ | Уникальный ID | `550e8400-e29b-41d4-a716-446655440001` |
+| `event_id` | `UUID` | ✅ | Уникальный ID | `550e8400-e29b-41d4-a716-446655440001` |
 
 | `type` | `string` | ✅ | Тип события | `click`, `view` |
 
-| `created\_at` | `timestamp` | ✅ | Создание на клиенте | `2026-01-09T02:00:00Z` |
+| `created_at` | `timestamp` | ✅ | Создание на клиенте | `2026-01-09T02:00:00Z` |
 
-| `received\_at` | `timestamp` | ✅ | Получение сервером | `2026-01-09T02:00:01Z` |
+| `received_at` | `timestamp` | ✅ | Получение сервером | `2026-01-09T02:00:01Z` |
 
-| `session\_id` | `string` | | Сессия | `sess\_12345` |
+| `session_id` | `string` | | Сессия | `sess_12345` |
 
-| `user\_id` | `bigint` | | Пользователь | `12345` |
+| `user_id` | `bigint` | | Пользователь | `12345` |
 
 | `ip` | `string` | | IP адрес | `192.168.1.1` |
 
@@ -642,9 +642,9 @@ erDiagram
 
 | `referrer` | `string` | | Откуда пришли | `https://example.com/home` |
 
-| `device\_type` | `string` | | Устройство | `desktop` |
+| `device_type` | `string` | | Устройство | `desktop` |
 
-| `user\_agent` | `string` | | Браузер | `Mozilla/5.0...` |
+| `user_agent` | `string` | | Браузер | `Mozilla/5.0...` |
 
 | `source` | `string` | | Источник | `http` (auto) |
 
@@ -660,25 +660,25 @@ curl -X POST "http://localhost:8000/events" \\
 
 &nbsp;   {
 
-&nbsp;     "event\_id": "550e8400-e29b-41d4-a716-446655440001",
+&nbsp;     "event_id": "550e8400-e29b-41d4-a716-446655440001",
 
 &nbsp;     "type": "click",
 
-&nbsp;     "created\_at": "2026-01-09T02:00:00Z",
+&nbsp;     "created_at": "2026-01-09T02:00:00Z",
 
-&nbsp;     "received\_at": "2026-01-09T02:00:01Z",
+&nbsp;     "received_at": "2026-01-09T02:00:01Z",
 
-&nbsp;     "session\_id": "sess\_12345",
+&nbsp;     "session_id": "sess_12345",
 
-&nbsp;     "user\_id": 12345,
+&nbsp;     "user_id": 12345,
 
 &nbsp;     "ip": "192.168.1.1",
 
 &nbsp;     "url": "https://example.com/page",
 
-&nbsp;     "event\_title": "Add to cart",
+&nbsp;     "event_title": "Add to cart",
 
-&nbsp;     "element\_id": "btn-cart-001",
+&nbsp;     "element_id": "btn-cart-001",
 
 &nbsp;     "x": 450,
 
@@ -704,7 +704,7 @@ curl http://localhost:8000/
 
 
 
-- **Unit-тесты** — покрытие всех Python модулей (`test\_*.py`, в папке tests)
+- **Unit-тесты** — покрытие всех Python модулей (`test_*.py`, в папке tests)
 
 - **Integration-тесты** — проверка полного стека (API → Postgres → Airflow → ClickHouse, в папке tests)  
 
@@ -724,11 +724,11 @@ data/events.csv — 200K реалистичных клик-событий для
 
 | `api/app.py` | 39 | 0 | 4/5 | **98%**  |
 
-| `consumer/rabbit\_consumer.py` | 50 | 18 | 6/8 | **64%**  |
+| `consumer/rabbit_consumer.py` | 50 | 18 | 6/8 | **64%**  |
 
-| `event\_generator/main.py` | 117 | 32 | 28/29 | **73%** |
+| `event_generator/main.py` | 117 | 32 | 28/29 | **73%** |
 
-| `producer/rabbit\_producer.py` | 41 | 4 | 6/7 | **89%**  |
+| `producer/rabbit_producer.py` | 41 | 4 | 6/7 | **89%**  |
 
 | `tracker/app.py` | 11 | 1 | 2/3 | **85%**  |
 
@@ -750,7 +750,7 @@ data/events.csv — 200K реалистичных клик-событий для
 
 
 
-**Тест `tests/test\_integration\_all\_systems.py` — полный стек clickstream**
+**Тест `tests/test_integration_all_systems.py` — полный стек clickstream**
 
 
 
@@ -844,17 +844,17 @@ curl -X POST "http://localhost:8000/events" \\
 
 &nbsp;   {
 
-&nbsp;     "event\_id": "11111111-1111-1111-1111-111111111111",
+&nbsp;     "event_id": "11111111-1111-1111-1111-111111111111",
 
 &nbsp;     "type": "click",
 
-&nbsp;     "created\_at": "2026-01-08T02:00:00Z",
+&nbsp;     "created_at": "2026-01-08T02:00:00Z",
 
-&nbsp;     "received\_at": "2026-01-08T02:00:00Z",
+&nbsp;     "received_at": "2026-01-08T02:00:00Z",
 
-&nbsp;     "session\_id": "test-session-123",
+&nbsp;     "session_id": "test-session-123",
 
-&nbsp;     "user\_id": 123,
+&nbsp;     "user_id": 123,
 
 &nbsp;     "ip": "127.0.0.1",
 
@@ -862,13 +862,13 @@ curl -X POST "http://localhost:8000/events" \\
 
 &nbsp;     "referrer": "",
 
-&nbsp;     "device\_type": "web",
+&nbsp;     "device_type": "web",
 
-&nbsp;     "user\_agent": "Mozilla/5.0...",
+&nbsp;     "user_agent": "Mozilla/5.0...",
 
-&nbsp;     "event\_title": "Test Button",
+&nbsp;     "event_title": "Test Button",
 
-&nbsp;     "element\_id": "test-btn-1",
+&nbsp;     "element_id": "test-btn-1",
 
 &nbsp;     "x": 100,
 
@@ -998,7 +998,7 @@ curl http://localhost:8081/page
 
 ** Ключевые оптимизации:**
 
-1. **pgbouncer pool\_size=1000** → 10K одновременных соединений
+1. **pgbouncer pool_size=1000** → 10K одновременных соединений
 
 2. **FastAPI + UVloop** → 2x пропускная способность
 
