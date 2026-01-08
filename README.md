@@ -1,8 +1,8 @@
-\# Clickstream-аналитика
+# Clickstream-аналитика
 
 Clickstream-аналитика позволяет детально изучать пути пользователей, выявлять узкие места интерфейсов и оптимизировать конверсионные воронки.
 
-\## Описание проекта
+## Описание проекта
 
 
 
@@ -10,71 +10,71 @@ Clickstream-аналитика позволяет детально изучат�
 
 Объектом исследования выступает процесс построения аналитической платформы clickstream-данных. Предметом исследования является прототип распределенной системы, реализующий полный цикл обработки событий с использованием современных инструментов больших данных.
 
-\###Цель и задачи проекта
+###Цель и задачи проекта
 
-\*\* Цель:\*\* Разработка прототипа распределенной clickstream-аналитической платформы для сбора, обработки и визуализации пользовательских событий с высокой производительностью.  
-
-
-
-\*\*Задачи:\*\*
-
-1\. Создать REST API (FastAPI) для приема событий из разных источников
-
-2\. Реализовать конвейер ETL (PostgreSQL → Airflow → ClickHouse)  
-
-3\. Настроить мониторинг (Prometheus + Grafana) всех компонентов
-
-4\. Обеспечить покрытие тестами >60% (unit + integration)
-
-\## Стек технологий
+** Цель:** Разработка прототипа распределенной clickstream-аналитической платформы для сбора, обработки и визуализации пользовательских событий с высокой производительностью.  
 
 
 
-\- \*\*FastAPI\*\* — высокопроизводительный веб-фреймворк для API (tracker, основные endpoints)
+**Задачи:**
 
-\- \*\*RabbitMQ\*\* — брокер сообщений с поддержкой кластеризации через \*\*HAProxy\*\*
+1. Создать REST API (FastAPI) для приема событий из разных источников
 
-\- \*\*PostgreSQL\*\* — оперативное реляционное хранилище с балансировкой через \*\*pgbouncer\*\*
+2. Реализовать конвейер ETL (PostgreSQL → Airflow → ClickHouse)  
 
-\- \*\*Apache Airflow\*\* — оркестратор ETL/ELT процессов
+3. Настроить мониторинг (Prometheus + Grafana) всех компонентов
 
-\- \*\*ClickHouse\*\* — аналитическая колоночная СУБД для Data Mart
+4. Обеспечить покрытие тестами >60% (unit + integration)
 
-\- \*\*Prometheus\*\* — сбор метрик и мониторинг
-
-\- \*\*Grafana\*\* — визуализация дашбордов и аналитики
+## Стек технологий
 
 
 
-\*\*Python\*\* — основная технология для всех сервисов:
+- **FastAPI** — высокопроизводительный веб-фреймворк для API (tracker, основные endpoints)
 
-\- api (FastAPI)
+- **RabbitMQ** — брокер сообщений с поддержкой кластеризации через **HAProxy**
 
-\- tracker (прием кликов)
+- **PostgreSQL** — оперативное реляционное хранилище с балансировкой через **pgbouncer**
 
-\- event-generator (CSV/HTTP/RabbitMQ)
+- **Apache Airflow** — оркестратор ETL/ELT процессов
 
-\- producer (RabbitMQ)
+- **ClickHouse** — аналитическая колоночная СУБД для Data Mart
 
-\- consumer (RabbitMQ)
+- **Prometheus** — сбор метрик и мониторинг
 
-\- unit/integration тесты
+- **Grafana** — визуализация дашбордов и аналитики
 
 
 
-\*\*Инфраструктура:\*\*
+**Python** — основная технология для всех сервисов:
 
-\- Docker Compose — оркестрация контейнеров
+- api (FastAPI)
 
-\- HAProxy — балансировка RabbitMQ кластера
+- tracker (прием кликов)
 
-\- pgbouncer — пул соединений PostgreSQL
+- event-generator (CSV/HTTP/RabbitMQ)
+
+- producer (RabbitMQ)
+
+- consumer (RabbitMQ)
+
+- unit/integration тесты
+
+
+
+**Инфраструктура:**
+
+- Docker Compose — оркестрация контейнеров
+
+- HAProxy — балансировка RabbitMQ кластера
+
+- pgbouncer — пул соединений PostgreSQL
 
 
 
 Генератор генерирует по 200 событий в секунду для http и rabbitmq, а также в csv файле папки data лежит файл на 200т. событий.
 
-\## Как запустить проект
+## Как запустить проект
 
 
 
@@ -100,11 +100,11 @@ docker compose up -d
 
 
 
-\### Запуск тестов
+### Запуск тестов
 
 Для запуска тестов только с включенными системами используйте один из вариантов:
 
-\- Вариант 1 (рекомендуемый)
+- Вариант 1 (рекомендуемый)
 
 ```bash
 
@@ -112,7 +112,7 @@ docker compose --profile tests up tests
 
 ```
 
-\- Вариант 2
+- Вариант 2
 
 ```bash
 
@@ -120,19 +120,19 @@ docker compose up --build tests
 
 ```
 
-\## Демонстрация
+## Демонстрация
 
-\### PostgreSQL (сырые события)
+### PostgreSQL (сырые события)
 
 ```bash
 
 docker exec -it clickstream-postgres-master psql -U clickstream -d clickstream
 
-select source, count(\*) from raw\_events group by source;
+select source, count(*) from raw\_events group by source;
 
 ```
 
-\### RabbitMQ UI
+### RabbitMQ UI
 
 ```bash
 
@@ -144,7 +144,7 @@ http://localhost:15672/#/queues/%2F/events
 
 
 
-\### tracker 
+### tracker 
 
 ```bash
 
@@ -152,7 +152,7 @@ http://localhost:15672/#/queues/%2F/events
 
 ```
 
-\### clickhouse
+### clickhouse
 
 ```bash
 
@@ -160,11 +160,11 @@ docker exec -it clickstream-clickhouse clickhouse-client
 
 DESCRIBE TABLE clickstream.events\_cleansed;
 
-select count(\*) from clickstream.events\_cleansed FINAL;
+select count(*) from clickstream.events\_cleansed FINAL;
 
 ```
 
-\### airflow
+### airflow
 
 ```bash
 
@@ -174,7 +174,7 @@ http://localhost:8082/home
 
 Логин/пароль:admin/admin
 
-\### Prometheus
+### Prometheus
 
 ```bash
 
@@ -182,7 +182,7 @@ http://localhost:9090/targets
 
 ```
 
-\### Grafana
+### Grafana
 
 ```bash
 
@@ -194,41 +194,41 @@ http://localhost:3000/dashboards
 
 
 
-\# Основная часть
+# Основная часть
 
 
 
-\## Анализ предметной области
+## Анализ предметной области
 
 
 
-\### Обоснование выбора архитектуры приложения
+### Обоснование выбора архитектуры приложения
 
-Система построена по принципу \*\*многослойной архитектуры\*\* (Data Lakehouse pattern) с четким разделением ответственности:
-
-
-
-1\. \*\*Прием данных\*\* — FastAPI endpoints + RabbitMQ producer/consumer
-
-2\. \*\*Оперативное хранение\*\* — PostgreSQL с pgbouncer для буферизации  
-
-3\. \*\*ETL/трансформация\*\* — Airflow DAGs для очистки и валидации
-
-4\. \*\*Аналитика\*\* — ClickHouse Data Mart + Grafana дашборды
+Система построена по принципу **многослойной архитектуры** (Data Lakehouse pattern) с четким разделением ответственности:
 
 
 
-\*\*Преимущества декомпозиции:\*\*
+1. **Прием данных** — FastAPI endpoints + RabbitMQ producer/consumer
 
-\- Изоляция отказов между слоями
+2. **Оперативное хранение** — PostgreSQL с pgbouncer для буферизации  
 
-\- Независимое масштабирование (FastAPI ≠ Airflow ≠ ClickHouse)
+3. **ETL/трансформация** — Airflow DAGs для очистки и валидации
 
-\- Гибкость при добавлении новых источников данных
+4. **Аналитика** — ClickHouse Data Mart + Grafana дашборды
 
 
 
-\### Обзор существующих решений
+**Преимущества декомпозиции:**
+
+- Изоляция отказов между слоями
+
+- Независимое масштабирование (FastAPI ≠ Airflow ≠ ClickHouse)
+
+- Гибкость при добавлении новых источников данных
+
+
+
+### Обзор существующих решений
 
 
 
@@ -236,95 +236,95 @@ http://localhost:3000/dashboards
 
 |--------|-------------------|--------------|----------------|
 
-| \*\*Потоковый буфер\*\* | \*\*RabbitMQ + HAProxy\*\* | \*\*Kafka\*\* — тяжелый для Docker (~2GB+), сложная настройка Zookeeper<br>\*\*NATS\*\* — нет долговременного хранения<br>\*\*Redis Streams\*\* — не кластеризуется надежно | \*\*RabbitMQ\*\* идеален для Python-проекта: официальные Python клиенты (`pika`, `aio-pika`), простая кластеризация через HAProxy, встроенный UI, надежное хранение сообщений до 7 дней. Docker образ ~200MB против 1GB+ у Kafka. |
+| **Потоковый буфер** | **RabbitMQ + HAProxy** | **Kafka** — тяжелый для Docker (~2GB+), сложная настройка Zookeeper<br>**NATS** — нет долговременного хранения<br>**Redis Streams** — не кластеризуется надежно | **RabbitMQ** идеален для Python-проекта: официальные Python клиенты (`pika`, `aio-pika`), простая кластеризация через HAProxy, встроенный UI, надежное хранение сообщений до 7 дней. Docker образ ~200MB против 1GB+ у Kafka. |
 
-| \*\*Оперативное хранилище\*\* | \*\*PostgreSQL + pgbouncer\*\* | \*\*Cassandra\*\* — NoSQL, широкие столбцы, сложная модель данных (нужно проектировать partition keys). Для clickstream нужна строгая схема + SQL для отладки<br>\*\*MongoDB\*\* — document store, нет нативной поддержки time-series, ACID только с 4.0+, слабые агрегации<br>\*\*Redis\*\* — in-memory, теряет данные при рестарте, не для аналитики<br>\*\*TimescaleDB\*\* — это надстройка над Postgres :) | \*\*PostgreSQL\*\* выигрывает по \*\*простоте + мощности\*\*:<br>• \*\*JSONB\*\* для гибкого payload + \*\*строгая схема\*\* для обязательных полей<br>• \*\*ACID\*\* транзакции (валидация + запись атомарны)<br>• \*\*Все знают SQL\*\* — разработчики/аналитики/DevOps<br>• \*\*Индексы по времени/сессии/userId\*\* — быстрый SELECT для отладки<br>• \*\*pgbouncer\*\* масштабирует до 10K+ соединений<br>• Docker образ 400MB с готовыми индексами |
+| **Оперативное хранилище** | **PostgreSQL + pgbouncer** | **Cassandra** — NoSQL, широкие столбцы, сложная модель данных (нужно проектировать partition keys). Для clickstream нужна строгая схема + SQL для отладки<br>**MongoDB** — document store, нет нативной поддержки time-series, ACID только с 4.0+, слабые агрегации<br>**Redis** — in-memory, теряет данные при рестарте, не для аналитики<br>**TimescaleDB** — это надстройка над Postgres :) | **PostgreSQL** выигрывает по **простоте + мощности**:<br>• **JSONB** для гибкого payload + **строгая схема** для обязательных полей<br>• **ACID** транзакции (валидация + запись атомарны)<br>• **Все знают SQL** — разработчики/аналитики/DevOps<br>• **Индексы по времени/сессии/userId** — быстрый SELECT для отладки<br>• **pgbouncer** масштабирует до 10K+ соединений<br>• Docker образ 400MB с готовыми индексами |
 
-| \*\*ETL оркестрация\*\* | \*\*Apache Airflow\*\* | \*\*Prefect\*\* — молодой проект<br>\*\*Dagster\*\* — сложнее для простых ETL<br>\*\*Mage\*\* — SaaS зависимость | \*\*Airflow\*\* — 10+ лет разработки, 1000+ готовых операторов (PostgresOperator, ClickHouseOperator), визуальный DAG UI, Python код как конфигурация. Бесшовная интеграция с твоим Python стеком. |
+| **ETL оркестрация** | **Apache Airflow** | **Prefect** — молодой проект<br>**Dagster** — сложнее для простых ETL<br>**Mage** — SaaS зависимость | **Airflow** — 10+ лет разработки, 1000+ готовых операторов (PostgresOperator, ClickHouseOperator), визуальный DAG UI, Python код как конфигурация. Бесшовная интеграция с твоим Python стеком. |
 
-| \*\*Аналитическое хранилище\*\* | \*\*ClickHouse\*\* | \*\*TimescaleDB\*\* — медленнее на агрегациях<br>\*\*Pinot\*\* — сложная архитектура<br>\*\*BigQuery\*\* — vendor-lock | \*\*ClickHouse\*\* — мировой рекордсмен по SELECT скорости (60M строк/сек), columnar compression 10:1, бесплатный self-hosted, SQL совместимость. Для clickstream агрегаций по сессиям/пользователям — вне конкуренции. |
+| **Аналитическое хранилище** | **ClickHouse** | **TimescaleDB** — медленнее на агрегациях<br>**Pinot** — сложная архитектура<br>**BigQuery** — vendor-lock | **ClickHouse** — мировой рекордсмен по SELECT скорости (60M строк/сек), columnar compression 10:1, бесплатный self-hosted, SQL совместимость. Для clickstream агрегаций по сессиям/пользователям — вне конкуренции. |
 
-| \*\*Мониторинг\*\* | \*\*Prometheus + Grafana\*\* | \*\*VictoriaMetrics\*\* — меньше экосистемы<br>\*\*Loki\*\* — только логи | \*\*Prometheus/Grafana\*\* — готовые экспортеры для FastAPI, Postgres, RabbitMQ, ClickHouse, Airflow. 1000+ готовых дашбордов. Docker образы <100MB. Стандарт индустрии. |
-
-
-
-\### Описание стека технологий
-
-\*\*Сбор данных:\*\*
-
-\- \*\*FastAPI\*\* — асинхронный REST API (tracker), высокая пропускная способность
-
-\- \*\*RabbitMQ producer/consumer\*\* — асинхронная очередь событий
-
-\- \*\*event-generator\*\* — генератор нагрузки (CSV/HTTP/RabbitMQ)
+| **Мониторинг** | **Prometheus + Grafana** | **VictoriaMetrics** — меньше экосистемы<br>**Loki** — только логи | **Prometheus/Grafana** — готовые экспортеры для FastAPI, Postgres, RabbitMQ, ClickHouse, Airflow. 1000+ готовых дашбордов. Docker образы <100MB. Стандарт индустрии. |
 
 
 
-\*\*Хранение и обработка:\*\*
+### Описание стека технологий
 
-\- \*\*PostgreSQL\*\* — raw события с временными метками (TimescaleDB-ready)
+**Сбор данных:**
 
-\- \*\*pgbouncer\*\* — пул соединений для масштабирования FastAPI
+- **FastAPI** — асинхронный REST API (tracker), высокая пропускная способность
 
-\- \*\*Airflow DAGs\*\* — валидация → дедупликация → агрегация в ClickHouse
+- **RabbitMQ producer/consumer** — асинхронная очередь событий
 
-
-
-\*\*Аналитика и мониторинг:\*\*
-
-\- \*\*ClickHouse\*\* — агрегационные запросы по сессиям/пользователям
-
-\- \*\*Prometheus\*\* — метрики всех сервисов (RPS, latency, ошибки)
-
-\- \*\*Grafana\*\* — дашборды конверсий + технический мониторинг
+- **event-generator** — генератор нагрузки (CSV/HTTP/RabbitMQ)
 
 
 
+**Хранение и обработка:**
+
+- **PostgreSQL** — raw события с временными метками (TimescaleDB-ready)
+
+- **pgbouncer** — пул соединений для масштабирования FastAPI
+
+- **Airflow DAGs** — валидация → дедупликация → агрегация в ClickHouse
 
 
-\## Проектирование
 
-\### Архитектура приложения
+**Аналитика и мониторинг:**
 
-\*\*Потребление по контейнерам:\*\*
+- **ClickHouse** — агрегационные запросы по сессиям/пользователям
+
+- **Prometheus** — метрики всех сервисов (RPS, latency, ошибки)
+
+- **Grafana** — дашборды конверсий + технический мониторинг
+
+
+
+
+
+## Проектирование
+
+### Архитектура приложения
+
+**Потребление по контейнерам:**
 
 | Контейнер | CPU | RAM | Примечания |
 
 |-----------|-----|-----|------------|
 
-| \*\*airflow\*\* | \*\*108.8%\*\* | \*\*1.52GB\*\* | ETL задачи активны |
+| **airflow** | **108.8%** | **1.52GB** | ETL задачи активны |
 
-| \*\*postgres-master\*\* | 27.88% | 439.9MB | Репликация |
+| **postgres-master** | 27.88% | 439.9MB | Репликация |
 
-| \*\*pgbouncer\*\* | \*\*28.11%\*\* | 4.4MB | Высокая нагрузка |
+| **pgbouncer** | **28.11%** | 4.4MB | Высокая нагрузка |
 
-| \*\*postgres-replica\*\* | 14.08% | 370.4MB | Реплика |
+| **postgres-replica** | 14.08% | 370.4MB | Реплика |
 
-| \*\*clickhouse\*\* | 0.84% | \*\*346.2MB\*\* | Оптимизирован |
+| **clickhouse** | 0.84% | **346.2MB** | Оптимизирован |
 
-| \*\*rabbitmq1\*\* | 0.36% | 174.1MB | Кластер н1 |
+| **rabbitmq1** | 0.36% | 174.1MB | Кластер н1 |
 
-| \*\*rabbitmq2\*\* | 14.76% | 209MB | Кластер н2 |
+| **rabbitmq2** | 14.76% | 209MB | Кластер н2 |
 
-| \*\*rabbitmq3\*\* | 0.3% | 138.6MB | Кластер н3 |
+| **rabbitmq3** | 0.3% | 138.6MB | Кластер н3 |
 
-| \*\*haproxy\*\* | 6.87% | 12.84MB | Балансировка |
+| **haproxy** | 6.87% | 12.84MB | Балансировка |
 
-| \*\*grafana\*\* | 0.46% | 102.7MB | Дашборды |
+| **grafana** | 0.46% | 102.7MB | Дашборды |
 
-| \*\*prometheus\*\* | 0% | 30.08MB | Мониторинг |
+| **prometheus** | 0% | 30.08MB | Мониторинг |
 
-| \*\*tracker (FastAPI)\*\* | 0.14% | 33.26MB | Готов к нагрузке |
+| **tracker (FastAPI)** | 0.14% | 33.26MB | Готов к нагрузке |
 
-| \*\*api (FastAPI)\*\* | 15.91% | 36.78MB | API сервер |
+| **api (FastAPI)** | 15.91% | 36.78MB | API сервер |
 
-| \*\*generator\*\* | 1.04% | 222MB | Генератор нагрузки |
+| **generator** | 1.04% | 222MB | Генератор нагрузки |
 
-| \*\*consumer/producer\*\* | ~40% | ~28MB | RabbitMQ обработка |
+| **consumer/producer** | ~40% | ~28MB | RabbitMQ обработка |
 
 
 
-\*\*Текущая нагрузка (~1000 событий/сек):\*\*
+**Текущая нагрузка (~1000 событий/сек):**
 
 CPU: 32.5% от 8 cores = 2.6 cores
 
@@ -334,7 +334,7 @@ RAM: 31.7% от 11.41GB = 3.62GB
 
 
 
-\*\*Прогноз масштабирования:\*\*
+**Прогноз масштабирования:**
 
 
 
@@ -342,37 +342,37 @@ RAM: 31.7% от 11.41GB = 3.62GB
 
 |----------|-----|-----|--------------|
 
-| \*\*1000 RPS\*\* | \*\*2-3 cores\*\* | \*\*4GB\*\* |  Текущая конфигурация |
+| **1000 RPS** | **2-3 cores** | **4GB** |  Текущая конфигурация |
 
-| \*\*5000 RPS\*\* | \*\*6-7 cores\*\* | \*\*7-8GB\*\* | + 1 ядро Postgres/Airflow |
+| **5000 RPS** | **6-7 cores** | **7-8GB** | + 1 ядро Postgres/Airflow |
 
-| \*\*10K+ RPS\*\* | \*\*12+ cores\*\* | \*\*12+GB\*\* | + Kubernetes + replicas |
-
-
-
-\*\*Узкие места:\*\*
-
-\- Airflow (108% CPU) — добавить worker'ы
-
-\- pgbouncer (28% CPU) — увеличить pool\_size
+| **10K+ RPS** | **12+ cores** | **12+GB** | + Kubernetes + replicas |
 
 
 
-\*\*Минимальные требования для продакшена:\*\*
+**Узкие места:**
 
-\- CPU: 8 cores @ 2.5GHz+
+- Airflow (108% CPU) — добавить worker'ы
 
-\- RAM: 16GB
-
-\- Disk: 100GB SSD (ClickHouse compression 10:1)
+- pgbouncer (28% CPU) — увеличить pool\_size
 
 
 
-\### UML диаграммы
+**Минимальные требования для продакшена:**
+
+- CPU: 8 cores @ 2.5GHz+
+
+- RAM: 16GB
+
+- Disk: 100GB SSD (ClickHouse compression 10:1)
 
 
 
-\*\*1. Use Case диаграмма\*\*
+### UML диаграммы
+
+
+
+**1. Use Case диаграмма**
 
 ```mermaid
 
@@ -416,7 +416,7 @@ graph LR
 
 ```
 
-\*\*2. Sequence диаграмма
+**2. Sequence диаграмма
 
 ```mermaid
 
@@ -460,7 +460,7 @@ sequenceDiagram
 
 ```
 
-\*\*3. Блок-схема ETL процесса
+**3. Блок-схема ETL процесса
 
 ```mermaid
 
@@ -524,11 +524,11 @@ flowchart TD
 
 ```
 
-\### Схемы баз данных (DBML)
+### Схемы баз данных (DBML)
 
 
 
-\*\*1. PostgreSQL (raw\_events):
+**1. PostgreSQL (raw\_events):
 
 ```mermaid
 
@@ -578,7 +578,7 @@ erDiagram
 
 ```
 
-\*\*2. ClickHouse (events\_cleansed):
+**2. ClickHouse (events\_cleansed):
 
 ```mermaid
 
@@ -610,13 +610,13 @@ erDiagram
 
 ```
 
-\### Описание API
+### Описание API
 
-\*\*FastAPI REST\*\* на порту \*\*8000\*\*: \[http://localhost:8000](http://localhost:8000)
+**FastAPI REST** на порту **8000**: \[http://localhost:8000](http://localhost:8000)
 
-\#### Основной endpoint
+#### Основной endpoint
 
-\*\*`POST /events`\*\* — прием батча событий
+**`POST /events`** — прием батча событий
 
 
 
@@ -648,7 +648,7 @@ erDiagram
 
 | `source` | `string` | | Источник | `http` (auto) |
 
-\####  Пример запроса
+####  Пример запроса
 
 ```bash
 
@@ -698,23 +698,23 @@ curl http://localhost:8000/
 
 ```
 
-\### Тестирование
+### Тестирование
 
-\####  Стратегия тестирования
+####  Стратегия тестирования
 
 
 
-\- \*\*Unit-тесты\*\* — покрытие всех Python модулей (`test\_\*.py`, в папке tests)
+- **Unit-тесты** — покрытие всех Python модулей (`test\_*.py`, в папке tests)
 
-\- \*\*Integration-тесты\*\* — проверка полного стека (API → Postgres → Airflow → ClickHouse, в папке tests)  
+- **Integration-тесты** — проверка полного стека (API → Postgres → Airflow → ClickHouse, в папке tests)  
 
-\- \*\*API-тесты\*\* — Postman коллекция с реальными запросами (в папке postman)
+- **API-тесты** — Postman коллекция с реальными запросами (в папке postman)
 
 data/events.csv — 200K реалистичных клик-событий для тестирования Airflow DAG загрузки.
 
-\####  Покрытие кода (pytest-cov)
+####  Покрытие кода (pytest-cov)
 
-\*\*Общее покрытие: 78% (203/258 строк)\*\*
+**Общее покрытие: 78% (203/258 строк)**
 
 
 
@@ -722,35 +722,35 @@ data/events.csv — 200K реалистичных клик-событий для
 
 |--------|-------|------------|----------|----------|
 
-| `api/app.py` | 39 | 0 | 4/5 | \*\*98%\*\*  |
+| `api/app.py` | 39 | 0 | 4/5 | **98%**  |
 
-| `consumer/rabbit\_consumer.py` | 50 | 18 | 6/8 | \*\*64%\*\*  |
+| `consumer/rabbit\_consumer.py` | 50 | 18 | 6/8 | **64%**  |
 
-| `event\_generator/main.py` | 117 | 32 | 28/29 | \*\*73%\*\* |
+| `event\_generator/main.py` | 117 | 32 | 28/29 | **73%** |
 
-| `producer/rabbit\_producer.py` | 41 | 4 | 6/7 | \*\*89%\*\*  |
+| `producer/rabbit\_producer.py` | 41 | 4 | 6/7 | **89%**  |
 
-| `tracker/app.py` | 11 | 1 | 2/3 | \*\*85%\*\*  |
+| `tracker/app.py` | 11 | 1 | 2/3 | **85%**  |
 
-| \*\*Итого\*\* | \*\*258\*\* | \*\*55\*\* | \*\*46/62\*\* | \*\*78%\*\* |
-
-
-
-\*\*Результаты:\*\*
-
-\- Юнит-тесты: 100% PASSED
-
-\- HTML отчет: result/html/index.html  
-
-\- XML отчет: result/coverage.xml
+| **Итого** | **258** | **55** | **46/62** | **78%** |
 
 
 
-\#### Интеграционное тестирование
+**Результаты:**
+
+- Юнит-тесты: 100% PASSED
+
+- HTML отчет: result/html/index.html  
+
+- XML отчет: result/coverage.xml
 
 
 
-\*\*Тест `tests/test\_integration\_all\_systems.py` — полный стек clickstream\*\*
+#### Интеграционное тестирование
+
+
+
+**Тест `tests/test\_integration\_all\_systems.py` — полный стек clickstream**
 
 
 
@@ -758,39 +758,39 @@ data/events.csv — 200K реалистичных клик-событий для
 
 |-----------|----------|------|--------------|--------|
 
-| \*\*PostgreSQL\*\* | TCP | 5432 | Connection OK | ✅ |
+| **PostgreSQL** | TCP | 5432 | Connection OK | ✅ |
 
-| \*\*Airflow\*\* | HTTP | 8080 | `GET /` → 200 | ✅ |
+| **Airflow** | HTTP | 8080 | `GET /` → 200 | ✅ |
 
-| \*\*ClickHouse\*\* | HTTP | 8123 | `GET /ping` → 200 | ✅ |
+| **ClickHouse** | HTTP | 8123 | `GET /ping` → 200 | ✅ |
 
-| \*\*Prometheus\*\* | HTTP | 9090 | `GET /-/ready` → 200 | ✅ |
+| **Prometheus** | HTTP | 9090 | `GET /-/ready` → 200 | ✅ |
 
-| \*\*Grafana\*\* | HTTP | 3000 | `GET /api/health` → 200 | ✅ |
+| **Grafana** | HTTP | 3000 | `GET /api/health` → 200 | ✅ |
 
-\####  Детальный отчет
+####  Детальный отчет
 
-\- Юнит-тесты: 100% PASSED
+- Юнит-тесты: 100% PASSED
 
-\- HTML отчет: result/html/index.html  
+- HTML отчет: result/html/index.html  
 
-\- XML отчет: result/coverage.xml  
+- XML отчет: result/coverage.xml  
 
 
 
 Интеграционные тесты: 100% PASSED  
 
-\- JUnit: result/integration/junit.xml
+- JUnit: result/integration/junit.xml
 
-\- HTML: result/integration/report.html
-
-
-
-\#### 🔗 Postman коллекция — примеры запросов
+- HTML: result/integration/report.html
 
 
 
-\*\* Файл:\*\* `postman/collection.json`
+#### 🔗 Postman коллекция — примеры запросов
+
+
+
+** Файл:** `postman/collection.json`
 
 
 
@@ -798,19 +798,19 @@ data/events.csv — 200K реалистичных клик-событий для
 
 |---|----------|-------|----------|----------------|
 
-| \*\*1\*\* | \*\*Health Check API\*\* | `GET` | `http://localhost:8000/` | `{"status": "ok", "message": "API is running"}` |
+| **1** | **Health Check API** | `GET` | `http://localhost:8000/` | `{"status": "ok", "message": "API is running"}` |
 
-| \*\*2\*\* | \*\*Send Events (Single)\*\* | `POST` | `http://localhost:8000/events` | `{"status": "ok", "count": 1}` |
+| **2** | **Send Events (Single)** | `POST` | `http://localhost:8000/events` | `{"status": "ok", "count": 1}` |
 
-| \*\*3\*\* | \*\*Get HTML Page\*\* | `GET` | `http://localhost:8081/page` | `200 OK` (HTML страница) |
-
-
-
-\####  Детализация запросов
+| **3** | **Get HTML Page** | `GET` | `http://localhost:8081/page` | `200 OK` (HTML страница) |
 
 
 
-\*\*1. Health Check\*\*
+####  Детализация запросов
+
+
+
+**1. Health Check**
 
 ```bash
 
@@ -832,7 +832,7 @@ curl http://localhost:8000/
 
 ```
 
-\*\*2. Send Events\*\*
+**2. Send Events**
 
 ```bash
 
@@ -894,7 +894,7 @@ curl -X POST "http://localhost:8000/events" \\
 
 ```
 
-\*\*3. Get HTML Page\*\*
+**3. Get HTML Page**
 
 ```bash
 
@@ -908,53 +908,53 @@ curl http://localhost:8081/page
 
 
 
-\## Заключение
+## Заключение
 
 
 
-\### Краткие выводы
+### Краткие выводы
 
-Разработана \*\*полностью рабочая clickstream-аналитическая платформа\*\* на Python/FastAPI стеке. Система успешно реализует полный цикл: \*\*прием событий → PostgreSQL → Airflow ETL → ClickHouse → Grafana дашборды\*\*.  
+Разработана **полностью рабочая clickstream-аналитическая платформа** на Python/FastAPI стеке. Система успешно реализует полный цикл: **прием событий → PostgreSQL → Airflow ETL → ClickHouse → Grafana дашборды**.  
 
-\*\*Эффективность по нагрузке:\*\*
+**Эффективность по нагрузке:**
 
 | Нагрузка | Ресурсы | Статус | Ограничения |
 
 |----------|---------|--------|-------------|
 
-| \*\*1000 RPS\*\* | 33% CPU, 3.6GB RAM |  \*\*Оптимально\*\* | Текущая конфигурация |
+| **1000 RPS** | 33% CPU, 3.6GB RAM |  **Оптимально** | Текущая конфигурация |
 
-| \*\*5000 RPS\*\* | ~70% CPU/RAM |  \*\*Возможно\*\* | Airflow bottleneck |
+| **5000 RPS** | ~70% CPU/RAM |  **Возможно** | Airflow bottleneck |
 
-| \*\*10K+ RPS\*\* | 100%+ |  \*\*Kubernetes\*\* | Требуется масштабирование |  
-
-
-
-\*\*Достигнутые цели:\*\*
-
-\- Полный пайплайн данных с валидацией/дедупликацией
-
-\- \*\*78% покрытие\*\* unit-тестами + 100% integration
-
-\- \*\*Реальные метрики\*\* в Grafana (конверсии, сессии, поведение)
+| **10K+ RPS** | 100%+ |  **Kubernetes** | Требуется масштабирование |  
 
 
 
-\### Результаты
+**Достигнутые цели:**
+
+- Полный пайплайн данных с валидацией/дедупликацией
+
+- **78% покрытие** unit-тестами + 100% integration
+
+- **Реальные метрики** в Grafana (конверсии, сессии, поведение)
+
+
+
+### Результаты
 
 Дашборды Grafana с метриками:
 
-\- Сессии по времени/устройствам
+- Сессии по времени/устройствам
 
-\- Конверсии кликов → покупки
+- Конверсии кликов → покупки
 
-\- Heatmaps кликов по страницам
+- Heatmaps кликов по страницам
 
-\- Retention пользователей
+- Retention пользователей
 
-\- Технический мониторинг (RPS, latency)  
+- Технический мониторинг (RPS, latency)  
 
-\*\*✅ 100% задач выполнено:\*\*
+**✅ 100% задач выполнено:**
 
 
 
@@ -962,21 +962,21 @@ curl http://localhost:8081/page
 
 |--------|-----------|---------|
 
-| \*\*REST API\*\* | FastAPI endpoints `/events` | ✅ 400 RPS |
+| **REST API** | FastAPI endpoints `/events` | ✅ 400 RPS |
 
-| \*\*ETL конвейер\*\* | Airflow DAG каждые 10 сек | ✅ 4000 событий/батч |
+| **ETL конвейер** | Airflow DAG каждые 10 сек | ✅ 4000 событий/батч |
 
-| \*\*Мониторинг\*\* | 5+ дашбордов Grafana | ✅ RPS, latency, ошибки в реальном времени |
+| **Мониторинг** | 5+ дашбордов Grafana | ✅ RPS, latency, ошибки в реальном времени |
 
-| \*\*Тестирование\*\* | pytest-cov 78% + integration | ✅ 30+ unit тестов, полный стек OK |
+| **Тестирование** | pytest-cov 78% + integration | ✅ 30+ unit тестов, полный стек OK |
 
-| \*\*Производительность\*\* | 33% CPU при 400 RPS | ✅ Резерв 67% ресурсов |
+| **Производительность** | 33% CPU при 400 RPS | ✅ Резерв 67% ресурсов |
 
 
 
-\### Перспективы развития
+### Перспективы развития
 
-\*\*🚀 Production-ready улучшения:\*\*
+**🚀 Production-ready улучшения:**
 
 
 
@@ -984,29 +984,29 @@ curl http://localhost:8081/page
 
 |--------|----------|--------|
 
-| \*\*Безопасность\*\* | JWT авторизация, RBAC, secrets в Vault |  Защита данных |
+| **Безопасность** | JWT авторизация, RBAC, secrets в Vault |  Защита данных |
 
-| \*\*Масштабирование\*\* | Kubernetes + Horizontal Pod Autoscaler |  10K+ RPS |
+| **Масштабирование** | Kubernetes + Horizontal Pod Autoscaler |  10K+ RPS |
 
-| \*\*Мониторинг\*\* | Loki для логов, Alertmanager | 📈 Полный observability |
+| **Мониторинг** | Loki для логов, Alertmanager | 📈 Полный observability |
 
-| \*\*ETL\*\* | Airflow → Dagster/ Prefect | быстрее |
+| **ETL** | Airflow → Dagster/ Prefect | быстрее |
 
-| \*\*Хранилище\*\* | ClickHouse кластер 3+ ноды | Терабайты данных |
-
-
-
-\*\* Ключевые оптимизации:\*\*
-
-1\. \*\*pgbouncer pool\_size=1000\*\* → 10K одновременных соединений
-
-2\. \*\*FastAPI + UVloop\*\* → 2x пропускная способность
-
-3\. \*\*ClickHouse materialized views\*\* → real-time аналитика
+| **Хранилище** | ClickHouse кластер 3+ ноды | Терабайты данных |
 
 
 
-\*\* Прототип полностью готов к production при минимальных доработках!\*\*
+** Ключевые оптимизации:**
+
+1. **pgbouncer pool\_size=1000** → 10K одновременных соединений
+
+2. **FastAPI + UVloop** → 2x пропускная способность
+
+3. **ClickHouse materialized views** → real-time аналитика
+
+
+
+** Прототип полностью готов к production при минимальных доработках!**
 
 
 
