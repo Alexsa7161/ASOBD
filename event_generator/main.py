@@ -28,7 +28,7 @@ HTTP_SLEEP = HTTP_BATCH_SIZE / HTTP_RATE   # 0.25 sec
 
 DB_HOST = "postgres"
 DB_PORT = 5432
-DB_NAME = "clickstream"
+DB_NAME = "clickstream_write"
 DB_USER = "clickstream"
 DB_PASSWORD = "clickstream"
 

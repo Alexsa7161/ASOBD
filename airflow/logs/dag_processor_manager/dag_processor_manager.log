@@ -13615,3 +13615,1463 @@ File Path                                        PID    Runtime      # DAGs    #
 -----------------------------------------------  -----  ---------  --------  ----------  --------------  -------------------
 /opt/airflow/dags/etl_postgres_to_clickhouse.py                           1           0  0.43s           2026-01-08T12:17:55
 ================================================================================
+[2026-01-08T12:18:27.173+0000] {manager.py:878} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                                        PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+-----------------------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/etl_postgres_to_clickhouse.py                           1           0  0.40s           2026-01-08T12:18:25
+================================================================================
+[2026-01-08T12:18:55.963+0000] {manager.py:878} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                                          PID  Runtime      # DAGs    # Errors  Last Runtime    Last Run
+-----------------------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/etl_postgres_to_clickhouse.py   2961  0.01s             1           0  0.40s           2026-01-08T12:18:25
+================================================================================
+[2026-01-08T12:19:24.791+0000] {manager.py:878} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                                        PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+-----------------------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/etl_postgres_to_clickhouse.py                           1           0  0.37s           2026-01-08T12:18:56
+================================================================================
+[2026-01-08T12:19:53.886+0000] {manager.py:878} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                                        PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+-----------------------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/etl_postgres_to_clickhouse.py                           1           0  0.37s           2026-01-08T12:19:27
+================================================================================
+[2026-01-08T12:20:22.759+0000] {manager.py:878} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                                        PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+-----------------------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/etl_postgres_to_clickhouse.py                           1           0  0.46s           2026-01-08T12:19:58
+================================================================================
+[2026-01-08T12:20:51.905+0000] {manager.py:878} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                                        PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+-----------------------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/etl_postgres_to_clickhouse.py                           1           0  0.41s           2026-01-08T12:20:29
+================================================================================
+[2026-01-08T12:21:20.708+0000] {manager.py:878} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                                        PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+-----------------------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/etl_postgres_to_clickhouse.py                           1           0  0.35s           2026-01-08T12:21:00
+================================================================================
+[2026-01-08T12:21:49.808+0000] {manager.py:878} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                                        PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+-----------------------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/etl_postgres_to_clickhouse.py                           1           0  0.54s           2026-01-08T12:21:31
+================================================================================
+[2026-01-08T12:22:18.819+0000] {manager.py:878} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                                        PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+-----------------------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/etl_postgres_to_clickhouse.py                           1           0  0.39s           2026-01-08T12:22:02
+================================================================================
+[2026-01-08T12:22:47.767+0000] {manager.py:878} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                                        PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+-----------------------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/etl_postgres_to_clickhouse.py                           1           0  0.36s           2026-01-08T12:22:33
+================================================================================
+[2026-01-08T12:22:52.968+0000] {manager.py:737} INFO - Searching for files in /opt/airflow/dags
+[2026-01-08T12:22:52.990+0000] {manager.py:740} INFO - There are 1 files in /opt/airflow/dags
+[2026-01-08T12:23:16.739+0000] {manager.py:878} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                                        PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+-----------------------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/etl_postgres_to_clickhouse.py                           1           0  0.39s           2026-01-08T12:23:04
+================================================================================
+[2026-01-08T12:23:45.692+0000] {manager.py:878} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                                        PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+-----------------------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/etl_postgres_to_clickhouse.py                           1           0  0.39s           2026-01-08T12:23:35
+================================================================================
+[2026-01-08T12:24:14.656+0000] {manager.py:878} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                                        PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+-----------------------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/etl_postgres_to_clickhouse.py                           1           0  0.39s           2026-01-08T12:24:05
+================================================================================
+[2026-01-08T12:24:43.618+0000] {manager.py:878} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                                        PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+-----------------------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/etl_postgres_to_clickhouse.py                           1           0  0.39s           2026-01-08T12:24:36
+================================================================================
+[2026-01-08T12:25:12.589+0000] {manager.py:878} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                                        PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+-----------------------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/etl_postgres_to_clickhouse.py                           1           0  0.39s           2026-01-08T12:25:07
+================================================================================
+[2026-01-08T12:25:41.516+0000] {manager.py:878} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                                        PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+-----------------------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/etl_postgres_to_clickhouse.py                           1           0  0.36s           2026-01-08T12:25:38
+================================================================================
+[2026-01-08T12:26:10.505+0000] {manager.py:878} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                                        PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+-----------------------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/etl_postgres_to_clickhouse.py                           1           0  0.49s           2026-01-08T12:26:09
+================================================================================
+[2026-01-08T12:26:39.285+0000] {manager.py:878} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                                        PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+-----------------------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/etl_postgres_to_clickhouse.py                           1           0  0.49s           2026-01-08T12:26:09
+================================================================================
+[2026-01-08T12:27:08.347+0000] {manager.py:878} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                                        PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+-----------------------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/etl_postgres_to_clickhouse.py                           1           0  0.38s           2026-01-08T12:26:40
+================================================================================
+[2026-01-08T12:27:37.159+0000] {manager.py:878} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                                        PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+-----------------------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/etl_postgres_to_clickhouse.py                           1           0  0.63s           2026-01-08T12:27:12
+================================================================================
+[2026-01-08T12:27:53.289+0000] {manager.py:737} INFO - Searching for files in /opt/airflow/dags
+[2026-01-08T12:27:53.318+0000] {manager.py:740} INFO - There are 1 files in /opt/airflow/dags
+[2026-01-08T12:28:06.004+0000] {manager.py:878} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                                        PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+-----------------------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/etl_postgres_to_clickhouse.py                           1           0  0.47s           2026-01-08T12:27:42
+================================================================================
+[2026-01-08T12:29:18.953+0000] {manager.py:470} INFO - Processing files using up to 2 processes at a time 
+[2026-01-08T12:29:18.955+0000] {manager.py:471} INFO - Process each file at most once every 30 seconds
+[2026-01-08T12:29:18.956+0000] {manager.py:472} INFO - Checking for new files in /opt/airflow/dags every 300 seconds
+[2026-01-08T12:29:18.961+0000] {manager.py:737} INFO - Searching for files in /opt/airflow/dags
+[2026-01-08T12:29:19.009+0000] {manager.py:740} INFO - There are 1 files in /opt/airflow/dags
+[2026-01-08T12:29:19.237+0000] {manager.py:878} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                                          PID  Runtime      # DAGs    # Errors  Last Runtime    Last Run
+-----------------------------------------------  -----  ---------  --------  ----------  --------------  ----------
+/opt/airflow/dags/etl_postgres_to_clickhouse.py    190  0.07s             0           0
+================================================================================
+[2026-01-08T12:29:47.957+0000] {manager.py:878} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                                        PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+-----------------------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/etl_postgres_to_clickhouse.py                           1           0  1.04s           2026-01-08T12:29:20
+================================================================================
+[2026-01-08T12:30:21.654+0000] {manager.py:452} INFO - Exiting gracefully upon receiving signal 15
+[2026-01-08T12:36:59.924+0000] {manager.py:470} INFO - Processing files using up to 2 processes at a time 
+[2026-01-08T12:36:59.926+0000] {manager.py:471} INFO - Process each file at most once every 30 seconds
+[2026-01-08T12:36:59.928+0000] {manager.py:472} INFO - Checking for new files in /opt/airflow/dags every 300 seconds
+[2026-01-08T12:36:59.929+0000] {manager.py:737} INFO - Searching for files in /opt/airflow/dags
+[2026-01-08T12:36:59.974+0000] {manager.py:740} INFO - There are 1 files in /opt/airflow/dags
+[2026-01-08T12:37:00.155+0000] {manager.py:878} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                                          PID  Runtime      # DAGs    # Errors  Last Runtime    Last Run
+-----------------------------------------------  -----  ---------  --------  ----------  --------------  ----------
+/opt/airflow/dags/etl_postgres_to_clickhouse.py    198  0.08s             0           0
+================================================================================
+[2026-01-08T12:37:29.024+0000] {manager.py:878} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                                        PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+-----------------------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/etl_postgres_to_clickhouse.py                           1           0  0.76s           2026-01-08T12:37:00
+================================================================================
+[2026-01-08T12:37:58.583+0000] {manager.py:878} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                                        PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+-----------------------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/etl_postgres_to_clickhouse.py                           1           0  0.63s           2026-01-08T12:37:31
+================================================================================
+[2026-01-08T12:39:30.123+0000] {manager.py:470} INFO - Processing files using up to 2 processes at a time 
+[2026-01-08T12:39:30.125+0000] {manager.py:471} INFO - Process each file at most once every 30 seconds
+[2026-01-08T12:39:30.128+0000] {manager.py:472} INFO - Checking for new files in /opt/airflow/dags every 300 seconds
+[2026-01-08T12:39:30.129+0000] {manager.py:737} INFO - Searching for files in /opt/airflow/dags
+[2026-01-08T12:39:30.177+0000] {manager.py:740} INFO - There are 1 files in /opt/airflow/dags
+[2026-01-08T12:39:30.442+0000] {manager.py:878} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                                          PID  Runtime      # DAGs    # Errors  Last Runtime    Last Run
+-----------------------------------------------  -----  ---------  --------  ----------  --------------  ----------
+/opt/airflow/dags/etl_postgres_to_clickhouse.py    197  0.10s             0           0
+================================================================================
+[2026-01-08T12:39:59.397+0000] {manager.py:878} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                                        PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+-----------------------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/etl_postgres_to_clickhouse.py                           1           0  0.90s           2026-01-08T12:39:31
+================================================================================
+[2026-01-08T12:41:42.298+0000] {manager.py:470} INFO - Processing files using up to 2 processes at a time 
+[2026-01-08T12:41:42.300+0000] {manager.py:471} INFO - Process each file at most once every 30 seconds
+[2026-01-08T12:41:42.301+0000] {manager.py:472} INFO - Checking for new files in /opt/airflow/dags every 300 seconds
+[2026-01-08T12:41:42.303+0000] {manager.py:737} INFO - Searching for files in /opt/airflow/dags
+[2026-01-08T12:41:41.683+0000] {manager.py:740} INFO - There are 1 files in /opt/airflow/dags
+[2026-01-08T12:41:41.234+0000] {manager.py:878} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                                          PID  Runtime      # DAGs    # Errors  Last Runtime    Last Run
+-----------------------------------------------  -----  ---------  --------  ----------  --------------  ----------
+/opt/airflow/dags/etl_postgres_to_clickhouse.py    197  0.16s             0           0
+================================================================================
+[2026-01-08T13:25:54.528+0000] {manager.py:470} INFO - Processing files using up to 2 processes at a time 
+[2026-01-08T13:25:54.531+0000] {manager.py:471} INFO - Process each file at most once every 30 seconds
+[2026-01-08T13:25:54.539+0000] {manager.py:472} INFO - Checking for new files in /opt/airflow/dags every 300 seconds
+[2026-01-08T13:25:54.541+0000] {manager.py:737} INFO - Searching for files in /opt/airflow/dags
+[2026-01-08T13:25:54.579+0000] {manager.py:740} INFO - There are 1 files in /opt/airflow/dags
+[2026-01-08T13:25:54.775+0000] {manager.py:878} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                                          PID  Runtime      # DAGs    # Errors  Last Runtime    Last Run
+-----------------------------------------------  -----  ---------  --------  ----------  --------------  ----------
+/opt/airflow/dags/etl_postgres_to_clickhouse.py    197  0.08s             0           0
+================================================================================
+[2026-01-08T13:26:23.575+0000] {manager.py:878} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                                        PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+-----------------------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/etl_postgres_to_clickhouse.py                           1           0  1.03s           2026-01-08T13:25:55
+================================================================================
+[2026-01-08T13:26:29.195+0000] {manager.py:470} INFO - Processing files using up to 2 processes at a time 
+[2026-01-08T13:26:29.197+0000] {manager.py:471} INFO - Process each file at most once every 30 seconds
+[2026-01-08T13:26:29.198+0000] {manager.py:472} INFO - Checking for new files in /opt/airflow/dags every 300 seconds
+[2026-01-08T13:26:29.199+0000] {manager.py:737} INFO - Searching for files in /opt/airflow/dags
+[2026-01-08T13:26:29.226+0000] {manager.py:740} INFO - There are 1 files in /opt/airflow/dags
+[2026-01-08T13:26:29.305+0000] {manager.py:878} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                                          PID  Runtime      # DAGs    # Errors  Last Runtime    Last Run
+-----------------------------------------------  -----  ---------  --------  ----------  --------------  ----------
+/opt/airflow/dags/etl_postgres_to_clickhouse.py    253  0.02s             0           0
+================================================================================
+[2026-01-08T13:26:31.866+0000] {manager.py:452} INFO - Exiting gracefully upon receiving signal 15
+[2026-01-08T13:27:10.592+0000] {manager.py:470} INFO - Processing files using up to 2 processes at a time 
+[2026-01-08T13:27:10.594+0000] {manager.py:471} INFO - Process each file at most once every 30 seconds
+[2026-01-08T13:27:10.595+0000] {manager.py:472} INFO - Checking for new files in /opt/airflow/dags every 300 seconds
+[2026-01-08T13:27:10.597+0000] {manager.py:737} INFO - Searching for files in /opt/airflow/dags
+[2026-01-08T13:27:10.639+0000] {manager.py:740} INFO - There are 1 files in /opt/airflow/dags
+[2026-01-08T13:27:10.821+0000] {manager.py:878} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                                          PID  Runtime      # DAGs    # Errors  Last Runtime    Last Run
+-----------------------------------------------  -----  ---------  --------  ----------  --------------  ----------
+/opt/airflow/dags/etl_postgres_to_clickhouse.py    176  0.06s             0           0
+================================================================================
+[2026-01-08T13:27:27.794+0000] {manager.py:452} INFO - Exiting gracefully upon receiving signal 15
+[2026-01-08T13:27:52.358+0000] {manager.py:470} INFO - Processing files using up to 2 processes at a time 
+[2026-01-08T13:27:52.360+0000] {manager.py:471} INFO - Process each file at most once every 30 seconds
+[2026-01-08T13:27:52.362+0000] {manager.py:472} INFO - Checking for new files in /opt/airflow/dags every 300 seconds
+[2026-01-08T13:27:52.364+0000] {manager.py:737} INFO - Searching for files in /opt/airflow/dags
+[2026-01-08T13:27:52.398+0000] {manager.py:740} INFO - There are 1 files in /opt/airflow/dags
+[2026-01-08T13:27:52.541+0000] {manager.py:878} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                                          PID  Runtime      # DAGs    # Errors  Last Runtime    Last Run
+-----------------------------------------------  -----  ---------  --------  ----------  --------------  ----------
+/opt/airflow/dags/etl_postgres_to_clickhouse.py    182  0.07s             0           0
+================================================================================
+[2026-01-08T13:28:21.356+0000] {manager.py:878} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                                        PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+-----------------------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/etl_postgres_to_clickhouse.py                           1           0  0.44s           2026-01-08T13:27:52
+================================================================================
+[2026-01-08T13:28:49.976+0000] {manager.py:878} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                                        PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+-----------------------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/etl_postgres_to_clickhouse.py                           1           0  0.62s           2026-01-08T13:28:30
+================================================================================
+[2026-01-08T13:29:04.683+0000] {manager.py:452} INFO - Exiting gracefully upon receiving signal 15
+[2026-01-08T13:34:38.046+0000] {manager.py:470} INFO - Processing files using up to 2 processes at a time 
+[2026-01-08T13:34:38.047+0000] {manager.py:471} INFO - Process each file at most once every 30 seconds
+[2026-01-08T13:34:38.048+0000] {manager.py:472} INFO - Checking for new files in /opt/airflow/dags every 300 seconds
+[2026-01-08T13:34:38.049+0000] {manager.py:737} INFO - Searching for files in /opt/airflow/dags
+[2026-01-08T13:34:38.075+0000] {manager.py:740} INFO - There are 1 files in /opt/airflow/dags
+[2026-01-08T13:34:38.095+0000] {manager.py:749} ERROR - Error removing old import errors
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1910, in _execute_context
+    self.dialect.do_execute(
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 736, in do_execute
+    cursor.execute(statement, parameters)
+psycopg2.errors.UndefinedTable: relation "import_error" does not exist
+LINE 1: DELETE FROM import_error WHERE (import_error.filename NOT IN...
+                    ^
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/dag_processing/manager.py", line 745, in _refresh_dag_dir
+    DagFileProcessorManager.clear_nonexistent_import_errors(
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/api_internal/internal_api_call.py", line 115, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/session.py", line 79, in wrapper
+    return func(*args, session=session, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/dag_processing/manager.py", line 814, in clear_nonexistent_import_errors
+    session.execute(query.execution_options(synchronize_session="fetch"))
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 1717, in execute
+    result = conn._execute_20(statement, params or {}, execution_options)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1710, in _execute_20
+    return meth(self, args_10style, kwargs_10style, execution_options)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/sql/elements.py", line 334, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1577, in _execute_clauseelement
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1953, in _execute_context
+    self._handle_dbapi_exception(
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 2134, in _handle_dbapi_exception
+    util.raise_(
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/util/compat.py", line 211, in raise_
+    raise exception
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1910, in _execute_context
+    self.dialect.do_execute(
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 736, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.ProgrammingError: (psycopg2.errors.UndefinedTable) relation "import_error" does not exist
+LINE 1: DELETE FROM import_error WHERE (import_error.filename NOT IN...
+                    ^
+
+[SQL: DELETE FROM import_error WHERE (import_error.filename NOT IN (%(filename_1_1)s)) AND import_error.processor_subdir = %(processor_subdir_1)s RETURNING import_error.id]
+[parameters: {'processor_subdir_1': '/opt/airflow/dags', 'filename_1_1': '/opt/airflow/dags/etl_postgres_to_clickhouse.py'}]
+(Background on this error at: https://sqlalche.me/e/14/f405)
+[2026-01-08T13:34:58.269+0000] {manager.py:470} INFO - Processing files using up to 2 processes at a time 
+[2026-01-08T13:34:58.270+0000] {manager.py:471} INFO - Process each file at most once every 30 seconds
+[2026-01-08T13:34:58.271+0000] {manager.py:472} INFO - Checking for new files in /opt/airflow/dags every 300 seconds
+[2026-01-08T13:34:58.273+0000] {manager.py:737} INFO - Searching for files in /opt/airflow/dags
+[2026-01-08T13:34:58.296+0000] {manager.py:740} INFO - There are 1 files in /opt/airflow/dags
+[2026-01-08T13:34:58.431+0000] {manager.py:878} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                                          PID  Runtime      # DAGs    # Errors  Last Runtime    Last Run
+-----------------------------------------------  -----  ---------  --------  ----------  --------------  ----------
+/opt/airflow/dags/etl_postgres_to_clickhouse.py    183  0.06s             0           0
+================================================================================
+[2026-01-08T13:36:07.854+0000] {manager.py:470} INFO - Processing files using up to 2 processes at a time 
+[2026-01-08T13:36:07.855+0000] {manager.py:471} INFO - Process each file at most once every 30 seconds
+[2026-01-08T13:36:07.856+0000] {manager.py:472} INFO - Checking for new files in /opt/airflow/dags every 300 seconds
+[2026-01-08T13:36:07.857+0000] {manager.py:737} INFO - Searching for files in /opt/airflow/dags
+[2026-01-08T13:36:07.883+0000] {manager.py:740} INFO - There are 1 files in /opt/airflow/dags
+[2026-01-08T13:36:07.906+0000] {manager.py:749} ERROR - Error removing old import errors
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1910, in _execute_context
+    self.dialect.do_execute(
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 736, in do_execute
+    cursor.execute(statement, parameters)
+psycopg2.errors.UndefinedTable: relation "import_error" does not exist
+LINE 1: DELETE FROM import_error WHERE (import_error.filename NOT IN...
+                    ^
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/dag_processing/manager.py", line 745, in _refresh_dag_dir
+    DagFileProcessorManager.clear_nonexistent_import_errors(
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/api_internal/internal_api_call.py", line 115, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/session.py", line 79, in wrapper
+    return func(*args, session=session, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/dag_processing/manager.py", line 814, in clear_nonexistent_import_errors
+    session.execute(query.execution_options(synchronize_session="fetch"))
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 1717, in execute
+    result = conn._execute_20(statement, params or {}, execution_options)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1710, in _execute_20
+    return meth(self, args_10style, kwargs_10style, execution_options)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/sql/elements.py", line 334, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1577, in _execute_clauseelement
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1953, in _execute_context
+    self._handle_dbapi_exception(
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 2134, in _handle_dbapi_exception
+    util.raise_(
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/util/compat.py", line 211, in raise_
+    raise exception
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1910, in _execute_context
+    self.dialect.do_execute(
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 736, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.ProgrammingError: (psycopg2.errors.UndefinedTable) relation "import_error" does not exist
+LINE 1: DELETE FROM import_error WHERE (import_error.filename NOT IN...
+                    ^
+
+[SQL: DELETE FROM import_error WHERE (import_error.filename NOT IN (%(filename_1_1)s)) AND import_error.processor_subdir = %(processor_subdir_1)s RETURNING import_error.id]
+[parameters: {'processor_subdir_1': '/opt/airflow/dags', 'filename_1_1': '/opt/airflow/dags/etl_postgres_to_clickhouse.py'}]
+(Background on this error at: https://sqlalche.me/e/14/f405)
+[2026-01-08T13:36:08.013+0000] {manager.py:878} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                                          PID  Runtime      # DAGs    # Errors  Last Runtime    Last Run
+-----------------------------------------------  -----  ---------  --------  ----------  --------------  ----------
+/opt/airflow/dags/etl_postgres_to_clickhouse.py    182  0.06s             0           0
+================================================================================
+[2026-01-08T13:36:09.883+0000] {manager.py:452} INFO - Exiting gracefully upon receiving signal 15
+[2026-01-08T13:36:37.823+0000] {manager.py:470} INFO - Processing files using up to 2 processes at a time 
+[2026-01-08T13:36:37.824+0000] {manager.py:471} INFO - Process each file at most once every 30 seconds
+[2026-01-08T13:36:37.825+0000] {manager.py:472} INFO - Checking for new files in /opt/airflow/dags every 300 seconds
+[2026-01-08T13:36:37.826+0000] {manager.py:737} INFO - Searching for files in /opt/airflow/dags
+[2026-01-08T13:36:37.854+0000] {manager.py:740} INFO - There are 1 files in /opt/airflow/dags
+[2026-01-08T13:36:37.980+0000] {manager.py:878} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                                          PID  Runtime      # DAGs    # Errors  Last Runtime    Last Run
+-----------------------------------------------  -----  ---------  --------  ----------  --------------  ----------
+/opt/airflow/dags/etl_postgres_to_clickhouse.py    172  0.05s             0           0
+================================================================================
+[2026-01-08T13:36:39.250+0000] {manager.py:1016} ERROR - Processor for /opt/airflow/dags/etl_postgres_to_clickhouse.py exited with return code 1.
+[2026-01-08T13:36:39.414+0000] {manager.py:452} INFO - Exiting gracefully upon receiving signal 15
+[2026-01-08T13:37:00.146+0000] {manager.py:470} INFO - Processing files using up to 2 processes at a time 
+[2026-01-08T13:37:00.148+0000] {manager.py:471} INFO - Process each file at most once every 30 seconds
+[2026-01-08T13:37:00.151+0000] {manager.py:472} INFO - Checking for new files in /opt/airflow/dags every 300 seconds
+[2026-01-08T13:37:00.153+0000] {manager.py:737} INFO - Searching for files in /opt/airflow/dags
+[2026-01-08T13:37:00.194+0000] {manager.py:740} INFO - There are 1 files in /opt/airflow/dags
+[2026-01-08T13:37:37.829+0000] {manager.py:470} INFO - Processing files using up to 2 processes at a time 
+[2026-01-08T13:37:37.831+0000] {manager.py:471} INFO - Process each file at most once every 30 seconds
+[2026-01-08T13:37:37.832+0000] {manager.py:472} INFO - Checking for new files in /opt/airflow/dags every 300 seconds
+[2026-01-08T13:37:37.834+0000] {manager.py:737} INFO - Searching for files in /opt/airflow/dags
+[2026-01-08T13:37:37.855+0000] {manager.py:740} INFO - There are 1 files in /opt/airflow/dags
+[2026-01-08T13:37:37.877+0000] {manager.py:749} ERROR - Error removing old import errors
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1910, in _execute_context
+    self.dialect.do_execute(
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 736, in do_execute
+    cursor.execute(statement, parameters)
+psycopg2.errors.UndefinedTable: relation "import_error" does not exist
+LINE 1: DELETE FROM import_error WHERE (import_error.filename NOT IN...
+                    ^
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/dag_processing/manager.py", line 745, in _refresh_dag_dir
+    DagFileProcessorManager.clear_nonexistent_import_errors(
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/api_internal/internal_api_call.py", line 115, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/session.py", line 79, in wrapper
+    return func(*args, session=session, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/dag_processing/manager.py", line 814, in clear_nonexistent_import_errors
+    session.execute(query.execution_options(synchronize_session="fetch"))
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 1717, in execute
+    result = conn._execute_20(statement, params or {}, execution_options)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1710, in _execute_20
+    return meth(self, args_10style, kwargs_10style, execution_options)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/sql/elements.py", line 334, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1577, in _execute_clauseelement
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1953, in _execute_context
+    self._handle_dbapi_exception(
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 2134, in _handle_dbapi_exception
+    util.raise_(
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/util/compat.py", line 211, in raise_
+    raise exception
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1910, in _execute_context
+    self.dialect.do_execute(
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 736, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.ProgrammingError: (psycopg2.errors.UndefinedTable) relation "import_error" does not exist
+LINE 1: DELETE FROM import_error WHERE (import_error.filename NOT IN...
+                    ^
+
+[SQL: DELETE FROM import_error WHERE (import_error.filename NOT IN (%(filename_1_1)s)) AND import_error.processor_subdir = %(processor_subdir_1)s RETURNING import_error.id]
+[parameters: {'processor_subdir_1': '/opt/airflow/dags', 'filename_1_1': '/opt/airflow/dags/etl_postgres_to_clickhouse.py'}]
+(Background on this error at: https://sqlalche.me/e/14/f405)
+[2026-01-08T13:37:37.994+0000] {manager.py:878} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                                          PID  Runtime      # DAGs    # Errors  Last Runtime    Last Run
+-----------------------------------------------  -----  ---------  --------  ----------  --------------  ----------
+/opt/airflow/dags/etl_postgres_to_clickhouse.py    173  0.06s             0           0
+================================================================================
+[2026-01-08T13:38:01.033+0000] {manager.py:470} INFO - Processing files using up to 2 processes at a time 
+[2026-01-08T13:38:01.035+0000] {manager.py:471} INFO - Process each file at most once every 30 seconds
+[2026-01-08T13:38:01.037+0000] {manager.py:472} INFO - Checking for new files in /opt/airflow/dags every 300 seconds
+[2026-01-08T13:38:01.039+0000] {manager.py:737} INFO - Searching for files in /opt/airflow/dags
+[2026-01-08T13:38:01.076+0000] {manager.py:740} INFO - There are 1 files in /opt/airflow/dags
+[2026-01-08T13:38:01.244+0000] {manager.py:878} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                                          PID  Runtime      # DAGs    # Errors  Last Runtime    Last Run
+-----------------------------------------------  -----  ---------  --------  ----------  --------------  ----------
+/opt/airflow/dags/etl_postgres_to_clickhouse.py    182  0.07s             0           0
+================================================================================
+[2026-01-08T13:38:46.840+0000] {manager.py:470} INFO - Processing files using up to 2 processes at a time 
+[2026-01-08T13:38:46.849+0000] {manager.py:471} INFO - Process each file at most once every 30 seconds
+[2026-01-08T13:38:46.853+0000] {manager.py:472} INFO - Checking for new files in /opt/airflow/dags every 300 seconds
+[2026-01-08T13:38:46.854+0000] {manager.py:737} INFO - Searching for files in /opt/airflow/dags
+[2026-01-08T13:38:46.880+0000] {manager.py:740} INFO - There are 1 files in /opt/airflow/dags
+[2026-01-08T13:38:47.867+0000] {manager.py:878} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                                          PID  Runtime      # DAGs    # Errors  Last Runtime    Last Run
+-----------------------------------------------  -----  ---------  --------  ----------  --------------  ----------
+/opt/airflow/dags/etl_postgres_to_clickhouse.py    195  0.64s             0           0
+================================================================================
+[2026-01-08T13:40:01.117+0000] {manager.py:878} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                                          PID  Runtime      # DAGs    # Errors  Last Runtime    Last Run
+-----------------------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/etl_postgres_to_clickhouse.py    291  0.01s             1           0  1.81s           2026-01-08T13:38:49
+================================================================================
+[2026-01-08T13:40:46.643+0000] {manager.py:1016} ERROR - Processor for /opt/airflow/dags/etl_postgres_to_clickhouse.py exited with return code 1.
+[2026-01-08T13:40:46.647+0000] {manager.py:878} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                                        PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+-----------------------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/etl_postgres_to_clickhouse.py                           0          -1  45.54s          2026-01-08T13:40:46
+================================================================================
+[2026-01-08T13:40:47.764+0000] {manager.py:452} INFO - Exiting gracefully upon receiving signal 15
+[2026-01-08T14:10:20.078+0000] {manager.py:470} INFO - Processing files using up to 2 processes at a time 
+[2026-01-08T14:10:20.081+0000] {manager.py:471} INFO - Process each file at most once every 30 seconds
+[2026-01-08T14:10:20.082+0000] {manager.py:472} INFO - Checking for new files in /opt/airflow/dags every 300 seconds
+[2026-01-08T14:10:20.086+0000] {manager.py:737} INFO - Searching for files in /opt/airflow/dags
+[2026-01-08T14:10:20.126+0000] {manager.py:740} INFO - There are 1 files in /opt/airflow/dags
+[2026-01-08T14:10:20.157+0000] {manager.py:749} ERROR - Error removing old import errors
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1910, in _execute_context
+    self.dialect.do_execute(
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 736, in do_execute
+    cursor.execute(statement, parameters)
+psycopg2.errors.ReadOnlySqlTransaction: cannot execute DELETE in a read-only transaction
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/dag_processing/manager.py", line 745, in _refresh_dag_dir
+    DagFileProcessorManager.clear_nonexistent_import_errors(
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/api_internal/internal_api_call.py", line 115, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/session.py", line 79, in wrapper
+    return func(*args, session=session, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/dag_processing/manager.py", line 814, in clear_nonexistent_import_errors
+    session.execute(query.execution_options(synchronize_session="fetch"))
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 1717, in execute
+    result = conn._execute_20(statement, params or {}, execution_options)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1710, in _execute_20
+    return meth(self, args_10style, kwargs_10style, execution_options)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/sql/elements.py", line 334, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1577, in _execute_clauseelement
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1953, in _execute_context
+    self._handle_dbapi_exception(
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 2134, in _handle_dbapi_exception
+    util.raise_(
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/util/compat.py", line 211, in raise_
+    raise exception
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1910, in _execute_context
+    self.dialect.do_execute(
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 736, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.InternalError: (psycopg2.errors.ReadOnlySqlTransaction) cannot execute DELETE in a read-only transaction
+
+[SQL: DELETE FROM import_error WHERE (import_error.filename NOT IN (%(filename_1_1)s)) AND import_error.processor_subdir = %(processor_subdir_1)s RETURNING import_error.id]
+[parameters: {'processor_subdir_1': '/opt/airflow/dags', 'filename_1_1': '/opt/airflow/dags/etl_postgres_to_clickhouse.py'}]
+(Background on this error at: https://sqlalche.me/e/14/2j85)
+[2026-01-08T14:10:19.867+0000] {manager.py:470} INFO - Processing files using up to 2 processes at a time 
+[2026-01-08T14:10:19.869+0000] {manager.py:471} INFO - Process each file at most once every 30 seconds
+[2026-01-08T14:10:19.871+0000] {manager.py:472} INFO - Checking for new files in /opt/airflow/dags every 300 seconds
+[2026-01-08T14:10:19.872+0000] {manager.py:737} INFO - Searching for files in /opt/airflow/dags
+[2026-01-08T14:10:19.905+0000] {manager.py:740} INFO - There are 1 files in /opt/airflow/dags
+[2026-01-08T14:10:20.047+0000] {manager.py:878} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                                          PID  Runtime      # DAGs    # Errors  Last Runtime    Last Run
+-----------------------------------------------  -----  ---------  --------  ----------  --------------  ----------
+/opt/airflow/dags/etl_postgres_to_clickhouse.py    179  0.04s             0           0
+================================================================================
+[2026-01-08T14:11:00.392+0000] {manager.py:470} INFO - Processing files using up to 2 processes at a time 
+[2026-01-08T14:11:00.394+0000] {manager.py:471} INFO - Process each file at most once every 30 seconds
+[2026-01-08T14:11:00.396+0000] {manager.py:472} INFO - Checking for new files in /opt/airflow/dags every 300 seconds
+[2026-01-08T14:11:00.397+0000] {manager.py:737} INFO - Searching for files in /opt/airflow/dags
+[2026-01-08T14:11:00.427+0000] {manager.py:740} INFO - There are 1 files in /opt/airflow/dags
+[2026-01-08T14:11:00.453+0000] {manager.py:749} ERROR - Error removing old import errors
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1910, in _execute_context
+    self.dialect.do_execute(
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 736, in do_execute
+    cursor.execute(statement, parameters)
+psycopg2.errors.ReadOnlySqlTransaction: cannot execute DELETE in a read-only transaction
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/dag_processing/manager.py", line 745, in _refresh_dag_dir
+    DagFileProcessorManager.clear_nonexistent_import_errors(
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/api_internal/internal_api_call.py", line 115, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/session.py", line 79, in wrapper
+    return func(*args, session=session, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/dag_processing/manager.py", line 814, in clear_nonexistent_import_errors
+    session.execute(query.execution_options(synchronize_session="fetch"))
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 1717, in execute
+    result = conn._execute_20(statement, params or {}, execution_options)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1710, in _execute_20
+    return meth(self, args_10style, kwargs_10style, execution_options)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/sql/elements.py", line 334, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1577, in _execute_clauseelement
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1953, in _execute_context
+    self._handle_dbapi_exception(
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 2134, in _handle_dbapi_exception
+    util.raise_(
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/util/compat.py", line 211, in raise_
+    raise exception
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1910, in _execute_context
+    self.dialect.do_execute(
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 736, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.InternalError: (psycopg2.errors.ReadOnlySqlTransaction) cannot execute DELETE in a read-only transaction
+
+[SQL: DELETE FROM import_error WHERE (import_error.filename NOT IN (%(filename_1_1)s)) AND import_error.processor_subdir = %(processor_subdir_1)s RETURNING import_error.id]
+[parameters: {'processor_subdir_1': '/opt/airflow/dags', 'filename_1_1': '/opt/airflow/dags/etl_postgres_to_clickhouse.py'}]
+(Background on this error at: https://sqlalche.me/e/14/2j85)
+[2026-01-08T14:11:00.649+0000] {manager.py:470} INFO - Processing files using up to 2 processes at a time 
+[2026-01-08T14:11:00.651+0000] {manager.py:471} INFO - Process each file at most once every 30 seconds
+[2026-01-08T14:11:00.652+0000] {manager.py:472} INFO - Checking for new files in /opt/airflow/dags every 300 seconds
+[2026-01-08T14:11:00.653+0000] {manager.py:737} INFO - Searching for files in /opt/airflow/dags
+[2026-01-08T14:11:00.681+0000] {manager.py:740} INFO - There are 1 files in /opt/airflow/dags
+[2026-01-08T14:11:00.782+0000] {manager.py:878} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                                          PID  Runtime      # DAGs    # Errors  Last Runtime    Last Run
+-----------------------------------------------  -----  ---------  --------  ----------  --------------  ----------
+/opt/airflow/dags/etl_postgres_to_clickhouse.py    179  0.04s             0           0
+================================================================================
+[2026-01-08T14:11:04.436+0000] {manager.py:452} INFO - Exiting gracefully upon receiving signal 15
+[2026-01-08T14:11:16.512+0000] {manager.py:470} INFO - Processing files using up to 2 processes at a time 
+[2026-01-08T14:11:16.513+0000] {manager.py:471} INFO - Process each file at most once every 30 seconds
+[2026-01-08T14:11:16.517+0000] {manager.py:472} INFO - Checking for new files in /opt/airflow/dags every 300 seconds
+[2026-01-08T14:11:16.518+0000] {manager.py:737} INFO - Searching for files in /opt/airflow/dags
+[2026-01-08T14:11:16.567+0000] {manager.py:740} INFO - There are 1 files in /opt/airflow/dags
+[2026-01-08T14:11:16.591+0000] {manager.py:749} ERROR - Error removing old import errors
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1910, in _execute_context
+    self.dialect.do_execute(
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 736, in do_execute
+    cursor.execute(statement, parameters)
+psycopg2.errors.ReadOnlySqlTransaction: cannot execute DELETE in a read-only transaction
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/dag_processing/manager.py", line 745, in _refresh_dag_dir
+    DagFileProcessorManager.clear_nonexistent_import_errors(
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/api_internal/internal_api_call.py", line 115, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/session.py", line 79, in wrapper
+    return func(*args, session=session, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/dag_processing/manager.py", line 814, in clear_nonexistent_import_errors
+    session.execute(query.execution_options(synchronize_session="fetch"))
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 1717, in execute
+    result = conn._execute_20(statement, params or {}, execution_options)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1710, in _execute_20
+    return meth(self, args_10style, kwargs_10style, execution_options)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/sql/elements.py", line 334, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1577, in _execute_clauseelement
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1953, in _execute_context
+    self._handle_dbapi_exception(
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 2134, in _handle_dbapi_exception
+    util.raise_(
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/util/compat.py", line 211, in raise_
+    raise exception
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1910, in _execute_context
+    self.dialect.do_execute(
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 736, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.InternalError: (psycopg2.errors.ReadOnlySqlTransaction) cannot execute DELETE in a read-only transaction
+
+[SQL: DELETE FROM import_error WHERE (import_error.filename NOT IN (%(filename_1_1)s)) AND import_error.processor_subdir = %(processor_subdir_1)s RETURNING import_error.id]
+[parameters: {'processor_subdir_1': '/opt/airflow/dags', 'filename_1_1': '/opt/airflow/dags/etl_postgres_to_clickhouse.py'}]
+(Background on this error at: https://sqlalche.me/e/14/2j85)
+[2026-01-08T14:11:16.765+0000] {manager.py:470} INFO - Processing files using up to 2 processes at a time 
+[2026-01-08T14:11:16.766+0000] {manager.py:471} INFO - Process each file at most once every 30 seconds
+[2026-01-08T14:11:16.768+0000] {manager.py:472} INFO - Checking for new files in /opt/airflow/dags every 300 seconds
+[2026-01-08T14:11:16.770+0000] {manager.py:737} INFO - Searching for files in /opt/airflow/dags
+[2026-01-08T14:11:16.802+0000] {manager.py:740} INFO - There are 1 files in /opt/airflow/dags
+[2026-01-08T14:11:16.916+0000] {manager.py:878} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                                          PID  Runtime      # DAGs    # Errors  Last Runtime    Last Run
+-----------------------------------------------  -----  ---------  --------  ----------  --------------  ----------
+/opt/airflow/dags/etl_postgres_to_clickhouse.py    179  0.03s             0           0
+================================================================================
+[2026-01-08T14:11:35.178+0000] {manager.py:470} INFO - Processing files using up to 2 processes at a time 
+[2026-01-08T14:11:35.183+0000] {manager.py:471} INFO - Process each file at most once every 30 seconds
+[2026-01-08T14:11:35.191+0000] {manager.py:472} INFO - Checking for new files in /opt/airflow/dags every 300 seconds
+[2026-01-08T14:11:35.193+0000] {manager.py:737} INFO - Searching for files in /opt/airflow/dags
+[2026-01-08T14:11:35.236+0000] {manager.py:740} INFO - There are 1 files in /opt/airflow/dags
+[2026-01-08T14:11:35.260+0000] {manager.py:749} ERROR - Error removing old import errors
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1910, in _execute_context
+    self.dialect.do_execute(
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 736, in do_execute
+    cursor.execute(statement, parameters)
+psycopg2.errors.ReadOnlySqlTransaction: cannot execute DELETE in a read-only transaction
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/dag_processing/manager.py", line 745, in _refresh_dag_dir
+    DagFileProcessorManager.clear_nonexistent_import_errors(
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/api_internal/internal_api_call.py", line 115, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/session.py", line 79, in wrapper
+    return func(*args, session=session, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/dag_processing/manager.py", line 814, in clear_nonexistent_import_errors
+    session.execute(query.execution_options(synchronize_session="fetch"))
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 1717, in execute
+    result = conn._execute_20(statement, params or {}, execution_options)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1710, in _execute_20
+    return meth(self, args_10style, kwargs_10style, execution_options)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/sql/elements.py", line 334, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1577, in _execute_clauseelement
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1953, in _execute_context
+    self._handle_dbapi_exception(
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 2134, in _handle_dbapi_exception
+    util.raise_(
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/util/compat.py", line 211, in raise_
+    raise exception
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1910, in _execute_context
+    self.dialect.do_execute(
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 736, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.InternalError: (psycopg2.errors.ReadOnlySqlTransaction) cannot execute DELETE in a read-only transaction
+
+[SQL: DELETE FROM import_error WHERE (import_error.filename NOT IN (%(filename_1_1)s)) AND import_error.processor_subdir = %(processor_subdir_1)s RETURNING import_error.id]
+[parameters: {'processor_subdir_1': '/opt/airflow/dags', 'filename_1_1': '/opt/airflow/dags/etl_postgres_to_clickhouse.py'}]
+(Background on this error at: https://sqlalche.me/e/14/2j85)
+[2026-01-08T14:11:35.428+0000] {manager.py:878} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                                          PID  Runtime      # DAGs    # Errors  Last Runtime    Last Run
+-----------------------------------------------  -----  ---------  --------  ----------  --------------  ----------
+/opt/airflow/dags/etl_postgres_to_clickhouse.py    172  0.06s             0           0
+================================================================================
+[2026-01-08T14:11:47.802+0000] {manager.py:470} INFO - Processing files using up to 2 processes at a time 
+[2026-01-08T14:11:47.804+0000] {manager.py:471} INFO - Process each file at most once every 30 seconds
+[2026-01-08T14:11:47.806+0000] {manager.py:472} INFO - Checking for new files in /opt/airflow/dags every 300 seconds
+[2026-01-08T14:11:47.808+0000] {manager.py:737} INFO - Searching for files in /opt/airflow/dags
+[2026-01-08T14:11:47.840+0000] {manager.py:740} INFO - There are 1 files in /opt/airflow/dags
+[2026-01-08T14:11:47.865+0000] {manager.py:749} ERROR - Error removing old import errors
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1910, in _execute_context
+    self.dialect.do_execute(
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 736, in do_execute
+    cursor.execute(statement, parameters)
+psycopg2.errors.ReadOnlySqlTransaction: cannot execute DELETE in a read-only transaction
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/dag_processing/manager.py", line 745, in _refresh_dag_dir
+    DagFileProcessorManager.clear_nonexistent_import_errors(
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/api_internal/internal_api_call.py", line 115, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/session.py", line 79, in wrapper
+    return func(*args, session=session, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/dag_processing/manager.py", line 814, in clear_nonexistent_import_errors
+    session.execute(query.execution_options(synchronize_session="fetch"))
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 1717, in execute
+    result = conn._execute_20(statement, params or {}, execution_options)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1710, in _execute_20
+    return meth(self, args_10style, kwargs_10style, execution_options)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/sql/elements.py", line 334, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1577, in _execute_clauseelement
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1953, in _execute_context
+    self._handle_dbapi_exception(
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 2134, in _handle_dbapi_exception
+    util.raise_(
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/util/compat.py", line 211, in raise_
+    raise exception
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1910, in _execute_context
+    self.dialect.do_execute(
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 736, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.InternalError: (psycopg2.errors.ReadOnlySqlTransaction) cannot execute DELETE in a read-only transaction
+
+[SQL: DELETE FROM import_error WHERE (import_error.filename NOT IN (%(filename_1_1)s)) AND import_error.processor_subdir = %(processor_subdir_1)s RETURNING import_error.id]
+[parameters: {'processor_subdir_1': '/opt/airflow/dags', 'filename_1_1': '/opt/airflow/dags/etl_postgres_to_clickhouse.py'}]
+(Background on this error at: https://sqlalche.me/e/14/2j85)
+[2026-01-08T14:23:14.599+0000] {manager.py:470} INFO - Processing files using up to 2 processes at a time 
+[2026-01-08T14:23:14.601+0000] {manager.py:471} INFO - Process each file at most once every 30 seconds
+[2026-01-08T14:23:14.603+0000] {manager.py:472} INFO - Checking for new files in /opt/airflow/dags every 300 seconds
+[2026-01-08T14:23:14.605+0000] {manager.py:737} INFO - Searching for files in /opt/airflow/dags
+[2026-01-08T14:23:14.645+0000] {manager.py:740} INFO - There are 1 files in /opt/airflow/dags
+[2026-01-08T14:23:14.836+0000] {manager.py:878} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                                          PID  Runtime      # DAGs    # Errors  Last Runtime    Last Run
+-----------------------------------------------  -----  ---------  --------  ----------  --------------  ----------
+/opt/airflow/dags/etl_postgres_to_clickhouse.py    190  0.07s             0           0
+================================================================================
+[2026-01-08T14:23:43.582+0000] {manager.py:878} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                                        PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+-----------------------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/etl_postgres_to_clickhouse.py                           1           0  0.93s           2026-01-08T14:23:15
+================================================================================
+[2026-01-08T14:38:45.432+0000] {manager.py:470} INFO - Processing files using up to 2 processes at a time 
+[2026-01-08T14:38:45.433+0000] {manager.py:471} INFO - Process each file at most once every 30 seconds
+[2026-01-08T14:38:45.435+0000] {manager.py:472} INFO - Checking for new files in /opt/airflow/dags every 300 seconds
+[2026-01-08T14:38:45.436+0000] {manager.py:737} INFO - Searching for files in /opt/airflow/dags
+[2026-01-08T14:38:45.464+0000] {manager.py:740} INFO - There are 1 files in /opt/airflow/dags
+[2026-01-08T14:38:45.486+0000] {manager.py:749} ERROR - Error removing old import errors
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1910, in _execute_context
+    self.dialect.do_execute(
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 736, in do_execute
+    cursor.execute(statement, parameters)
+psycopg2.errors.ReadOnlySqlTransaction: cannot execute DELETE in a read-only transaction
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/dag_processing/manager.py", line 745, in _refresh_dag_dir
+    DagFileProcessorManager.clear_nonexistent_import_errors(
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/api_internal/internal_api_call.py", line 115, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/session.py", line 79, in wrapper
+    return func(*args, session=session, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/dag_processing/manager.py", line 814, in clear_nonexistent_import_errors
+    session.execute(query.execution_options(synchronize_session="fetch"))
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 1717, in execute
+    result = conn._execute_20(statement, params or {}, execution_options)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1710, in _execute_20
+    return meth(self, args_10style, kwargs_10style, execution_options)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/sql/elements.py", line 334, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1577, in _execute_clauseelement
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1953, in _execute_context
+    self._handle_dbapi_exception(
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 2134, in _handle_dbapi_exception
+    util.raise_(
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/util/compat.py", line 211, in raise_
+    raise exception
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1910, in _execute_context
+    self.dialect.do_execute(
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 736, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.InternalError: (psycopg2.errors.ReadOnlySqlTransaction) cannot execute DELETE in a read-only transaction
+
+[SQL: DELETE FROM import_error WHERE (import_error.filename NOT IN (%(filename_1_1)s)) AND import_error.processor_subdir = %(processor_subdir_1)s RETURNING import_error.id]
+[parameters: {'processor_subdir_1': '/opt/airflow/dags', 'filename_1_1': '/opt/airflow/dags/etl_postgres_to_clickhouse.py'}]
+(Background on this error at: https://sqlalche.me/e/14/2j85)
+[2026-01-08T14:38:57.252+0000] {manager.py:470} INFO - Processing files using up to 2 processes at a time 
+[2026-01-08T14:38:57.255+0000] {manager.py:471} INFO - Process each file at most once every 30 seconds
+[2026-01-08T14:38:57.256+0000] {manager.py:472} INFO - Checking for new files in /opt/airflow/dags every 300 seconds
+[2026-01-08T14:38:57.257+0000] {manager.py:737} INFO - Searching for files in /opt/airflow/dags
+[2026-01-08T14:38:57.284+0000] {manager.py:740} INFO - There are 1 files in /opt/airflow/dags
+[2026-01-08T14:38:57.410+0000] {manager.py:878} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                                          PID  Runtime      # DAGs    # Errors  Last Runtime    Last Run
+-----------------------------------------------  -----  ---------  --------  ----------  --------------  ----------
+/opt/airflow/dags/etl_postgres_to_clickhouse.py    174  0.06s             0           0
+================================================================================
+[2026-01-08T14:38:58.944+0000] {manager.py:1016} ERROR - Processor for /opt/airflow/dags/etl_postgres_to_clickhouse.py exited with return code 1.
+[2026-01-08T14:39:26.117+0000] {manager.py:470} INFO - Processing files using up to 2 processes at a time 
+[2026-01-08T14:39:26.120+0000] {manager.py:471} INFO - Process each file at most once every 30 seconds
+[2026-01-08T14:39:26.122+0000] {manager.py:472} INFO - Checking for new files in /opt/airflow/dags every 300 seconds
+[2026-01-08T14:39:26.123+0000] {manager.py:737} INFO - Searching for files in /opt/airflow/dags
+[2026-01-08T14:39:26.160+0000] {manager.py:740} INFO - There are 1 files in /opt/airflow/dags
+[2026-01-08T14:39:26.303+0000] {manager.py:878} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                                          PID  Runtime      # DAGs    # Errors  Last Runtime    Last Run
+-----------------------------------------------  -----  ---------  --------  ----------  --------------  ----------
+/opt/airflow/dags/etl_postgres_to_clickhouse.py    174  0.06s             0           0
+================================================================================
+[2026-01-08T14:40:27.922+0000] {manager.py:470} INFO - Processing files using up to 2 processes at a time 
+[2026-01-08T14:40:27.924+0000] {manager.py:471} INFO - Process each file at most once every 30 seconds
+[2026-01-08T14:40:27.926+0000] {manager.py:472} INFO - Checking for new files in /opt/airflow/dags every 300 seconds
+[2026-01-08T14:40:27.927+0000] {manager.py:737} INFO - Searching for files in /opt/airflow/dags
+[2026-01-08T14:40:27.956+0000] {manager.py:740} INFO - There are 1 files in /opt/airflow/dags
+[2026-01-08T14:40:27.985+0000] {manager.py:749} ERROR - Error removing old import errors
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1910, in _execute_context
+    self.dialect.do_execute(
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 736, in do_execute
+    cursor.execute(statement, parameters)
+psycopg2.errors.ReadOnlySqlTransaction: cannot execute DELETE in a read-only transaction
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/dag_processing/manager.py", line 745, in _refresh_dag_dir
+    DagFileProcessorManager.clear_nonexistent_import_errors(
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/api_internal/internal_api_call.py", line 115, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/session.py", line 79, in wrapper
+    return func(*args, session=session, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/dag_processing/manager.py", line 814, in clear_nonexistent_import_errors
+    session.execute(query.execution_options(synchronize_session="fetch"))
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 1717, in execute
+    result = conn._execute_20(statement, params or {}, execution_options)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1710, in _execute_20
+    return meth(self, args_10style, kwargs_10style, execution_options)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/sql/elements.py", line 334, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1577, in _execute_clauseelement
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1953, in _execute_context
+    self._handle_dbapi_exception(
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 2134, in _handle_dbapi_exception
+    util.raise_(
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/util/compat.py", line 211, in raise_
+    raise exception
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1910, in _execute_context
+    self.dialect.do_execute(
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 736, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.InternalError: (psycopg2.errors.ReadOnlySqlTransaction) cannot execute DELETE in a read-only transaction
+
+[SQL: DELETE FROM import_error WHERE (import_error.filename NOT IN (%(filename_1_1)s)) AND import_error.processor_subdir = %(processor_subdir_1)s RETURNING import_error.id]
+[parameters: {'processor_subdir_1': '/opt/airflow/dags', 'filename_1_1': '/opt/airflow/dags/etl_postgres_to_clickhouse.py'}]
+(Background on this error at: https://sqlalche.me/e/14/2j85)
+[2026-01-08T14:40:28.113+0000] {manager.py:878} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                                          PID  Runtime      # DAGs    # Errors  Last Runtime    Last Run
+-----------------------------------------------  -----  ---------  --------  ----------  --------------  ----------
+/opt/airflow/dags/etl_postgres_to_clickhouse.py    173  0.06s             0           0
+================================================================================
+[2026-01-08T14:40:29.506+0000] {manager.py:452} INFO - Exiting gracefully upon receiving signal 15
+[2026-01-08T14:40:29.508+0000] {manager.py:452} INFO - Exiting gracefully upon receiving signal 15
+[2026-01-08T14:40:29.876+0000] {manager.py:452} INFO - Exiting gracefully upon receiving signal 15
+[2026-01-08T14:41:05.819+0000] {manager.py:470} INFO - Processing files using up to 2 processes at a time 
+[2026-01-08T14:41:05.821+0000] {manager.py:471} INFO - Process each file at most once every 30 seconds
+[2026-01-08T14:41:05.823+0000] {manager.py:472} INFO - Checking for new files in /opt/airflow/dags every 300 seconds
+[2026-01-08T14:41:05.825+0000] {manager.py:737} INFO - Searching for files in /opt/airflow/dags
+[2026-01-08T14:41:05.858+0000] {manager.py:740} INFO - There are 1 files in /opt/airflow/dags
+[2026-01-08T14:41:06.113+0000] {manager.py:470} INFO - Processing files using up to 2 processes at a time 
+[2026-01-08T14:41:06.115+0000] {manager.py:471} INFO - Process each file at most once every 30 seconds
+[2026-01-08T14:41:06.116+0000] {manager.py:472} INFO - Checking for new files in /opt/airflow/dags every 300 seconds
+[2026-01-08T14:41:06.117+0000] {manager.py:737} INFO - Searching for files in /opt/airflow/dags
+[2026-01-08T14:41:06.147+0000] {manager.py:740} INFO - There are 1 files in /opt/airflow/dags
+[2026-01-08T14:41:06.251+0000] {manager.py:878} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                                          PID  Runtime      # DAGs    # Errors  Last Runtime    Last Run
+-----------------------------------------------  -----  ---------  --------  ----------  --------------  ----------
+/opt/airflow/dags/etl_postgres_to_clickhouse.py    193  0.04s             0           0
+================================================================================
+[2026-01-08T14:43:55.579+0000] {manager.py:470} INFO - Processing files using up to 2 processes at a time 
+[2026-01-08T14:43:55.582+0000] {manager.py:471} INFO - Process each file at most once every 30 seconds
+[2026-01-08T14:43:55.584+0000] {manager.py:472} INFO - Checking for new files in /opt/airflow/dags every 300 seconds
+[2026-01-08T14:43:55.586+0000] {manager.py:737} INFO - Searching for files in /opt/airflow/dags
+[2026-01-08T14:43:55.623+0000] {manager.py:740} INFO - There are 1 files in /opt/airflow/dags
+[2026-01-08T14:43:55.652+0000] {manager.py:749} ERROR - Error removing old import errors
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1910, in _execute_context
+    self.dialect.do_execute(
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 736, in do_execute
+    cursor.execute(statement, parameters)
+psycopg2.errors.ReadOnlySqlTransaction: cannot execute DELETE in a read-only transaction
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/dag_processing/manager.py", line 745, in _refresh_dag_dir
+    DagFileProcessorManager.clear_nonexistent_import_errors(
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/api_internal/internal_api_call.py", line 115, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/session.py", line 79, in wrapper
+    return func(*args, session=session, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/dag_processing/manager.py", line 814, in clear_nonexistent_import_errors
+    session.execute(query.execution_options(synchronize_session="fetch"))
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 1717, in execute
+    result = conn._execute_20(statement, params or {}, execution_options)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1710, in _execute_20
+    return meth(self, args_10style, kwargs_10style, execution_options)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/sql/elements.py", line 334, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1577, in _execute_clauseelement
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1953, in _execute_context
+    self._handle_dbapi_exception(
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 2134, in _handle_dbapi_exception
+    util.raise_(
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/util/compat.py", line 211, in raise_
+    raise exception
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1910, in _execute_context
+    self.dialect.do_execute(
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 736, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.InternalError: (psycopg2.errors.ReadOnlySqlTransaction) cannot execute DELETE in a read-only transaction
+
+[SQL: DELETE FROM import_error WHERE (import_error.filename NOT IN (%(filename_1_1)s)) AND import_error.processor_subdir = %(processor_subdir_1)s RETURNING import_error.id]
+[parameters: {'processor_subdir_1': '/opt/airflow/dags', 'filename_1_1': '/opt/airflow/dags/etl_postgres_to_clickhouse.py'}]
+(Background on this error at: https://sqlalche.me/e/14/2j85)
+[2026-01-08T14:43:55.878+0000] {manager.py:470} INFO - Processing files using up to 2 processes at a time 
+[2026-01-08T14:43:55.885+0000] {manager.py:471} INFO - Process each file at most once every 30 seconds
+[2026-01-08T14:43:55.887+0000] {manager.py:472} INFO - Checking for new files in /opt/airflow/dags every 300 seconds
+[2026-01-08T14:43:55.889+0000] {manager.py:737} INFO - Searching for files in /opt/airflow/dags
+[2026-01-08T14:43:55.929+0000] {manager.py:740} INFO - There are 1 files in /opt/airflow/dags
+[2026-01-08T14:43:56.221+0000] {manager.py:878} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                                          PID  Runtime      # DAGs    # Errors  Last Runtime    Last Run
+-----------------------------------------------  -----  ---------  --------  ----------  --------------  ----------
+/opt/airflow/dags/etl_postgres_to_clickhouse.py    200  0.12s             0           0
+================================================================================
+[2026-01-08T14:44:09.970+0000] {manager.py:470} INFO - Processing files using up to 2 processes at a time 
+[2026-01-08T14:44:09.972+0000] {manager.py:471} INFO - Process each file at most once every 30 seconds
+[2026-01-08T14:44:09.973+0000] {manager.py:472} INFO - Checking for new files in /opt/airflow/dags every 300 seconds
+[2026-01-08T14:44:09.975+0000] {manager.py:737} INFO - Searching for files in /opt/airflow/dags
+[2026-01-08T14:44:10.010+0000] {manager.py:740} INFO - There are 1 files in /opt/airflow/dags
+[2026-01-08T14:44:10.264+0000] {manager.py:878} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                                          PID  Runtime      # DAGs    # Errors  Last Runtime    Last Run
+-----------------------------------------------  -----  ---------  --------  ----------  --------------  ----------
+/opt/airflow/dags/etl_postgres_to_clickhouse.py    174  0.16s             0           0
+================================================================================
+[2026-01-08T14:44:15.530+0000] {manager.py:470} INFO - Processing files using up to 2 processes at a time 
+[2026-01-08T14:44:15.532+0000] {manager.py:471} INFO - Process each file at most once every 30 seconds
+[2026-01-08T14:44:15.534+0000] {manager.py:472} INFO - Checking for new files in /opt/airflow/dags every 300 seconds
+[2026-01-08T14:44:15.536+0000] {manager.py:737} INFO - Searching for files in /opt/airflow/dags
+[2026-01-08T14:44:15.580+0000] {manager.py:740} INFO - There are 1 files in /opt/airflow/dags
+[2026-01-08T14:44:15.690+0000] {manager.py:749} ERROR - Error removing old import errors
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1910, in _execute_context
+    self.dialect.do_execute(
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 736, in do_execute
+    cursor.execute(statement, parameters)
+psycopg2.errors.ReadOnlySqlTransaction: cannot execute DELETE in a read-only transaction
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/dag_processing/manager.py", line 745, in _refresh_dag_dir
+    DagFileProcessorManager.clear_nonexistent_import_errors(
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/api_internal/internal_api_call.py", line 115, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/session.py", line 79, in wrapper
+    return func(*args, session=session, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/dag_processing/manager.py", line 814, in clear_nonexistent_import_errors
+    session.execute(query.execution_options(synchronize_session="fetch"))
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 1717, in execute
+    result = conn._execute_20(statement, params or {}, execution_options)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1710, in _execute_20
+    return meth(self, args_10style, kwargs_10style, execution_options)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/sql/elements.py", line 334, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1577, in _execute_clauseelement
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1953, in _execute_context
+    self._handle_dbapi_exception(
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 2134, in _handle_dbapi_exception
+    util.raise_(
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/util/compat.py", line 211, in raise_
+    raise exception
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1910, in _execute_context
+    self.dialect.do_execute(
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 736, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.InternalError: (psycopg2.errors.ReadOnlySqlTransaction) cannot execute DELETE in a read-only transaction
+
+[SQL: DELETE FROM import_error WHERE (import_error.filename NOT IN (%(filename_1_1)s)) AND import_error.processor_subdir = %(processor_subdir_1)s RETURNING import_error.id]
+[parameters: {'processor_subdir_1': '/opt/airflow/dags', 'filename_1_1': '/opt/airflow/dags/etl_postgres_to_clickhouse.py'}]
+(Background on this error at: https://sqlalche.me/e/14/2j85)
+[2026-01-08T14:44:16.710+0000] {manager.py:470} INFO - Processing files using up to 2 processes at a time 
+[2026-01-08T14:44:16.713+0000] {manager.py:471} INFO - Process each file at most once every 30 seconds
+[2026-01-08T14:44:16.717+0000] {manager.py:472} INFO - Checking for new files in /opt/airflow/dags every 300 seconds
+[2026-01-08T14:44:16.719+0000] {manager.py:737} INFO - Searching for files in /opt/airflow/dags
+[2026-01-08T14:44:16.787+0000] {manager.py:740} INFO - There are 1 files in /opt/airflow/dags
+[2026-01-08T14:44:16.910+0000] {manager.py:878} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                                          PID  Runtime      # DAGs    # Errors  Last Runtime    Last Run
+-----------------------------------------------  -----  ---------  --------  ----------  --------------  ----------
+/opt/airflow/dags/etl_postgres_to_clickhouse.py    195  0.04s             0           0
+================================================================================
+[2026-01-08T14:46:08.241+0000] {manager.py:470} INFO - Processing files using up to 2 processes at a time 
+[2026-01-08T14:46:08.242+0000] {manager.py:471} INFO - Process each file at most once every 30 seconds
+[2026-01-08T14:46:08.244+0000] {manager.py:472} INFO - Checking for new files in /opt/airflow/dags every 300 seconds
+[2026-01-08T14:46:08.247+0000] {manager.py:737} INFO - Searching for files in /opt/airflow/dags
+[2026-01-08T14:46:08.281+0000] {manager.py:740} INFO - There are 1 files in /opt/airflow/dags
+[2026-01-08T14:46:08.445+0000] {manager.py:878} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                                          PID  Runtime      # DAGs    # Errors  Last Runtime    Last Run
+-----------------------------------------------  -----  ---------  --------  ----------  --------------  ----------
+/opt/airflow/dags/etl_postgres_to_clickhouse.py    189  0.07s             0           0
+================================================================================
+[2026-01-08T14:46:10.773+0000] {manager.py:470} INFO - Processing files using up to 2 processes at a time 
+[2026-01-08T14:46:10.775+0000] {manager.py:471} INFO - Process each file at most once every 30 seconds
+[2026-01-08T14:46:10.777+0000] {manager.py:472} INFO - Checking for new files in /opt/airflow/dags every 300 seconds
+[2026-01-08T14:46:10.779+0000] {manager.py:737} INFO - Searching for files in /opt/airflow/dags
+[2026-01-08T14:46:10.812+0000] {manager.py:740} INFO - There are 1 files in /opt/airflow/dags
+[2026-01-08T14:46:11.072+0000] {manager.py:878} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                                          PID  Runtime      # DAGs    # Errors  Last Runtime    Last Run
+-----------------------------------------------  -----  ---------  --------  ----------  --------------  ----------
+/opt/airflow/dags/etl_postgres_to_clickhouse.py    202  0.10s             0           0
+================================================================================
+[2026-01-08T14:46:51.716+0000] {manager.py:470} INFO - Processing files using up to 2 processes at a time 
+[2026-01-08T14:46:51.722+0000] {manager.py:471} INFO - Process each file at most once every 30 seconds
+[2026-01-08T14:46:51.725+0000] {manager.py:472} INFO - Checking for new files in /opt/airflow/dags every 300 seconds
+[2026-01-08T14:46:51.730+0000] {manager.py:737} INFO - Searching for files in /opt/airflow/dags
+[2026-01-08T14:46:51.798+0000] {manager.py:740} INFO - There are 1 files in /opt/airflow/dags
+[2026-01-08T14:46:52.445+0000] {manager.py:470} INFO - Processing files using up to 2 processes at a time 
+[2026-01-08T14:46:52.451+0000] {manager.py:471} INFO - Process each file at most once every 30 seconds
+[2026-01-08T14:46:52.454+0000] {manager.py:472} INFO - Checking for new files in /opt/airflow/dags every 300 seconds
+[2026-01-08T14:46:52.457+0000] {manager.py:737} INFO - Searching for files in /opt/airflow/dags
+[2026-01-08T14:46:52.613+0000] {manager.py:740} INFO - There are 1 files in /opt/airflow/dags
+[2026-01-08T14:46:52.709+0000] {manager.py:749} ERROR - Error removing old import errors
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1910, in _execute_context
+    self.dialect.do_execute(
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 736, in do_execute
+    cursor.execute(statement, parameters)
+psycopg2.errors.ReadOnlySqlTransaction: cannot execute DELETE in a read-only transaction
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/dag_processing/manager.py", line 745, in _refresh_dag_dir
+    DagFileProcessorManager.clear_nonexistent_import_errors(
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/api_internal/internal_api_call.py", line 115, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/session.py", line 79, in wrapper
+    return func(*args, session=session, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/dag_processing/manager.py", line 814, in clear_nonexistent_import_errors
+    session.execute(query.execution_options(synchronize_session="fetch"))
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 1717, in execute
+    result = conn._execute_20(statement, params or {}, execution_options)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1710, in _execute_20
+    return meth(self, args_10style, kwargs_10style, execution_options)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/sql/elements.py", line 334, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1577, in _execute_clauseelement
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1953, in _execute_context
+    self._handle_dbapi_exception(
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 2134, in _handle_dbapi_exception
+    util.raise_(
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/util/compat.py", line 211, in raise_
+    raise exception
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1910, in _execute_context
+    self.dialect.do_execute(
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 736, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.InternalError: (psycopg2.errors.ReadOnlySqlTransaction) cannot execute DELETE in a read-only transaction
+
+[SQL: DELETE FROM import_error WHERE (import_error.filename NOT IN (%(filename_1_1)s)) AND import_error.processor_subdir = %(processor_subdir_1)s RETURNING import_error.id]
+[parameters: {'processor_subdir_1': '/opt/airflow/dags', 'filename_1_1': '/opt/airflow/dags/etl_postgres_to_clickhouse.py'}]
+(Background on this error at: https://sqlalche.me/e/14/2j85)
+[2026-01-08T14:48:16.157+0000] {manager.py:470} INFO - Processing files using up to 2 processes at a time 
+[2026-01-08T14:48:16.159+0000] {manager.py:471} INFO - Process each file at most once every 30 seconds
+[2026-01-08T14:48:16.161+0000] {manager.py:472} INFO - Checking for new files in /opt/airflow/dags every 300 seconds
+[2026-01-08T14:48:16.162+0000] {manager.py:737} INFO - Searching for files in /opt/airflow/dags
+[2026-01-08T14:48:16.198+0000] {manager.py:740} INFO - There are 1 files in /opt/airflow/dags
+[2026-01-08T14:48:16.228+0000] {manager.py:749} ERROR - Error removing old import errors
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1910, in _execute_context
+    self.dialect.do_execute(
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 736, in do_execute
+    cursor.execute(statement, parameters)
+psycopg2.errors.ReadOnlySqlTransaction: cannot execute DELETE in a read-only transaction
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/dag_processing/manager.py", line 745, in _refresh_dag_dir
+    DagFileProcessorManager.clear_nonexistent_import_errors(
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/api_internal/internal_api_call.py", line 115, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/session.py", line 79, in wrapper
+    return func(*args, session=session, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/dag_processing/manager.py", line 814, in clear_nonexistent_import_errors
+    session.execute(query.execution_options(synchronize_session="fetch"))
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 1717, in execute
+    result = conn._execute_20(statement, params or {}, execution_options)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1710, in _execute_20
+    return meth(self, args_10style, kwargs_10style, execution_options)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/sql/elements.py", line 334, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1577, in _execute_clauseelement
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1953, in _execute_context
+    self._handle_dbapi_exception(
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 2134, in _handle_dbapi_exception
+    util.raise_(
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/util/compat.py", line 211, in raise_
+    raise exception
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1910, in _execute_context
+    self.dialect.do_execute(
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 736, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.InternalError: (psycopg2.errors.ReadOnlySqlTransaction) cannot execute DELETE in a read-only transaction
+
+[SQL: DELETE FROM import_error WHERE (import_error.filename NOT IN (%(filename_1_1)s)) AND import_error.processor_subdir = %(processor_subdir_1)s RETURNING import_error.id]
+[parameters: {'processor_subdir_1': '/opt/airflow/dags', 'filename_1_1': '/opt/airflow/dags/etl_postgres_to_clickhouse.py'}]
+(Background on this error at: https://sqlalche.me/e/14/2j85)
+[2026-01-08T14:48:34.346+0000] {manager.py:470} INFO - Processing files using up to 2 processes at a time 
+[2026-01-08T14:48:34.348+0000] {manager.py:471} INFO - Process each file at most once every 30 seconds
+[2026-01-08T14:48:34.350+0000] {manager.py:472} INFO - Checking for new files in /opt/airflow/dags every 300 seconds
+[2026-01-08T14:48:34.352+0000] {manager.py:737} INFO - Searching for files in /opt/airflow/dags
+[2026-01-08T14:48:34.391+0000] {manager.py:740} INFO - There are 1 files in /opt/airflow/dags
+[2026-01-08T14:48:34.419+0000] {manager.py:749} ERROR - Error removing old import errors
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1910, in _execute_context
+    self.dialect.do_execute(
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 736, in do_execute
+    cursor.execute(statement, parameters)
+psycopg2.errors.ReadOnlySqlTransaction: cannot execute DELETE in a read-only transaction
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/dag_processing/manager.py", line 745, in _refresh_dag_dir
+    DagFileProcessorManager.clear_nonexistent_import_errors(
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/api_internal/internal_api_call.py", line 115, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/session.py", line 79, in wrapper
+    return func(*args, session=session, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/dag_processing/manager.py", line 814, in clear_nonexistent_import_errors
+    session.execute(query.execution_options(synchronize_session="fetch"))
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 1717, in execute
+    result = conn._execute_20(statement, params or {}, execution_options)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1710, in _execute_20
+    return meth(self, args_10style, kwargs_10style, execution_options)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/sql/elements.py", line 334, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1577, in _execute_clauseelement
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1953, in _execute_context
+    self._handle_dbapi_exception(
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 2134, in _handle_dbapi_exception
+    util.raise_(
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/util/compat.py", line 211, in raise_
+    raise exception
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1910, in _execute_context
+    self.dialect.do_execute(
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 736, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.InternalError: (psycopg2.errors.ReadOnlySqlTransaction) cannot execute DELETE in a read-only transaction
+
+[SQL: DELETE FROM import_error WHERE (import_error.filename NOT IN (%(filename_1_1)s)) AND import_error.processor_subdir = %(processor_subdir_1)s RETURNING import_error.id]
+[parameters: {'processor_subdir_1': '/opt/airflow/dags', 'filename_1_1': '/opt/airflow/dags/etl_postgres_to_clickhouse.py'}]
+(Background on this error at: https://sqlalche.me/e/14/2j85)
+[2026-01-08T14:48:34.961+0000] {manager.py:470} INFO - Processing files using up to 2 processes at a time 
+[2026-01-08T14:48:34.973+0000] {manager.py:471} INFO - Process each file at most once every 30 seconds
+[2026-01-08T14:48:34.976+0000] {manager.py:472} INFO - Checking for new files in /opt/airflow/dags every 300 seconds
+[2026-01-08T14:48:34.979+0000] {manager.py:737} INFO - Searching for files in /opt/airflow/dags
+[2026-01-08T14:48:35.056+0000] {manager.py:740} INFO - There are 1 files in /opt/airflow/dags
+[2026-01-08T14:48:35.490+0000] {manager.py:878} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                                          PID  Runtime      # DAGs    # Errors  Last Runtime    Last Run
+-----------------------------------------------  -----  ---------  --------  ----------  --------------  ----------
+/opt/airflow/dags/etl_postgres_to_clickhouse.py    221  0.11s             0           0
+================================================================================

@@ -11,7 +11,7 @@ import json
 POSTGRES_CONFIG = {
     "host": "postgres",
     "port": 5432,
-    "dbname": "clickstream",
+    "dbname": "clickstream_write",
     "user": "clickstream",
     "password": "clickstream"
 }

@@ -1,26 +1,61 @@
 version: "3.9"
 
 services:
-  # ======================
-  # PostgreSQL
-  # ======================
-  postgres:
+  postgres-master:
     image: postgres:15
-    container_name: clickstream-postgres
+    container_name: clickstream-postgres-master
+    hostname: postgres-master
     environment:
       POSTGRES_DB: clickstream
       POSTGRES_USER: clickstream
       POSTGRES_PASSWORD: clickstream
+    volumes:
+      - postgres_master_data:/var/lib/postgresql/data
+      - ./postgres/master.conf:/etc/postgresql/master.conf:ro
+      - ./postgres/init-master.sql:/docker-entrypoint-initdb.d/01-init.sql:ro
+      - ./postgres/setup-hba.sh:/docker-entrypoint-initdb.d/02-hba.sh:ro
+    ports:
+      - "5433:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U clickstream"]
+      interval: 10s
+
+  postgres-replica:
+    image: postgres:15
+    container_name: clickstream-postgres-replica
+    hostname: postgres-replica
+    volumes:
+      - postgres_replica_data:/var/lib/postgres/data
+      - ./postgres/replica.conf:/etc/postgres/postgresql.conf
+      - ./postgres/setup-replica.sh:/setup-replica.sh:ro
+    entrypoint: ["/bin/bash", "/setup-replica.sh"]
+    depends_on:
+      postgres-master:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U clickstream"]
+      interval: 10s
+
+  postgres:
+    image: edoburu/pgbouncer:latest
+    container_name: clickstream-postgres
     ports:
       - "5432:5432"
     volumes:
-      - postgres_data:/var/lib/postgresql/data
-      - ./postgres/postgresql.conf:/etc/postgresql/postgresql.conf:ro
+      - ./pgbouncer/pgbouncer.ini:/etc/pgbouncer/pgbouncer.ini:ro
+      - ./pgbouncer/userlist.txt:/etc/pgbouncer/userlist.txt:ro
+    depends_on:
+      postgres-master:
+        condition: service_healthy
+      postgres-replica:
+        condition: service_healthy
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U clickstream -d clickstream"]
-      interval: 5s
-      timeout: 5s
-      retries: 5
+      disable: true
+
+
+
+
+
 
 
 
@@ -79,7 +114,7 @@ services:
       - "8000:8000"
     depends_on:
       postgres:
-        condition: service_healthy
+        condition: service_started
 
 
   consumer:
@@ -89,7 +124,7 @@ services:
       - .env
     depends_on:
       postgres:
-        condition: service_healthy
+        condition: service_started
 
 
   producer:
@@ -111,7 +146,7 @@ services:
       consumer:
         condition: service_started
       postgres:
-        condition: service_healthy
+        condition: service_started
 
   tracker:
     build: ./tracker
@@ -196,7 +231,7 @@ services:
 
     depends_on:
       postgres:
-        condition: service_healthy
+        condition: service_started
 
 
 
@@ -254,7 +289,8 @@ services:
 
 
 volumes:
-  postgres_data:
+  postgres_master_data:
+  postgres_replica_data:
   clickhouse_data:
   grafana_data:
   rabbitmq_data:

@@ -1,0 +1,4 @@
+[2026-01-08T13:29:03.112+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2026-01-08T13:29:03.153+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: pg_to_clickhouse_payload_parsing.transfer_raw_to_ch scheduled__2026-01-08T13:28:50+00:00 [queued]>
+[2026-01-08T13:29:03.167+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: pg_to_clickhouse_payload_parsing.transfer_raw_to_ch scheduled__2026-01-08T13:28:50+00:00 [queued]>
+[2026-01-08T13:29:03.168+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 2
