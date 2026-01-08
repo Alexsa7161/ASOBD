@@ -7,7 +7,7 @@ docker compose up -d
 docker compose --profile tests up tests или docker-compose up --build tests (тестировать только с включенными системами)
 
 postgres
-docker exec -it clickstream-postgres psql -U clickstream -d clickstream
+docker exec -it clickstream-postgres-master psql -U clickstream -d clickstream
 select source, count(*) from raw_events group by source;
 
 rabbitMq
