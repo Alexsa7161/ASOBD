@@ -206,7 +206,7 @@ http://localhost:3000/dashboards
 | **consumer/producer** | ~40% | ~28MB | RabbitMQ обработка |
 
 
-**Текущая нагрузка (~1000 событий/сек):**
+**Текущая нагрузка (~400 событий/сек):**
 CPU: 32.5% от 8 cores = 2.6 cores
 RAM: 31.7% от 11.41GB = 3.62GB
 
