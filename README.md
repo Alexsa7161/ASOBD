@@ -237,27 +237,26 @@ RAM: 31.7% от 11.41GB = 3.62GB
 ### UML диаграммы
 
 **1. Use Case диаграмма**
-
 ```mermaid
 graph LR
-   subgraph "Clickstream System"
-       UC1(\[Send Click Event POST /clicks])
-       UC2(\[Upload CSV Batch])
-       UC3(\[View Analytics Grafana])
-       UC4(\[Monitor Health Prometheus])
-       UC5(\[Generate Load event-generator])
-   end
-   
-   User --> UC1
-   User --> UC2
-   User --> UC5
-   Analyst --> UC3
-   Admin --> UC4
-   
-   classDef actorStyle fill:#ffffff,stroke:#000000,stroke-width:2px,color:#000000
-   classDef usecaseStyle fill:#ffffff,stroke:#000000,stroke-width:2px,color:#000000
-   class User,Analyst,Admin actorStyle
-   class UC1,UC2,UC3,UC4,UC5 usecaseStyle
+    subgraph "Clickstream System"
+        UC1([Send Click Event POST /clicks])
+        UC2([Upload CSV Batch])
+        UC3([View Analytics Grafana])
+        UC4([Monitor Health Prometheus])
+        UC5([Generate Load event-generator])
+    end
+    
+    User --> UC1
+    User --> UC2
+    User --> UC5
+    Analyst --> UC3
+    Admin --> UC4
+    
+    classDef actorStyle fill:#ffffff,stroke:#000000,stroke-width:2px,color:#000000
+    classDef usecaseStyle fill:#ffffff,stroke:#000000,stroke-width:2px,color:#000000
+    class User,Analyst,Admin actorStyle
+    class UC1,UC2,UC3,UC4,UC5 usecaseStyle
 ```
 **2. Sequence диаграмма
 ```mermaid
