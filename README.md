@@ -74,7 +74,6 @@ docker compose build --no-cache
 docker compose up -d
 
 ./cluster-init.sh
-
 Последний скрипт инициализирует кластер RabbitMQ с необходимыми настройками.
 
 ### Запуск тестов
@@ -85,12 +84,10 @@ docker compose up -d
 
 
 docker compose --profile tests up tests
-
 - Вариант 2
 
 
 docker compose up --build tests
-
 ## Демонстрация
 
 ### PostgreSQL (сырые события)
@@ -99,19 +96,16 @@ docker compose up --build tests
 docker exec -it clickstream-postgres-master psql -U clickstream -d clickstream
 
 select source, count(\*) from raw\_events group by source;
-
 ### RabbitMQ UI
 
 
 http://localhost:15672/#/queues/%2F/events
-
 Логин/пароль:user/password
 
 ### tracker
 
 
 http://localhost:15672/#/queues/%2F/events
-
 ### clickhouse
 
 
@@ -120,24 +114,20 @@ docker exec -it clickstream-clickhouse clickhouse-client
 DESCRIBE TABLE clickstream.events\_cleansed;
 
 select count(\*) from clickstream.events\_cleansed FINAL;
-
 ### airflow
 
 
 http://localhost:8082/home
-
 Логин/пароль:admin/admin
 
 ### Prometheus
 
 
 http://localhost:9090/targets
-
 ### Grafana
 
 
 http://localhost:3000/dashboards
-
 Логин/пароль:admin/admin
 
 # Основная часть
@@ -170,19 +160,31 @@ http://localhost:3000/dashboards
 
 |--------|-------------------|--------------|----------------|
 
-| **Потоковый буфер** | **RabbitMQ + HAProxy** | **Kafka** — тяжелый для Docker (~2GB+), сложная настройка Zookeeper<br>**NATS** — нет долговременного хранения<br>**Redis Streams** — не кластеризуется надежно | **RabbitMQ** идеален для Python-проекта: официальные Python клиенты (
-pika
-,
-aio-pika
-), простая кластеризация через HAProxy, встроенный UI, надежное хранение сообщений до 7 дней. Docker образ ~200MB против 1GB+ у Kafka. |
+| **Потоковый буфер** | **RabbitMQ + HAProxy** | **Kafka** — тяжелый для Docker (~2GB+), сложная настройка Zookeeper
+**NATS** — нет долговременного хранения
+**Redis Streams** — не кластеризуется надежно | **RabbitMQ** идеален для Python-проекта: официальные Python клиенты (pika, aio-pika), простая кластеризация через HAProxy, встроенный UI, надежное хранение сообщений до 7 дней. Docker образ ~200MB против 1GB+ у Kafka. |
 
-| **Оперативное хранилище** | **PostgreSQL + pgbouncer** | **Cassandra** — NoSQL, широкие столбцы, сложная модель данных (нужно проектировать partition keys). Для clickstream нужна строгая схема + SQL для отладки<br>**MongoDB** — document store, нет нативной поддержки time-series, ACID только с 4.0+, слабые агрегации<br>**Redis** — in-memory, теряет данные при рестарте, не для аналитики<br>**TimescaleDB** — это надстройка над Postgres :) | **PostgreSQL** выигрывает по **простоте + мощности**:<br>• **JSONB** для гибкого payload + **строгая схема** для обязательных полей<br>• **ACID** транзакции (валидация + запись атомарны)<br>• **Все знают SQL** — разработчики/аналитики/DevOps<br>• **Индексы по времени/сессии/userId** — быстрый SELECT для отладки<br>• **pgbouncer** масштабирует до 10K+ соединений<br>• Docker образ 400MB с готовыми индексами |
+| **Оперативное хранилище** | **PostgreSQL + pgbouncer** | **Cassandra** — NoSQL, широкие столбцы, сложная модель данных (нужно проектировать partition keys). Для clickstream нужна строгая схема + SQL для отладки
+**MongoDB** — document store, нет нативной поддержки time-series, ACID только с 4.0+, слабые агрегации
+**Redis** — in-memory, теряет данные при рестарте, не для аналитики
+**TimescaleDB** — это надстройка над Postgres :) | **PostgreSQL** выигрывает по **простоте + мощности**:
+• **JSONB** для гибкого payload + **строгая схема** для обязательных полей
+• **ACID** транзакции (валидация + запись атомарны)
+• **Все знают SQL** — разработчики/аналитики/DevOps
+• **Индексы по времени/сессии/userId** — быстрый SELECT для отладки
+• **pgbouncer** масштабирует до 10K+ соединений
+• Docker образ 400MB с готовыми индексами |
 
-| **ETL оркестрация** | **Apache Airflow** | **Prefect** — молодой проект<br>**Dagster** — сложнее для простых ETL<br>**Mage** — SaaS зависимость | **Airflow** — 10+ лет разработки, 1000+ готовых операторов (PostgresOperator, ClickHouseOperator), визуальный DAG UI, Python код как конфигурация. Бесшовная интеграция с твоим Python стеком. |
+| **ETL оркестрация** | **Apache Airflow** | **Prefect** — молодой проект
+**Dagster** — сложнее для простых ETL
+**Mage** — SaaS зависимость | **Airflow** — 10+ лет разработки, 1000+ готовых операторов (PostgresOperator, ClickHouseOperator), визуальный DAG UI, Python код как конфигурация. Бесшовная интеграция с твоим Python стеком. |
 
-| **Аналитическое хранилище** | **ClickHouse** | **TimescaleDB** — медленнее на агрегациях<br>**Pinot** — сложная архитектура<br>**BigQuery** — vendor-lock | **ClickHouse** — мировой рекордсмен по SELECT скорости (60M строк/сек), columnar compression 10:1, бесплатный self-hosted, SQL совместимость. Для clickstream агрегаций по сессиям/пользователям — вне конкуренции. |
+| **Аналитическое хранилище** | **ClickHouse** | **TimescaleDB** — медленнее на агрегациях
+**Pinot** — сложная архитектура
+**BigQuery** — vendor-lock | **ClickHouse** — мировой рекордсмен по SELECT скорости (60M строк/сек), columnar compression 10:1, бесплатный self-hosted, SQL совместимость. Для clickstream агрегаций по сессиям/пользователям — вне конкуренции. |
 
-| **Мониторинг** | **Prometheus + Grafana** | **VictoriaMetrics** — меньше экосистемы<br>**Loki** — только логи | **Prometheus/Grafana** — готовые экспортеры для FastAPI, Postgres, RabbitMQ, ClickHouse, Airflow. 1000+ готовых дашбордов. Docker образы <100MB. Стандарт индустрии. |
+| **Мониторинг** | **Prometheus + Grafana** | **VictoriaMetrics** — меньше экосистемы
+**Loki** — только логи | **Prometheus/Grafana** — готовые экспортеры для FastAPI, Postgres, RabbitMQ, ClickHouse, Airflow. 1000+ готовых дашбордов. Docker образы <100MB. Стандарт индустрии. |
 
 ### Описание стека технологий
 
@@ -324,7 +326,6 @@ graph LR
 &nbsp;   class User,Analyst,Admin actorStyle
 
 &nbsp;   class UC1,UC2,UC3,UC4,UC5 usecaseStyle
-
 **2. Sequence диаграмма
 
 
@@ -365,7 +366,6 @@ sequenceDiagram
 &nbsp;   Airflow ->> ClickHouse: INSERT events\_cleansed
 
 &nbsp;   ClickHouse ->> Grafana: GROUP BY session\_id
-
 **3. Блок-схема ETL процесса
 
 
@@ -426,7 +426,6 @@ flowchart TD
 &nbsp;   class A,N,O startStyle
 
 &nbsp;   classDef default whiteStyle
-
 ### Схемы баз данных (DBML)
 
 **1. PostgreSQL (raw_events):
@@ -473,9 +472,6 @@ erDiagram
 &nbsp;   
 
 &nbsp;   classDef erStyle fill:#ffffff,stroke:#000000,stroke-width:2px,color:#000000
-
-
-
 **2. ClickHouse (events_cleansed):
 
 
@@ -504,118 +500,41 @@ erDiagram
 &nbsp;   
 
 &nbsp;   classDef erStyle fill:#ffffff,stroke:#000000,stroke-width:2px,color:#000000
-
 ### Описание API
 
 **FastAPI REST** на порту **8000**: [http://localhost:8000](http://localhost:8000)
 
 #### Основной endpoint
 
-**
-POST /events
-** — прием батча событий
+**POST /events** — прием батча событий
 
 | Поле | Тип | Обязательное | Описание | Пример |
 
 |------|-----|--------------|----------|---------|
 
-|
-event\_id
-|
-UUID
-| ✅ | Уникальный ID |
-550e8400-e29b-41d4-a716-446655440001
-|
+| event\_id | UUID | ✅ | Уникальный ID | 550e8400-e29b-41d4-a716-446655440001 |
 
-|
-type
-|
-string
-| ✅ | Тип события |
-click
-,
-view
-|
+| type | string | ✅ | Тип события | click, view |
 
-|
-created\_at
-|
-timestamp
-| ✅ | Создание на клиенте |
-2026-01-09T02:00:00Z
-|
+| created\_at | timestamp | ✅ | Создание на клиенте | 2026-01-09T02:00:00Z |
 
-|
-received\_at
-|
-timestamp
-| ✅ | Получение сервером |
-2026-01-09T02:00:01Z
-|
+| received\_at | timestamp | ✅ | Получение сервером | 2026-01-09T02:00:01Z |
 
-|
-session\_id
-|
-string
-| | Сессия |
-sess\_12345
-|
+| session\_id | string | | Сессия | sess\_12345 |
 
-|
-user\_id
-|
-bigint
-| | Пользователь |
-12345
-|
+| user\_id | bigint | | Пользователь | 12345 |
 
-|
-ip
-|
-string
-| | IP адрес |
-192.168.1.1
-|
+| ip | string | | IP адрес | 192.168.1.1 |
 
-|
-url
-|
-string
-| | Текущая страница |
-https://example.com/page
-|
+| url | string | | Текущая страница | https://example.com/page |
 
-|
-referrer
-|
-string
-| | Откуда пришли |
-https://example.com/home
-|
+| referrer | string | | Откуда пришли | https://example.com/home |
 
-|
-device\_type
-|
-string
-| | Устройство |
-desktop
-|
+| device\_type | string | | Устройство | desktop |
 
-|
-user\_agent
-|
-string
-| | Браузер |
-Mozilla/5.0...
-|
+| user\_agent | string | | Браузер | Mozilla/5.0... |
 
-|
-source
-|
-string
-| | Источник |
-http
-(auto) |
+| source | string | | Источник | http (auto) |
 
 #### Пример запроса
 
@@ -655,19 +574,15 @@ curl -X POST "http://localhost:8000/events" \\
 &nbsp;   }
 
 &nbsp; ]'
-
 Health-check:
 
 
 curl http://localhost:8000/
-
 ### Тестирование
 
 #### Стратегия тестирования
 
-- **Unit-тесты** — покрытие всех Python модулей (
-test\_\*.py
-, в папке tests)
+- **Unit-тесты** — покрытие всех Python модулей (test\_\*.py, в папке tests)
 
 - **Integration-тесты** — проверка полного стека (API → Postgres → Airflow → ClickHouse, в папке tests)
 
@@ -683,25 +598,15 @@ data/events.csv — 200K реалистичных клик-событий для
 
 |--------|-------|------------|----------|----------|
 
-|
-api/app.py
-| 39 | 0 | 4/5 | **98%** |
+| api/app.py | 39 | 0 | 4/5 | **98%** |
 
-|
-consumer/rabbit\_consumer.py
-| 50 | 18 | 6/8 | **64%** |
+| consumer/rabbit\_consumer.py | 50 | 18 | 6/8 | **64%** |
 
-|
-event\_generator/main.py
-| 117 | 32 | 28/29 | **73%** |
+| event\_generator/main.py | 117 | 32 | 28/29 | **73%** |
 
-|
-producer/rabbit\_producer.py
-| 41 | 4 | 6/7 | **89%** |
+| producer/rabbit\_producer.py | 41 | 4 | 6/7 | **89%** |
 
-|
-tracker/app.py
-| 11 | 1 | 2/3 | **85%** |
+| tracker/app.py | 11 | 1 | 2/3 | **85%** |
 
 | **Итого** | **258** | **55** | **46/62** | **78%** |
 
@@ -715,9 +620,7 @@ tracker/app.py
 
 #### Интеграционное тестирование
 
-**Тест
-tests/test\_integration\_all\_systems.py
-— полный стек clickstream**
+**Тест tests/test\_integration\_all\_systems.py — полный стек clickstream**
 
 | Компонент | Протокол | Порт | Health-check | Статус |
 
@@ -725,21 +628,13 @@ tests/test\_integration\_all\_systems.py
 
 | **PostgreSQL** | TCP | 5432 | Connection OK | ✅ |
 
-| **Airflow** | HTTP | 8080 |
-GET /
-→ 200 | ✅ |
+| **Airflow** | HTTP | 8080 | GET / → 200 | ✅ |
 
-| **ClickHouse** | HTTP | 8123 |
-GET /ping
-→ 200 | ✅ |
+| **ClickHouse** | HTTP | 8123 | GET /ping → 200 | ✅ |
 
-| **Prometheus** | HTTP | 9090 |
-GET /-/ready
-→ 200 | ✅ |
+| **Prometheus** | HTTP | 9090 | GET /-/ready → 200 | ✅ |
 
-| **Grafana** | HTTP | 3000 |
-GET /api/health
-→ 200 | ✅ |
+| **Grafana** | HTTP | 3000 | GET /api/health → 200 | ✅ |
 
 #### Детальный отчет
 
@@ -757,36 +652,17 @@ GET /api/health
 
 #### 🔗 Postman коллекция — примеры запросов
 
-** Файл:**
-postman/collection.json
+** Файл:** postman/collection.json
 
 | # | Название | Метод | Endpoint | Ожидаемый ответ |
 
 |---|----------|-------|----------|----------------|
 
-| **1** | **Health Check API** |
-GET
-|
-http://localhost:8000/
-|
-{"status": "ok", "message": "API is running"}
-|
+| **1** | **Health Check API** | GET | http://localhost:8000/ | {"status": "ok", "message": "API is running"} |
 
-| **2** | **Send Events (Single)** |
-POST
-|
-http://localhost:8000/events
-|
-{"status": "ok", "count": 1}
-|
+| **2** | **Send Events (Single)** | POST | http://localhost:8000/events | {"status": "ok", "count": 1} |
 
-| **3** | **Get HTML Page** |
-GET
-|
-http://localhost:8081/page
-|
-200 OK
-(HTML страница) |
+| **3** | **Get HTML Page** | GET | http://localhost:8081/page | 200 OK (HTML страница) |
 
 #### Детализация запросов
 
@@ -794,7 +670,6 @@ http://localhost:8081/page
 
 
 curl http://localhost:8000/
-
 Ответ:
 
 
@@ -805,7 +680,6 @@ curl http://localhost:8000/
 &nbsp; "message": "API is running"
 
 }
-
 **2. Send Events**
 
 
@@ -850,7 +724,6 @@ curl -X POST "http://localhost:8000/events" \\
 &nbsp;   }
 
 &nbsp; ]'
-
 Ответ:
 
 
@@ -861,12 +734,10 @@ curl -X POST "http://localhost:8000/events" \\
 &nbsp; "count": 1
 
 }
-
 **3. Get HTML Page**
 
 
 curl http://localhost:8081/page
-
 Ответ:
 
 200 OK + HTML с кнопками для генерации кликов
@@ -917,9 +788,7 @@ curl http://localhost:8081/page
 
 |--------|-----------|---------|
 
-| **REST API** | FastAPI endpoints
-/events
-| ✅ 400 RPS |
+| **REST API** | FastAPI endpoints /events | ✅ 400 RPS |
 
 | **ETL конвейер** | Airflow DAG каждые 10 сек | ✅ 4000 событий/батч |
 
