@@ -362,8 +362,6 @@ erDiagram
 
 ### Описание API
 
-**FastAPI REST** на порту **8000**: \[http://localhost:8000](http://localhost:8000)
-
 #### Основной endpoint
 **`POST /events`** — прием батча событий
 | Поле | Тип | Обязательное | Описание | Пример |
