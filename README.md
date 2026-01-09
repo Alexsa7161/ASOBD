@@ -261,54 +261,60 @@ graph LR
 **2. Sequence диаграмма
 ```mermaid
 sequenceDiagram
-   actor User
-   participant Tracker as FastAPI Tracker 8081
-   participant PG as pgbouncer 5432
-   participant Postgres as PostgreSQL raw_events
-   participant Airflow as Airflow DAG 8082
-   participant ClickHouse as ClickHouse 8123
-   participant Grafana as Grafana 3000
-   User ->> Tracker: POST /clicks
-   Tracker ->> PG: INSERT raw_events
-   PG ->> Postgres: source = "http"
-   Note right of Postgres: ~1-2 ms latency
-   Airflow ->> PG: SELECT batch WHERE processed = false
-   PG ->> Postgres: 1000+ events
-   Airflow ->> Airflow: validate + dedupe
-   Airflow ->> ClickHouse: INSERT events_cleansed
-   ClickHouse ->> Grafana: GROUP BY session_id
+    actor User
+    participant Tracker as FastAPI Tracker 8081
+    participant PG as pgbouncer 5432
+    participant Postgres as PostgreSQL raw_events
+    participant Airflow as Airflow DAG 8082
+    participant ClickHouse as ClickHouse 8123
+    participant Grafana as Grafana 3000
+    
+    rect rgba(255, 255, 255, 1)
+        User->>+Tracker: POST /clicks {payload}
+        Tracker->>+PG: INSERT raw_events
+        PG->>+Postgres: source='http'
+        Note right of Postgres: ~1-2ms latency
+    end
+    
+    rect rgba(255, 255, 255, 1)
+        Note over Airflow: каждые 10 секунд
+        Airflow->>+PG: SELECT batch WHERE processed=false
+        Airflow->>+Airflow: validate + dedupe
+        Airflow->>+ClickHouse: INSERT events_cleansed
+        ClickHouse->>+Grafana: GROUP BY session_id
+    end
 ```
 **3. Блок-схема ETL процесса
 ```mermaid
 flowchart TD
-   A\[Получение событий] --> B{Источник?}
-   
-   B -->|HTTP| C\[FastAPI Tracker POST /clicks]
-   B -->|RabbitMQ| D\[Producer/Consumer]
-   B -->|CSV| E\[API Upload]
-   
-   C --> F\[PostgreSQL raw_events INSERT]
-   D --> F
-   E --> F
-   
-   F --> G\[Airflow DAG каждые 10 секунд]
-   G --> H\[Extract batch 1000 events]
-   H --> I\[Validate JSON schema]
-   
-   I --> J{VALID?}
-   J -->|Нет 20%| K\[invalid_events для анализа]
-   J -->|Да 80%| L\[Deduplicate sessionId+timestamp]
-   
-   L --> M\[Transform → cleansed format]
-   M --> N\[ClickHouse events_cleansed INSERT FINAL]
-   
-   K --> O\[Grafana Auto-refresh]
-   N --> O
-   
-   classDef whiteStyle fill:#ffffff,stroke:#000000,stroke-width:2px,color:#000000
-   classDef startStyle fill:#ffffff,stroke:#000000,stroke-width:3px,color:#000000
-   class A,N,O startStyle
-   classDef default whiteStyle
+    A[Получение событий] --> B{Источник?}
+    
+    B -->|HTTP| C[FastAPI Tracker POST /clicks]
+    B -->|RabbitMQ| D[Producer/Consumer]
+    B -->|CSV| E[API Upload]
+    
+    C --> F[PostgreSQL raw_events INSERT]
+    D --> F
+    E --> F
+    
+    F --> G[Airflow DAG каждые 10 секунд]
+    G --> H[Extract batch 1000 events]
+    H --> I[Validate JSON schema]
+    
+    I --> J{VALID?}
+    J -->|Нет 20%| K[invalid_events для анализа]
+    J -->|Да 80%| L[Deduplicate sessionId+timestamp]
+    
+    L --> M[Transform → cleansed format]
+    M --> N[ClickHouse events_cleansed INSERT FINAL]
+    
+    K --> O[Grafana Auto-refresh]
+    N --> O
+    
+    classDef whiteStyle fill:#ffffff,stroke:#000000,stroke-width:2px,color:#000000
+    classDef startStyle fill:#ffffff,stroke:#000000,stroke-width:3px,color:#000000
+    class A,N,O startStyle
+    classDef default whiteStyle
 ```
 ### Схемы баз данных (DBML)
 
@@ -317,44 +323,44 @@ flowchart TD
 
 ```mermaid
 erDiagram
-   RAW_EVENTS {
-       serial id PK
-       varchar source "http,rabbitmq,csv"
-       varchar session_id
-       int user_id
-       timestamptz timestamp
-       jsonb payload
-       boolean processed "default: false"
-       timestamptz created_at "default: now()"
-   }
-   
-   INVALID_EVENTS {
-       serial id PK
-       int raw_event_id FK
-       text error_message
-   }
-   
-   RAW_EVENTS ||--o{ INVALID_EVENTS : generates
-   
-   classDef erStyle fill:#ffffff,stroke:#000000,stroke-width:2px,color:#000000
+    RAW_EVENTS {
+        serial id PK
+        varchar source "http,rabbitmq,csv"
+        varchar session_id
+        int user_id
+        timestamptz timestamp
+        jsonb payload
+        boolean processed "default: false"
+        timestamptz created_at "default: now()"
+    }
+    
+    INVALID_EVENTS {
+        serial id PK
+        int raw_event_id FK
+        text error_message
+    }
+    
+    RAW_EVENTS ||--o{ INVALID_EVENTS : generates
+    
+    classDef erStyle fill:#ffffff,stroke:#000000,stroke-width:2px,color:#000000
 ```
 
 **2. ClickHouse (events_cleansed):
 
 ```mermaid
 erDiagram
-   EVENTS_CLEANSED {
-       String session_id
-       UInt32 user_id
-       DateTime64 event_time
-       String event_type
-       String url
-       String element_id
-       UInt16 x
-       UInt16 y
-   }
-   
-   classDef erStyle fill:#ffffff,stroke:#000000,stroke-width:2px,color:#000000
+    EVENTS_CLEANSED {
+        String session_id
+        UInt32 user_id
+        DateTime64 event_time
+        String event_type
+        String url
+        String element_id
+        UInt16 x
+        UInt16 y
+    }
+    
+    classDef erStyle fill:#ffffff,stroke:#000000,stroke-width:2px,color:#000000
 ```
 
 ### Описание API
