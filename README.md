@@ -269,20 +269,17 @@ sequenceDiagram
     participant ClickHouse as ClickHouse 8123
     participant Grafana as Grafana 3000
     
-    rect rgba(255, 255, 255, 1)
-        User->>+Tracker: POST /clicks {payload}
-        Tracker->>+PG: INSERT raw_events
-        PG->>+Postgres: source='http'
-        Note right of Postgres: ~1-2ms latency
-    end
+    Note over User,Tracker: API Прием событий
+    User->>+Tracker: POST /clicks {payload}
+    Tracker->>+PG: INSERT raw_events  
+    PG->>+Postgres: source='http'
+    Note over Postgres: ~1-2ms latency
     
-    rect rgba(255, 255, 255, 1)
-        Note over Airflow: каждые 10 секунд
-        Airflow->>+PG: SELECT batch WHERE processed=false
-        Airflow->>+Airflow: validate + dedupe
-        Airflow->>+ClickHouse: INSERT events_cleansed
-        ClickHouse->>+Grafana: GROUP BY session_id
-    end
+    Note over Airflow,Grafana: ETL каждые 10 сек
+    Airflow->>+PG: SELECT batch<br/>WHERE processed=false
+    Airflow->>+Airflow: validate + dedupe
+    Airflow->>+ClickHouse: INSERT events_cleansed
+    ClickHouse->>+Grafana: GROUP BY session_id
 ```
 **3. Блок-схема ETL процесса
 ```mermaid
