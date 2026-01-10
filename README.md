@@ -322,23 +322,20 @@ flowchart TD
 ```mermaid
 erDiagram
     RAW_EVENTS {
-        serial id PK
-        varchar source "http,rabbitmq,csv"
-        varchar session_id
-        int user_id
-        timestamptz timestamp
+        uuid event_id PK
+        text type
+        timestamp created_at
+        timestamp received_at
+        text session_id
+        bigint user_id
+        text ip
+        text url
+        text referrer
+        text device_type
+        text user_agent
         jsonb payload
-        boolean processed "default: false"
-        timestamptz created_at "default: now()"
+        text source
     }
-    
-    INVALID_EVENTS {
-        serial id PK
-        int raw_event_id FK
-        text error_message
-    }
-    
-    RAW_EVENTS ||--o{ INVALID_EVENTS : generates
     
     classDef erStyle fill:#ffffff,stroke:#000000,stroke-width:2px,color:#000000
 ```
@@ -348,14 +345,23 @@ erDiagram
 ```mermaid
 erDiagram
     EVENTS_CLEANSED {
+        String event_id PK
+        String type
+        DateTime created_at
+        DateTime received_at
         String session_id
-        UInt32 user_id
-        DateTime64 event_time
-        String event_type
+        UInt64 user_id
+        String ip
         String url
+        String referrer
+        String device_type
+        String user_agent
+        String event_title
         String element_id
-        UInt16 x
-        UInt16 y
+        Int32 x
+        Int32 y
+        String payload
+        String source
     }
     
     classDef erStyle fill:#ffffff,stroke:#000000,stroke-width:2px,color:#000000
